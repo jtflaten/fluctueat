@@ -34,17 +34,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		583DDC761F0EDEA900E024C2 /* flucueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flucueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC791F0EDEA900E024C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		583DDC7B1F0EDEA900E024C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		583DDC7E1F0EDEA900E024C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		583DDC801F0EDEA900E024C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		583DDC831F0EDEA900E024C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		583DDC851F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		583DDC8A1F0EDEA900E024C2 /* flucueatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flucueatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		583DDC8A1F0EDEA900E024C2 /* fluctueatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fluctueatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC8E1F0EDEA900E024C2 /* flucueatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flucueatTests.swift; sourceTree = "<group>"; };
 		583DDC901F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		583DDC951F0EDEA900E024C2 /* flucueatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flucueatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		583DDC951F0EDEA900E024C2 /* fluctueatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fluctueatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC991F0EDEA900E024C2 /* flucueatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flucueatUITests.swift; sourceTree = "<group>"; };
 		583DDC9B1F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,9 +87,9 @@
 		583DDC771F0EDEA900E024C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				583DDC761F0EDEA900E024C2 /* flucueat.app */,
-				583DDC8A1F0EDEA900E024C2 /* flucueatTests.xctest */,
-				583DDC951F0EDEA900E024C2 /* flucueatUITests.xctest */,
+				583DDC761F0EDEA900E024C2 /* fluctueat.app */,
+				583DDC8A1F0EDEA900E024C2 /* fluctueatTests.xctest */,
+				583DDC951F0EDEA900E024C2 /* fluctueatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,9 +128,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		583DDC751F0EDEA900E024C2 /* flucueat */ = {
+		583DDC751F0EDEA900E024C2 /* fluctueat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 583DDC9E1F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueat" */;
+			buildConfigurationList = 583DDC9E1F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueat" */;
 			buildPhases = (
 				583DDC721F0EDEA900E024C2 /* Sources */,
 				583DDC731F0EDEA900E024C2 /* Frameworks */,
@@ -140,14 +140,14 @@
 			);
 			dependencies = (
 			);
-			name = flucueat;
+			name = fluctueat;
 			productName = flucueat;
-			productReference = 583DDC761F0EDEA900E024C2 /* flucueat.app */;
+			productReference = 583DDC761F0EDEA900E024C2 /* fluctueat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		583DDC891F0EDEA900E024C2 /* flucueatTests */ = {
+		583DDC891F0EDEA900E024C2 /* fluctueatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 583DDCA11F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueatTests" */;
+			buildConfigurationList = 583DDCA11F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueatTests" */;
 			buildPhases = (
 				583DDC861F0EDEA900E024C2 /* Sources */,
 				583DDC871F0EDEA900E024C2 /* Frameworks */,
@@ -158,14 +158,14 @@
 			dependencies = (
 				583DDC8C1F0EDEA900E024C2 /* PBXTargetDependency */,
 			);
-			name = flucueatTests;
+			name = fluctueatTests;
 			productName = flucueatTests;
-			productReference = 583DDC8A1F0EDEA900E024C2 /* flucueatTests.xctest */;
+			productReference = 583DDC8A1F0EDEA900E024C2 /* fluctueatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		583DDC941F0EDEA900E024C2 /* flucueatUITests */ = {
+		583DDC941F0EDEA900E024C2 /* fluctueatUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 583DDCA41F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueatUITests" */;
+			buildConfigurationList = 583DDCA41F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueatUITests" */;
 			buildPhases = (
 				583DDC911F0EDEA900E024C2 /* Sources */,
 				583DDC921F0EDEA900E024C2 /* Frameworks */,
@@ -176,9 +176,9 @@
 			dependencies = (
 				583DDC971F0EDEA900E024C2 /* PBXTargetDependency */,
 			);
-			name = flucueatUITests;
+			name = fluctueatUITests;
 			productName = flucueatUITests;
-			productReference = 583DDC951F0EDEA900E024C2 /* flucueatUITests.xctest */;
+			productReference = 583DDC951F0EDEA900E024C2 /* fluctueatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					583DDC751F0EDEA900E024C2 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = K32U974K8Q;
 						ProvisioningStyle = Automatic;
 					};
 					583DDC891F0EDEA900E024C2 = {
@@ -207,7 +208,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 583DDC711F0EDEA900E024C2 /* Build configuration list for PBXProject "flucueat" */;
+			buildConfigurationList = 583DDC711F0EDEA900E024C2 /* Build configuration list for PBXProject "fluctueat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -220,9 +221,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				583DDC751F0EDEA900E024C2 /* flucueat */,
-				583DDC891F0EDEA900E024C2 /* flucueatTests */,
-				583DDC941F0EDEA900E024C2 /* flucueatUITests */,
+				583DDC751F0EDEA900E024C2 /* fluctueat */,
+				583DDC891F0EDEA900E024C2 /* fluctueatTests */,
+				583DDC941F0EDEA900E024C2 /* fluctueatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,12 +286,12 @@
 /* Begin PBXTargetDependency section */
 		583DDC8C1F0EDEA900E024C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 583DDC751F0EDEA900E024C2 /* flucueat */;
+			target = 583DDC751F0EDEA900E024C2 /* fluctueat */;
 			targetProxy = 583DDC8B1F0EDEA900E024C2 /* PBXContainerItemProxy */;
 		};
 		583DDC971F0EDEA900E024C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 583DDC751F0EDEA900E024C2 /* flucueat */;
+			target = 583DDC751F0EDEA900E024C2 /* fluctueat */;
 			targetProxy = 583DDC961F0EDEA900E024C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -412,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K32U974K8Q;
 				INFOPLIST_FILE = flucueat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueat;
@@ -424,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K32U974K8Q;
 				INFOPLIST_FILE = flucueat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueat;
@@ -442,7 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flucueat.app/flucueat";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluctueat.app/fluctueat";
 			};
 			name = Debug;
 		};
@@ -456,7 +459,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flucueat.app/flucueat";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluctueat.app/fluctueat";
 			};
 			name = Release;
 		};
@@ -489,7 +492,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		583DDC711F0EDEA900E024C2 /* Build configuration list for PBXProject "flucueat" */ = {
+		583DDC711F0EDEA900E024C2 /* Build configuration list for PBXProject "fluctueat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				583DDC9C1F0EDEAA00E024C2 /* Debug */,
@@ -498,7 +501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		583DDC9E1F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueat" */ = {
+		583DDC9E1F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				583DDC9F1F0EDEAA00E024C2 /* Debug */,
@@ -506,7 +509,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		583DDCA11F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueatTests" */ = {
+		583DDCA11F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				583DDCA21F0EDEAA00E024C2 /* Debug */,
@@ -514,7 +517,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		583DDCA41F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "flucueatUITests" */ = {
+		583DDCA41F0EDEAA00E024C2 /* Build configuration list for PBXNativeTarget "fluctueatUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				583DDCA51F0EDEAA00E024C2 /* Debug */,
