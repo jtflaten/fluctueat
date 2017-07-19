@@ -16,6 +16,9 @@
 		583DDC841F0EDEA900E024C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC821F0EDEA900E024C2 /* LaunchScreen.storyboard */; };
 		583DDC8F1F0EDEA900E024C2 /* flucueatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC8E1F0EDEA900E024C2 /* flucueatTests.swift */; };
 		583DDC9A1F0EDEA900E024C2 /* flucueatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC991F0EDEA900E024C2 /* flucueatUITests.swift */; };
+		585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */; };
+		585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611951F20115900C6D2ED /* VendorMapViewController.swift */; };
+		5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611991F20123800C6D2ED /* VendorTabController.swift */; };
 		5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BA9F1F193EEB00366391 /* AuthViewController.swift */; };
 		5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA11F1942E000366391 /* HomeMapViewController.swift */; };
 		5872BAA61F1946EB00366391 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA51F1946EB00366391 /* Constants.swift */; };
@@ -55,6 +58,9 @@
 		583DDC951F0EDEA900E024C2 /* fluctueatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fluctueatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC991F0EDEA900E024C2 /* flucueatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flucueatUITests.swift; sourceTree = "<group>"; };
 		583DDC9B1F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorInfoViewController.swift; sourceTree = "<group>"; };
+		585611951F20115900C6D2ED /* VendorMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorMapViewController.swift; sourceTree = "<group>"; };
+		585611991F20123800C6D2ED /* VendorTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorTabController.swift; sourceTree = "<group>"; };
 		5872BA9F1F193EEB00366391 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5872BAA11F1942E000366391 /* HomeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
 		5872BAA51F1946EB00366391 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
@@ -123,16 +129,14 @@
 			isa = PBXGroup;
 			children = (
 				583DDC791F0EDEA900E024C2 /* AppDelegate.swift */,
-				58106D071F101B180043F791 /* Vendor.swift */,
-				5872BAA51F1946EB00366391 /* Constants.swift */,
-				583DDC7B1F0EDEA900E024C2 /* ViewController.swift */,
+				5856119B1F20129500C6D2ED /* Controllers */,
+				5856119C1F2012D100C6D2ED /* Model */,
+				5856119D1F2012EB00C6D2ED /* View */,
 				583DDC7D1F0EDEA900E024C2 /* Main.storyboard */,
-				5872BA9F1F193EEB00366391 /* AuthViewController.swift */,
 				583DDC801F0EDEA900E024C2 /* Assets.xcassets */,
 				583DDC821F0EDEA900E024C2 /* LaunchScreen.storyboard */,
 				583DDC851F0EDEA900E024C2 /* Info.plist */,
 				58106D051F1019830043F791 /* GoogleService-Info.plist */,
-				5872BAA11F1942E000366391 /* HomeMapViewController.swift */,
 			);
 			path = flucueat;
 			sourceTree = "<group>";
@@ -153,6 +157,51 @@
 				583DDC9B1F0EDEA900E024C2 /* Info.plist */,
 			);
 			path = flucueatUITests;
+			sourceTree = "<group>";
+		};
+		5856119B1F20129500C6D2ED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5856119F1F20131700C6D2ED /* Vendor */,
+				5856119E1F2012F800C6D2ED /* GeneralUser */,
+				5872BAA11F1942E000366391 /* HomeMapViewController.swift */,
+				583DDC7B1F0EDEA900E024C2 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5856119C1F2012D100C6D2ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58106D071F101B180043F791 /* Vendor.swift */,
+				5872BAA51F1946EB00366391 /* Constants.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5856119D1F2012EB00C6D2ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5856119E1F2012F800C6D2ED /* GeneralUser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GeneralUser;
+			sourceTree = "<group>";
+		};
+		5856119F1F20131700C6D2ED /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				5872BA9F1F193EEB00366391 /* AuthViewController.swift */,
+				585611991F20123800C6D2ED /* VendorTabController.swift */,
+				585611951F20115900C6D2ED /* VendorMapViewController.swift */,
+				585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		B33EB8C259C926EFF3EF50CC /* Pods */ = {
@@ -353,9 +402,12 @@
 			files = (
 				5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */,
 				58106D081F101B180043F791 /* Vendor.swift in Sources */,
+				5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */,
 				583DDC7C1F0EDEA900E024C2 /* ViewController.swift in Sources */,
+				585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */,
 				5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */,
 				583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */,
+				585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */,
 				5872BAA61F1946EB00366391 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

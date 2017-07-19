@@ -24,18 +24,20 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.setRegion(mapRegion, animated: false)
-        mapView.isScrollEnabled = true
+        mapView.isScrollEnabled = false
         mapView.isZoomEnabled = true
+        mapView.isPitchEnabled = false
         mapView.region = mapRegion
         
         let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToAuthPage))
         twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
-        twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.right
+        twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
         
         self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
+
 
 //    lazy var restrictedRegion: MKCoordinateRegion = {
 //        // sets maps to univeristy
@@ -64,13 +66,14 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate {
 //        }
 //    }
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        if /* !manuallyChangingMap && */ ((mapView.region.span.latitudeDelta > mapRegion.span.latitudeDelta * 4) ||
-            (mapView.region.span.longitudeDelta > mapRegion.span.longitudeDelta * 4) ||
-            fabs(mapView.region.center.latitude - mapRegion.center.latitude) > mapRegion.span.latitudeDelta ||
-            fabs(mapView.region.center.longitude - mapRegion.center.longitude) > mapRegion.span.longitudeDelta) {
-         mapView.setRegion(mapRegion, animated: true)
-        }
+   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        if /* !manuallyChangingMap && */ ((mapView.region.span.latitudeDelta > mapRegion.span.latitudeDelta * 4) ||
+//            (mapView.region.span.longitudeDelta > mapRegion.span.longitudeDelta * 4) ||
+//            fabs(mapView.region.center.latitude - mapRegion.center.latitude) > mapRegion.span.latitudeDelta ||
+//            fabs(mapView.region.center.longitude - mapRegion.center.longitude) > mapRegion.span.longitudeDelta) {
+//         mapView.setRegion(mapRegion, animated: true)
+//        }
+        print("the Region has changed!")
     }
     
     func swipeToAuthPage(gestureRecognizer: UISwipeGestureRecognizer){
