@@ -9,7 +9,7 @@
 import Foundation
 
 struct Vendor {
-    var uniqueKey: String?
+    //var uniqueKey: String?
     var name: String?
     var description: String?
     var lat: Double?

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JxL-08-4dY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -182,22 +182,33 @@
                                     <constraint firstAttribute="height" constant="183" id="qpg-L5-eJB"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-ab-jzc">
-                                <rect key="frame" x="15.5" y="215" width="343" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rta-ES-Yz9">
+                                <rect key="frame" x="16" y="211" width="343" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="toM-xB-XHu"/>
+                                    <constraint firstAttribute="height" constant="30" id="hdK-em-xNJ"/>
                                 </constraints>
-                                <state key="normal" title="Truck Name"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tv3-xp-AR8">
-                                <rect key="frame" x="15.5" y="257" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4m-3n-DmO">
+                                <rect key="frame" x="16" y="249" width="343" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XZL-Wd-Frh"/>
+                                    <constraint firstAttribute="height" constant="30" id="9uD-2h-VIJ"/>
                                 </constraints>
-                                <state key="normal" title="Short Desription"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQw-pg-KNm">
+                                <rect key="frame" x="164" y="574" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="bVM-x3-PDT"/>
+                                </constraints>
+                                <state key="normal" title="save"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KUw-mp-ckv">
-                                <rect key="frame" x="16" y="295" width="343" height="260"/>
+                                <rect key="frame" x="16" y="287" width="343" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qBj-ac-jPb">
@@ -220,18 +231,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tv3-xp-AR8" firstAttribute="top" secondItem="0Tm-ab-jzc" secondAttribute="bottom" constant="12" id="6jU-3s-1E5"/>
+                            <constraint firstItem="q4m-3n-DmO" firstAttribute="leading" secondItem="0zr-N1-xdh" secondAttribute="leadingMargin" id="43g-bs-F4m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q4m-3n-DmO" secondAttribute="trailing" id="5Lz-C7-TK3"/>
+                            <constraint firstItem="rta-ES-Yz9" firstAttribute="top" secondItem="ILM-F9-zSF" secondAttribute="bottom" constant="8" id="6pe-cu-soA"/>
+                            <constraint firstItem="QQw-pg-KNm" firstAttribute="centerX" secondItem="0zr-N1-xdh" secondAttribute="centerX" id="Ara-RX-Pu8"/>
+                            <constraint firstItem="q4m-3n-DmO" firstAttribute="top" secondItem="rta-ES-Yz9" secondAttribute="bottom" constant="8" id="KOu-ap-45X"/>
                             <constraint firstItem="ILM-F9-zSF" firstAttribute="leading" secondItem="0zr-N1-xdh" secondAttribute="leadingMargin" id="M0x-Uf-Msk"/>
-                            <constraint firstItem="0Tm-ab-jzc" firstAttribute="top" secondItem="ILM-F9-zSF" secondAttribute="bottom" constant="12" id="Nzn-ta-dAf"/>
-                            <constraint firstItem="0Tm-ab-jzc" firstAttribute="centerX" secondItem="0zr-N1-xdh" secondAttribute="centerX" id="OoK-eQ-c2y"/>
                             <constraint firstItem="ILM-F9-zSF" firstAttribute="trailing" secondItem="0zr-N1-xdh" secondAttribute="trailingMargin" id="PDr-Xj-cq0"/>
-                            <constraint firstItem="tv3-xp-AR8" firstAttribute="width" secondItem="0Tm-ab-jzc" secondAttribute="width" id="YIA-ds-omA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rta-ES-Yz9" secondAttribute="trailing" id="Y1b-3f-fez"/>
+                            <constraint firstItem="rta-ES-Yz9" firstAttribute="leading" secondItem="0zr-N1-xdh" secondAttribute="leadingMargin" id="iID-9A-asL"/>
+                            <constraint firstItem="ht8-3v-Gsn" firstAttribute="top" secondItem="QQw-pg-KNm" secondAttribute="bottom" constant="14" id="mWK-CI-hra"/>
                             <constraint firstItem="ILM-F9-zSF" firstAttribute="top" secondItem="2ri-Mk-BWk" secondAttribute="bottom" id="s3W-xj-VAm"/>
-                            <constraint firstItem="tv3-xp-AR8" firstAttribute="centerX" secondItem="0Tm-ab-jzc" secondAttribute="centerX" id="syg-Tp-ABv"/>
-                            <constraint firstItem="0Tm-ab-jzc" firstAttribute="width" secondItem="ILM-F9-zSF" secondAttribute="width" id="wP0-66-zbp"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="sv0-QJ-gdm"/>
+                    <connections>
+                        <outlet property="foodImageCollection" destination="KUw-mp-ckv" id="ASq-yI-FGr"/>
+                        <outlet property="foodTruckImage" destination="ILM-F9-zSF" id="lA3-0K-OZR"/>
+                        <outlet property="saveButton" destination="QQw-pg-KNm" id="ls4-BI-D4A"/>
+                        <outlet property="truckDescription" destination="q4m-3n-DmO" id="o41-sp-VM3"/>
+                        <outlet property="truckName" destination="rta-ES-Yz9" id="Ew9-wv-5HT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1I-Jb-Odm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
