@@ -19,3 +19,5 @@ extension HomeMapViewController{
         
     }
 }
+
+let maxNumberOfFoodImages = 6
