@@ -132,7 +132,6 @@
 				5856119B1F20129500C6D2ED /* Controllers */,
 				5856119C1F2012D100C6D2ED /* Model */,
 				5856119D1F2012EB00C6D2ED /* View */,
-				583DDC7D1F0EDEA900E024C2 /* Main.storyboard */,
 				583DDC801F0EDEA900E024C2 /* Assets.xcassets */,
 				583DDC821F0EDEA900E024C2 /* LaunchScreen.storyboard */,
 				583DDC851F0EDEA900E024C2 /* Info.plist */,
@@ -180,6 +179,7 @@
 		5856119D1F2012EB00C6D2ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				583DDC7D1F0EDEA900E024C2 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";

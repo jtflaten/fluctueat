@@ -25,6 +25,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         foodImageCollection.dataSource = self
         setupLabels()
         setupTruckImage()
+        layoutCells()
     }
     
     func setupTruckImage() {
@@ -50,6 +51,8 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
 
     func layoutCells() {
+        
+        
         let cellVerticalSpaicng: CGFloat = 2
         var cellWidth: CGFloat
         var cellsInRow: CGFloat
@@ -61,13 +64,13 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         case .portraitUpsideDown:
             cellsInRow = 3
         case .landscapeLeft:
-            cellsInRow = 5
+            cellsInRow = 4
         case.landscapeRight:
-            cellsInRow = 5
+            cellsInRow = 4
         default:
-            cellsInRow = 5
+            cellsInRow = 3
         }
-        cellWidth = foodImageCollection!.frame.width / cellsInRow
+        cellWidth = (foodImageCollection!.frame.width / cellsInRow) - 2
         cellWidth -= cellVerticalSpaicng
         foodImageCollectionFlowLayout.itemSize.width = cellWidth
         foodImageCollectionFlowLayout.itemSize.height = cellWidth

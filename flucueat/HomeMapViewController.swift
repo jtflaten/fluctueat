@@ -8,14 +8,19 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class HomeMapViewController: UIViewController, MKMapViewDelegate {
+class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // create the total map area for the mapView
     //TODO: make sure to abstract the hard coded numbers to constants
-   
-    let mapRegion = MKCoordinateRegion(center: MapConstants.houstonCenter, span: MapConstants.mapRangeSpan)
+    let locationManager = CLLocationManager()
+    
+    //let userLocation = CLLocation().coordinate
+    var mapRegion = MKCoordinateRegion()
     let mapSize = MKMapSize(width: 1.2, height: 1.2)
+    
+    
     
     
    
@@ -23,7 +28,26 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.setRegion(mapRegion, animated: false)
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
+        if let userLocation = locationManager.location?.coordinate {
+            mapView.setCenter(userLocation, animated: true)
+            mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
+            mapView.setRegion(mapRegion, animated: true)
+            
+            let userAnnotation = MKPointAnnotation()
+            userAnnotation.coordinate = userLocation
+            self.mapView.addAnnotation(userAnnotation)
+           
+        }
+        
+    //    mapView.setRegion(mapRegion, animated: false)
         mapView.isScrollEnabled = false
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = false
@@ -38,6 +62,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+//    func getUserLocationForMap() {
+//        return  self.mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
+//
+//    }
 
 //    lazy var restrictedRegion: MKCoordinateRegion = {
 //        // sets maps to univeristy
