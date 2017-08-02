@@ -22,7 +22,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         foodImageCollection.delegate = self
-        foodImageCollection.dataSource = self
+       foodImageCollection.dataSource = self
         setupLabels()
         setupTruckImage()
         layoutCells()
@@ -83,7 +83,4 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
 
 
 
-class FoodImageCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var foodImage: UIImageView!
-}
+
