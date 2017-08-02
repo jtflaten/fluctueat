@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate {
+class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
    // let testVendor = testVendor
     
@@ -21,24 +21,26 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var saveButton: UIButton!
     
    // var foodTruck: Vendor
-    
+
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setuptextFields()
         setupTruckImage()
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
+
         layoutCells()
         
     }
     
-    let truckImageTap = UITapGestureRecognizer(target: self, action: #selector(pickImage))
     
     
     func setupTruckImage() {
-        foodTruckImage.image = #imageLiteral(resourceName: "jakes_truck")
+      //  foodTruckImage.image = #imageLiteral(resourceName: "jakes_truck")
         foodTruckImage.backgroundColor = .gray
-        foodTruckImage.addGestureRecognizer(truckImageTap)
+
+     
     }
     
     func setuptextFields(){
@@ -56,10 +58,27 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VendorFoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        let image = #imageLiteral(resourceName: "empty")
-        cell.foodImage.image = image
+        let imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
+        cell.foodImage.image = imageArray[indexPath.row]
      
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //pickImageMenu()
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! FoodImageCollectionViewCell
+        
+        pickImageMenu()
+        func sendCellToImagePicker(cell: FoodImageCollectionViewCell) {
+            cell = cell
+            return cell
+        }
+//        let pickerControllerMenu = UIImagePickerController()
+//        pickerControllerMenu.delegate = self
+//        present(pickerControllerMenu, animated: true, completion: nil)
+ 
     }
     
     func layoutCells() {
@@ -92,21 +111,56 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-    func pickImage() {
-        let pickerController = UIImagePickerController()
+    
+   let pickerController = UIImagePickerController()
+   let pickerControllerMenu = UIImagePickerController()
+   
+    func pickImageFoodTruck() {
+       
         pickerController.sourceType = .photoLibrary
+        pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
        
     }
+
+    func pickImageMenu() {
+    
+        pickerControllerMenu.sourceType = .photoLibrary
+        pickerControllerMenu.delegate = self
+        present(pickerControllerMenu, animated: true, completion: nil)
+        
+    }
+    
+    
     
     @IBAction func changeImage(_ sender: Any) {
-        pickImage()
+        pickImageFoodTruck()
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            foodTruckImage.image = image
+        if  picker == pickerController {
+            if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+                foodTruckImage.image = editedImage
+            } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                foodTruckImage.image = originalImage
+            } else {
+                print("spmething's gone wrong")
+            }
+            dismiss(animated: true, completion: nil)
+        } else if picker == pickerControllerMenu {
+            foodTruckImage.image = #imageLiteral(resourceName: "cookies")
+            dismiss(animated: true, completion: nil)
+        } else {
+            foodTruckImage.image = #imageLiteral(resourceName: "corn_bowl")
             dismiss(animated: true, completion: nil)
         }
     }
+    
+        
+    
 }
+
+
+
+
 
