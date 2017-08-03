@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,7 +22,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var saveButton: UIButton!
     
    // var foodTruck: Vendor
-
+    var indexOfSelectedItem: Int?
+    var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VendorFoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        let imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
+       
         cell.foodImage.image = imageArray[indexPath.row]
      
         return cell
@@ -66,15 +68,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //pickImageMenu()
-        
-        let cell = collectionView.cellForItem(at: indexPath) as! FoodImageCollectionViewCell
-        
+        indexOfSelectedItem = indexPath.row
         pickImageMenu()
-        func sendCellToImagePicker(cell: FoodImageCollectionViewCell) {
-            cell = cell
-            return cell
-        }
+        
+        
+        
+       
 //        let pickerControllerMenu = UIImagePickerController()
 //        pickerControllerMenu.delegate = self
 //        present(pickerControllerMenu, animated: true, completion: nil)
@@ -147,8 +146,16 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                 print("spmething's gone wrong")
             }
             dismiss(animated: true, completion: nil)
+        
         } else if picker == pickerControllerMenu {
+         
+            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                
+                imageArray.insert(originalImage, at: indexOfSelectedItem!)
+                imageArray.remove(at: indexOfSelectedItem! + 1)
+            }
             foodTruckImage.image = #imageLiteral(resourceName: "cookies")
+            foodImageCollection.reloadData()
             dismiss(animated: true, completion: nil)
         } else {
             foodTruckImage.image = #imageLiteral(resourceName: "corn_bowl")

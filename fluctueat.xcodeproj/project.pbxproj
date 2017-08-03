@@ -23,6 +23,7 @@
 		5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA11F1942E000366391 /* HomeMapViewController.swift */; };
 		5872BAA61F1946EB00366391 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA51F1946EB00366391 /* Constants.swift */; };
 		58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */; };
+		58C3478A1F32DC7700710A1A /* fluctueat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */; };
 		B77B6C930F9170C768196093 /* Pods_fluctueat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FA0FC1A2B928B735FBD2DB /* Pods_fluctueat.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		5872BAA11F1942E000366391 /* HomeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
 		5872BAA51F1946EB00366391 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		58C347881F32DB2400710A1A /* fluctueat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fluctueat.xcdatamodel; sourceTree = "<group>"; };
 		680FE71A711B25AC00F1F720 /* Pods-fluctueat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluctueat.release.xcconfig"; path = "Pods/Target Support Files/Pods-fluctueat/Pods-fluctueat.release.xcconfig"; sourceTree = "<group>"; };
 		7918DEDDDEDE5124FD310FD4 /* Pods-fluctueat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluctueat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fluctueat/Pods-fluctueat.debug.xcconfig"; sourceTree = "<group>"; };
 		B1FA0FC1A2B928B735FBD2DB /* Pods_fluctueat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fluctueat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				583DDC791F0EDEA900E024C2 /* AppDelegate.swift */,
+				58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */,
 				5856119B1F20129500C6D2ED /* Controllers */,
 				5856119C1F2012D100C6D2ED /* Model */,
 				5856119D1F2012EB00C6D2ED /* View */,
@@ -412,6 +415,7 @@
 				585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */,
 				5872BAA61F1946EB00366391 /* Constants.swift in Sources */,
 				58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */,
+				58C3478A1F32DC7700710A1A /* fluctueat.xcdatamodeld in Sources */,
 				585611A51F2259C400C6D2ED /* FoodTruckInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +686,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58C347881F32DB2400710A1A /* fluctueat.xcdatamodel */,
+			);
+			currentVersion = 58C347881F32DB2400710A1A /* fluctueat.xcdatamodel */;
+			path = fluctueat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 583DDC6E1F0EDEA900E024C2 /* Project object */;
 }
