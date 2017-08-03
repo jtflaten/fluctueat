@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="FoodPhoto" representedClassName="FoodPhoto" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="vendor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VendorCD" inverseName="foodPhotos" inverseEntity="VendorCD" syncable="YES"/>
+    </entity>
+    <entity name="TruckPhoto" representedClassName="TruckPhoto" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="vendor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VendorCD" inverseName="truckPhoto" inverseEntity="VendorCD" syncable="YES"/>
+    </entity>
+    <entity name="VendorCD" representedClassName="VendorCD" syncable="YES" codeGenerationType="class">
+        <attribute name="foodDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="foodPhotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodPhoto" inverseName="vendor" inverseEntity="FoodPhoto" syncable="YES"/>
+        <relationship name="truckPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TruckPhoto" inverseName="vendor" inverseEntity="TruckPhoto" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="VendorCD" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="TruckPhoto" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="FoodPhoto" positionX="-36" positionY="9" width="128" height="75"/>
+    </elements>
 </model>

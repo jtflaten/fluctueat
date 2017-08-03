@@ -206,6 +206,9 @@
                                     <constraint firstAttribute="width" constant="46" id="bVM-x3-PDT"/>
                                 </constraints>
                                 <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="saveButtonPushed:" destination="27p-XB-cL5" eventType="touchUpInside" id="Dp4-7Q-T9f"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KUw-mp-ckv">
                                 <rect key="frame" x="16" y="402" width="343" height="145"/>

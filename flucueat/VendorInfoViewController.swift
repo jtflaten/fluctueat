@@ -21,10 +21,13 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
     
-   // var foodTruck: Vendor
+    var foodTruck: VendorCD?
     var indexOfSelectedItem: Int?
     var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
-   
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setuptextFields()
@@ -163,7 +166,56 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    func createVendorCDandImages(name: String, foodDesc: String, truckImage: UIImage, foodImages: [UIImage]){
+       //make the vendor for Core Data
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "VendorCD", in: managedContext)!
+        let vendorCD = VendorCD(entity: entity, insertInto: managedContext)
+        vendorCD.setValue(name, forKeyPath: "name")
+        vendorCD.setValue(foodDesc, forKeyPath: "foodDesc")
         
+        
+        // make the Truck Image for core data
+        let truckImagePhotoData = UIImageJPEGRepresentation(truckImage, 1)
+        let truckPhotoEntity = NSEntityDescription.entity(forEntityName: "TruckPhoto", in: managedContext)!
+        let truckPhoto = TruckPhoto(entity: truckPhotoEntity, insertInto: managedContext)
+        truckPhoto.setValue(truckImagePhotoData!, forKeyPath: "image")
+        truckPhoto.setValue(vendorCD, forKeyPath: "vendor")
+        
+        //make the food photos for core data
+        for eachImage in foodImages {
+            let foodImagePhotoData = UIImageJPEGRepresentation(eachImage, 1)
+            let foodPhotoEntity = NSEntityDescription.entity(forEntityName: "FoodPhoto", in: managedContext)!
+            let foodPhoto = FoodPhoto(entity: foodPhotoEntity, insertInto: managedContext)
+            foodPhoto.setValue(foodImagePhotoData!, forKeyPath: "image")
+            foodPhoto.setValue(vendorCD, forKeyPath: "vendor")
+        }
+     print("we out here")
+    saveInfo()
+    }
+    
+    @IBAction func saveButtonPushed(_ sender: Any) {
+        createVendorCDandImages(name: truckName.text!, foodDesc: truckDescription.text!, truckImage: foodTruckImage.image!, foodImages: imageArray)
+    }
+    func saveInfo() {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            try managedContext.save()
+        }catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func fetchTruckInfo() {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let truckFetchRequest = NSFetchRequest<VendorCD>(entityName:"VendorCD")
+        do {
+            foodTruck = try managedContext.fetch(truckFetchRequest)
+            
+        }
+        
+    }
+    
     
 }
 
