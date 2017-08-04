@@ -25,17 +25,19 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     var indexOfSelectedItem: Int?
     var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
 
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTruckInfo()
         setuptextFields()
         setupTruckImage()
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
 
         layoutCells()
+//        fetchTruckPhoto()
         
     }
     
@@ -49,8 +51,17 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func setuptextFields(){
-        truckName.text = "Enter The NAME of Your truck here"
-        truckDescription.text = "enter a short description of your food here"
+        if let savedName = foodTruck?.name {
+            truckName.text = savedName
+        } else {
+            truckName.text = "Enter The NAME of Your truck here"
+        }
+        
+        if let savedDesc = foodTruck?.foodDesc {
+            truckDescription.text = savedDesc
+        } else {
+            truckDescription.text = "enter a short description of your food here"
+        }
     }
     
     
@@ -168,11 +179,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func createVendorCDandImages(name: String, foodDesc: String, truckImage: UIImage, foodImages: [UIImage]){
        //make the vendor for Core Data
-        let managedContext = appDelegate.persistentContainer.viewContext
+
         let entity = NSEntityDescription.entity(forEntityName: "VendorCD", in: managedContext)!
         let vendorCD = VendorCD(entity: entity, insertInto: managedContext)
         vendorCD.setValue(name, forKeyPath: "name")
         vendorCD.setValue(foodDesc, forKeyPath: "foodDesc")
+        print(vendorCD.foodDesc ?? "didn't save right")
         
         
         // make the Truck Image for core data
@@ -191,14 +203,15 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             foodPhoto.setValue(vendorCD, forKeyPath: "vendor")
         }
      print("we out here")
-    saveInfo()
+   
     }
     
     @IBAction func saveButtonPushed(_ sender: Any) {
         createVendorCDandImages(name: truckName.text!, foodDesc: truckDescription.text!, truckImage: foodTruckImage.image!, foodImages: imageArray)
+        saveInfo()
     }
     func saveInfo() {
-        let managedContext = appDelegate.persistentContainer.viewContext
+  //      let managedContext = appDelegate.persistentContainer.viewContext
         do {
             try managedContext.save()
         }catch let error as NSError {
@@ -207,15 +220,30 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func fetchTruckInfo() {
-        let managedContext = appDelegate.persistentContainer.viewContext
+
+        
         let truckFetchRequest = NSFetchRequest<VendorCD>(entityName:"VendorCD")
         do {
-            foodTruck = try managedContext.fetch(truckFetchRequest)
-            
+            let fetchedArray = try managedContext.fetch(truckFetchRequest)
+            foodTruck = fetchedArray[0]
+               
+        } catch let error as NSError {
+            print("could not fetch. \(error), \(error.userInfo)")
         }
         
     }
-    
+
+//    func fetchTruckPhoto(){
+//     
+//        let truckImageFetchRequest = NSFetchRequest<TruckPhoto>(entityName: "TruckPhoto")
+//        var image = UIImage()
+//        do {
+//            try image = UIImage (data: (truckImageFetchRequest as? Data)!)!
+//        } catch let error as NSError {
+//            print("could not fetch. \(error), \(error.userInfo)")
+//    
+//        }
+//    }
     
 }
 

@@ -22,8 +22,8 @@
 		5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BA9F1F193EEB00366391 /* AuthViewController.swift */; };
 		5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA11F1942E000366391 /* HomeMapViewController.swift */; };
 		5872BAA61F1946EB00366391 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA51F1946EB00366391 /* Constants.swift */; };
+		589710381F33BB5700A4E330 /* fluctueat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */; };
 		58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */; };
-		58C3478A1F32DC7700710A1A /* fluctueat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */; };
 		B77B6C930F9170C768196093 /* Pods_fluctueat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FA0FC1A2B928B735FBD2DB /* Pods_fluctueat.framework */; };
 /* End PBXBuildFile section */
 
@@ -415,7 +415,7 @@
 				585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */,
 				5872BAA61F1946EB00366391 /* Constants.swift in Sources */,
 				58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */,
-				58C3478A1F32DC7700710A1A /* fluctueat.xcdatamodeld in Sources */,
+				589710381F33BB5700A4E330 /* fluctueat.xcdatamodeld in Sources */,
 				585611A51F2259C400C6D2ED /* FoodTruckInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

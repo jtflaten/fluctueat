@@ -17,8 +17,8 @@
         <relationship name="truckPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TruckPhoto" inverseName="vendor" inverseEntity="TruckPhoto" syncable="YES"/>
     </entity>
     <elements>
-        <element name="VendorCD" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="TruckPhoto" positionX="-54" positionY="-9" width="128" height="75"/>
         <element name="FoodPhoto" positionX="-36" positionY="9" width="128" height="75"/>
+        <element name="TruckPhoto" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="VendorCD" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
