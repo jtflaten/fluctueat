@@ -22,6 +22,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var saveButton: UIButton!
     
     var foodTruck: VendorCD?
+    var foodTruckFetchedImage: TruckPhoto?
+    var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
     var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
     
@@ -215,6 +217,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     func saveInfo() {
   //      let managedContext = appDelegate.persistentContainer.viewContext
+        deleteOlderEntities()
         do {
             try managedContext.save()
         }catch let error as NSError {
@@ -222,6 +225,15 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    func deleteOlderEntities(){
+        if foodTruck != nil  {
+            managedContext.delete(foodTruck!)
+            managedContext.delete(foodTruckFetchedImage!)
+            for image in savedImageArray {
+                managedContext.delete(image)
+            }
+        }
+    }
     func fetchTruckInfo() {
 
         
@@ -246,7 +258,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         do {
             let  fetchedImage = try managedContext.fetch(truckImageFetchRequest)
             if fetchedImage != []{
-                foodTruckImage.image = UIImage(data: fetchedImage[0].image! as Data)
+                foodTruckFetchedImage = fetchedImage[0]
+                foodTruckImage.image = UIImage(data: (foodTruckFetchedImage!.image! as Data))
             }
         } catch let error as NSError {
             print("could not fetch truck image. \(error), \(error.userInfo)")
@@ -261,6 +274,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         do {
             let fetchedMenu = try managedContext.fetch(menuImageFetchRequest)
                 if fetchedMenu != [] {
+                    savedImageArray = fetchedMenu
                     var imageArray = [UIImage]()
                     for foodPhoto in fetchedMenu {
                         if let image = UIImage(data: foodPhoto.image! as Data) {
