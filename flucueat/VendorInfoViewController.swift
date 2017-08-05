@@ -24,6 +24,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     var foodTruck: VendorCD?
     var indexOfSelectedItem: Int?
     var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
+    
 
     let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -31,6 +32,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTruckInfo()
+        fetchTruckPhoto()
+        fetchMenuPhotos()
         setuptextFields()
         setupTruckImage()
         foodImageCollection.dataSource = self
@@ -224,26 +227,55 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let truckFetchRequest = NSFetchRequest<VendorCD>(entityName:"VendorCD")
         do {
+           
             let fetchedArray = try managedContext.fetch(truckFetchRequest)
-            foodTruck = fetchedArray[0]
+                if fetchedArray != [] {
+                    foodTruck = fetchedArray[0]
+                }
                
-        } catch let error as NSError {
-            print("could not fetch. \(error), \(error.userInfo)")
-        }
+            } catch let error as NSError {
+                print("could not fetch. \(error), \(error.userInfo)")
+            }
         
     }
 
-//    func fetchTruckPhoto(){
-//     
-//        let truckImageFetchRequest = NSFetchRequest<TruckPhoto>(entityName: "TruckPhoto")
-//        var image = UIImage()
-//        do {
-//            try image = UIImage (data: (truckImageFetchRequest as? Data)!)!
-//        } catch let error as NSError {
-//            print("could not fetch. \(error), \(error.userInfo)")
-//    
-//        }
-//    }
+    func fetchTruckPhoto(){
+     
+        let truckImageFetchRequest = NSFetchRequest<TruckPhoto>(entityName: "TruckPhoto")
+        
+        do {
+            let  fetchedImage = try managedContext.fetch(truckImageFetchRequest)
+            if fetchedImage != []{
+                foodTruckImage.image = UIImage(data: fetchedImage[0].image! as Data)
+            }
+        } catch let error as NSError {
+            print("could not fetch truck image. \(error), \(error.userInfo)")
+    
+        }
+    }
+    
+    
+    func fetchMenuPhotos(){
+        let menuImageFetchRequest = NSFetchRequest<FoodPhoto>(entityName:"FoodPhoto")
+        
+        do {
+            let fetchedMenu = try managedContext.fetch(menuImageFetchRequest)
+                if fetchedMenu != [] {
+                    var imageArray = [UIImage]()
+                    for foodPhoto in fetchedMenu {
+                        if let image = UIImage(data: foodPhoto.image! as Data) {
+                            imageArray.append(image)
+                        }
+                    }
+                    self.imageArray = imageArray
+                }
+            
+        } catch let error as NSError {
+                print("could not fetch truck image. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     
 }
 
