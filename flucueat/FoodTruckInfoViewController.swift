@@ -39,14 +39,14 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-        return (self.vendor.pictures?.count)! // maxNumberOfFoodImages
+        return (self.vendor.pictures.count) // maxNumberOfFoodImages
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        let image = self.vendor.pictures?[(indexPath as NSIndexPath).row]
-        cell.foodImage.image = image!
+        let image = self.vendor.pictures[(indexPath as NSIndexPath).row]
+        cell.foodImage.image = image
         return cell
     }
 

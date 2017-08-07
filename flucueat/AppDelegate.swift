@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
 import CoreLocation
 import CoreData
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuthUI
+
 
 class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,11 +24,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
     
+    var ref: DatabaseReference!
     var foodTruck: VendorCD?
     var foodTruckFetchedImage: TruckPhoto?
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
-    var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
+   // var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
     
 
     let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,6 +37,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.signedInStatus(isSignedIn: true)
+        addLocationToVendor()
         fetchTruckInfo()
         fetchTruckPhoto()
         fetchMenuPhotos()
@@ -42,45 +48,44 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.delegate = self
 
         layoutCells()
-//        fetchTruckPhoto()
+
         
     }
     
     
+    func addLocationToVendor() {
+        userVendor.lat = currentUser.latitude
+        userVendor.long = currentUser.longitude
+        
+    }
     
     func setupTruckImage() {
       //  foodTruckImage.image = #imageLiteral(resourceName: "jakes_truck")
+        foodTruckImage.image = userVendor.truckImage!
         foodTruckImage.backgroundColor = .gray
 
      
     }
     
     func setuptextFields(){
-        if let savedName = foodTruck?.name {
-            truckName.text = savedName
-        } else {
-            truckName.text = "Enter The NAME of Your truck here"
-        }
-        
-        if let savedDesc = foodTruck?.foodDesc {
-            truckDescription.text = savedDesc
-        } else {
-            truckDescription.text = "enter a short description of your food here"
-        }
+        truckName.text = userVendor.name
+        truckDescription.text = userVendor.description
+
     }
+    
     
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (testVendor.pictures?.count)!// maxNumberOfFoodImages
+        return (userVendor.pictures.count)// maxNumberOfFoodImages
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VendorFoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
        
-        cell.foodImage.image = imageArray[indexPath.row]
+        cell.foodImage.image = userVendor.pictures[indexPath.row] //imageArray[indexPath.row]
      
         return cell
     }
@@ -93,9 +98,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
         
        
-//        let pickerControllerMenu = UIImagePickerController()
-//        pickerControllerMenu.delegate = self
-//        present(pickerControllerMenu, animated: true, completion: nil)
+
  
     }
     
@@ -170,8 +173,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
          
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 
-                imageArray.insert(originalImage, at: indexOfSelectedItem!)
-                imageArray.remove(at: indexOfSelectedItem! + 1)
+                userVendor.pictures.insert(originalImage, at: indexOfSelectedItem!)
+                userVendor.pictures.remove(at: indexOfSelectedItem! + 1)
             }
             foodTruckImage.image = #imageLiteral(resourceName: "cookies")
             foodImageCollection.reloadData()
@@ -184,6 +187,10 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func createVendorCDandImages(name: String, foodDesc: String, truckImage: UIImage, foodImages: [UIImage]){
        //make the vendor for Core Data
+        
+        deleteAllCoreData(entity: vendorCoreData)
+        deleteAllCoreData(entity: foodPhotoString)
+        deleteAllCoreData(entity: truckPhotoString)
 
         let entity = NSEntityDescription.entity(forEntityName: "VendorCD", in: managedContext)!
         let vendorCD = VendorCD(entity: entity, insertInto: managedContext)
@@ -212,28 +219,50 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @IBAction func saveButtonPushed(_ sender: Any) {
-        createVendorCDandImages(name: truckName.text!, foodDesc: truckDescription.text!, truckImage: foodTruckImage.image!, foodImages: imageArray)
+        checkTextFields()
+        createVendorCDandImages(name: truckName.text!, foodDesc: truckDescription.text!, truckImage: foodTruckImage.image!, foodImages: userVendor.pictures)
         saveInfo()
+        sendVendorDataForDataBase()
     }
+    
+    
     func saveInfo() {
-  //      let managedContext = appDelegate.persistentContainer.viewContext
-        deleteOlderEntities()
         do {
             try managedContext.save()
+            
         }catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+      
     }
     
-    func deleteOlderEntities(){
-        if foodTruck != nil  {
-            managedContext.delete(foodTruck!)
-            managedContext.delete(foodTruckFetchedImage!)
-            for image in savedImageArray {
-                managedContext.delete(image)
+    func sendVendorDataForDataBase() {
+        var data = [String:String]()
+        data[dbConstants.name] = truckName.text
+        data[dbConstants.description] = truckDescription.text
+        data[dbConstants.lat] = "\(userVendor.lat)"
+        data[dbConstants.long] = "\(userVendor.long)"
+        ref.childByAutoId().setValue(data)
+    }
+    
+    func deleteAllCoreData(entity: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results {
+                let managedObjectData = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+                
             }
+        } catch let error as NSError{
+            print("could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
+
+    
     func fetchTruckInfo() {
 
         
@@ -243,6 +272,9 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             let fetchedArray = try managedContext.fetch(truckFetchRequest)
                 if fetchedArray != [] {
                     foodTruck = fetchedArray[0]
+                    userVendor.name = fetchedArray[0].name
+                    userVendor.description = fetchedArray[0].foodDesc
+                    
                 }
                
             } catch let error as NSError {
@@ -259,7 +291,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             let  fetchedImage = try managedContext.fetch(truckImageFetchRequest)
             if fetchedImage != []{
                 foodTruckFetchedImage = fetchedImage[0]
-                foodTruckImage.image = UIImage(data: (foodTruckFetchedImage!.image! as Data))
+                userVendor.truckImage = UIImage(data: (foodTruckFetchedImage!.image! as Data))
+              
             }
         } catch let error as NSError {
             print("could not fetch truck image. \(error), \(error.userInfo)")
@@ -281,7 +314,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                             imageArray.append(image)
                         }
                     }
-                    self.imageArray = imageArray
+                   
+                    userVendor.pictures = imageArray
                 }
             
         } catch let error as NSError {
@@ -290,6 +324,23 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    func signedInStatus(isSignedIn: Bool){
+    //TODO addstuff for if the user is signed in here
+    
+        if (isSignedIn) {
+            configureDatabase()
+        }
+    }
+    
+    func configureDatabase() {
+        ref = Database.database().reference()
+    }
+    
+    func checkTextFields () {
+        if (truckName.text?.isEmpty)! || (truckDescription.text?.isEmpty)! {
+            showEmptyTextAlert()
+        }
+    }
     
 }
 

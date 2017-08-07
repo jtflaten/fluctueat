@@ -7,7 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
 
-class VendorTabController: UITabBarController {
+class VendorTabController: UITabBarController, CLLocationManagerDelegate {
+  
+    let locationManager = CLLocationManager()
     
+    public func getLocation() {
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-extension HomeMapViewController{
+
     struct MapConstants {
         let houstonCenterLat: CLLocationDegrees = 29.7604
         let houstonCenterLong: CLLocationDegrees = -95.3698
@@ -18,6 +18,27 @@ extension HomeMapViewController{
         
         
     }
+struct user {
+    var latitude: Double
+    var longitude: Double
+    
+}
+
+struct dbConstants {
+    static let truckImage = "truckImage"
+    static let name = "name"
+    static let description = "description"
+    static let lat = "lat"
+    static let long = "long"
+    static let pictures = "pictures"
+    static let open = "open"
+    static let openUntil = "openUntil"
 }
 
 let maxNumberOfFoodImages = 6
+let vendorCoreData = "VendorCD"
+let truckPhotoString = "TruckPhoto"
+let foodPhotoString = "FoodPhoto"
+
+var currentUser = user(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
+
