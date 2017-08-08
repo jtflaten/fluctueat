@@ -18,13 +18,15 @@ import MapKit
         
         
     }
-struct user {
+
+struct userPlace {
     var latitude: Double
     var longitude: Double
     
 }
 
 struct dbConstants {
+    static let uid = "uid"
     static let truckImage = "truckImage"
     static let name = "name"
     static let description = "description"
@@ -32,7 +34,19 @@ struct dbConstants {
     static let long = "long"
     static let pictures = "pictures"
     static let open = "open"
-    static let openUntil = "openUntil"
+    static let closingTime = "closingTime"
+    static let totalTimeOpen = "totalTimeOpen"
+    static let truckImageUrl = "truckImageUrl"
+    
+    static let foodPhotoZero = "foodPhotoZero"
+    static let foodPhotoOne = "foodPhotoOne"
+    static let foodPhotoTwo = "foodPhotoTwo"
+    static let foodPhotoThree = "foodPhotoThree"
+    static let foodPhotoFour = "foodPhotoFour"
+    static let foodPhotoFive = "foodPhotoFive"
+    
+    static let vendorUpdate = "vendor_update"
+    static let authorizedIDs = "authorized_vendors"
 }
 
 let maxNumberOfFoodImages = 6
@@ -40,5 +54,5 @@ let vendorCoreData = "VendorCD"
 let truckPhotoString = "TruckPhoto"
 let foodPhotoString = "FoodPhoto"
 
-var currentUser = user(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
+var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
 

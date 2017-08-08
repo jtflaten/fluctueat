@@ -149,42 +149,45 @@
                                     <constraint firstAttribute="height" constant="357" id="vlv-hZ-58y"/>
                                 </constraints>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKp-6Y-45o">
-                                <rect key="frame" x="16" y="427" width="343" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-7O-ywg">
+                                <rect key="frame" x="6" y="428" width="363" height="203"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open until:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MQ-ve-tj1">
-                                        <rect key="frame" x="0.0" y="0.0" width="83.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How late are you open?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-Xz-NDI">
+                                        <rect key="frame" x="92.5" y="0.0" width="178.5" height="67.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Beo-F5-U6f">
-                                        <rect key="frame" x="83.5" y="0.0" width="259.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                    </textField>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="shR-5q-6RZ">
+                                        <rect key="frame" x="21.5" y="67.5" width="320" height="68"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="523779420.186409">
+                                            <!--2017-08-07 06:17:00 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-0j-C9n">
+                                        <rect key="frame" x="127" y="135.5" width="109" height="67.5"/>
+                                        <state key="normal" title="get on the map!"/>
+                                        <connections>
+                                            <action selector="saveTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="Vhm-Q7-FWN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-0j-C9n">
-                                <rect key="frame" x="172" y="503" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="get on the map!"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GFf-oq-jhn" firstAttribute="top" secondItem="rix-uB-2eN" secondAttribute="bottom" id="BdI-LN-GVf"/>
-                            <constraint firstItem="BKp-6Y-45o" firstAttribute="width" secondItem="GFf-oq-jhn" secondAttribute="width" id="Bi2-9O-Ski"/>
                             <constraint firstItem="GFf-oq-jhn" firstAttribute="trailing" secondItem="CrH-00-iel" secondAttribute="trailingMargin" id="CbR-WH-Mvh"/>
-                            <constraint firstItem="BKp-6Y-45o" firstAttribute="centerX" secondItem="CrH-00-iel" secondAttribute="centerX" id="Xsh-gW-yVg"/>
-                            <constraint firstItem="BKp-6Y-45o" firstAttribute="top" secondItem="GFf-oq-jhn" secondAttribute="bottom" constant="6" id="YSb-2k-yYK"/>
+                            <constraint firstAttribute="bottom" secondItem="gKu-7O-ywg" secondAttribute="bottom" constant="36" id="KX8-LV-M04"/>
+                            <constraint firstAttribute="trailing" secondItem="gKu-7O-ywg" secondAttribute="trailing" constant="6" id="bC7-OR-dQ8"/>
+                            <constraint firstItem="gKu-7O-ywg" firstAttribute="top" secondItem="GFf-oq-jhn" secondAttribute="bottom" constant="7" id="czL-Is-dJw"/>
                             <constraint firstItem="GFf-oq-jhn" firstAttribute="leading" secondItem="CrH-00-iel" secondAttribute="leadingMargin" id="lFb-22-oQr"/>
+                            <constraint firstItem="gKu-7O-ywg" firstAttribute="leading" secondItem="CrH-00-iel" secondAttribute="leading" constant="6" id="uAz-gV-paX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="5vO-ko-hbw"/>
                     <connections>
-                        <outlet property="openUntil" destination="Beo-F5-U6f" id="UIR-lq-RaN"/>
+                        <outlet property="openUntil" destination="shR-5q-6RZ" id="NKa-Du-cXN"/>
                         <outlet property="saveButton" destination="PQD-0j-C9n" id="Rt3-yJ-yzI"/>
                         <outlet property="vendorMapView" destination="GFf-oq-jhn" id="7Cl-EK-GTd"/>
                     </connections>
@@ -339,15 +342,20 @@
             </objects>
             <point key="canvasLocation" x="1901.5999999999999" y="550.97451274362822"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Vendor Tab Controller-->
         <scene sceneID="804-xJ-jUc">
             <objects>
-                <tabBarController id="JxL-08-4dY" sceneMemberID="viewController">
+                <tabBarController id="JxL-08-4dY" customClass="VendorTabController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="doc-Us-zvq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="27p-XB-cL5" kind="relationship" relationship="viewControllers" id="upu-f2-OXl"/>
                         <segue destination="Abo-US-fGv" kind="relationship" relationship="viewControllers" id="VhP-bT-7t1"/>

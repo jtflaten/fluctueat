@@ -8,17 +8,19 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAuth
+import Firebase
 
 class VendorTabController: UITabBarController, CLLocationManagerDelegate {
-  
-    let locationManager = CLLocationManager()
+
     
-    public func getLocation() {
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+   //     FirebaseClient.sharedInstance().configureAuth(vc: self)
+    
+  
     }
 }

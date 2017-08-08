@@ -64,7 +64,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             userAnnotation.coordinate = userLocation
             self.mapView.addAnnotation(userAnnotation)
             
-           currentUser = user(latitude: userLocation.latitude, longitude: userLocation.longitude)
+           globalUserPlace = userPlace(latitude: userLocation.latitude, longitude: userLocation.longitude)
             
         }
     }
