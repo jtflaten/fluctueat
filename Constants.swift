@@ -54,5 +54,7 @@ let vendorCoreData = "VendorCD"
 let truckPhotoString = "TruckPhoto"
 let foodPhotoString = "FoodPhoto"
 
+var tempUrlVariable: String?
+
 var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
 

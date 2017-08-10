@@ -16,6 +16,7 @@ class FirebaseClient : NSObject {
     var _refHandle: DatabaseHandle!
     var _authHandle: AuthStateDidChangeListenerHandle!
     var vendorUser: User?
+    var urlSring: String?
     
     
  
@@ -80,6 +81,8 @@ class FirebaseClient : NSObject {
             }
             if !userVendor.foodPhotoUrls.contains(self.storageRef!.child((metadata?.path)!).description){
                  userVendor.foodPhotoUrls.append( self.storageRef!.child((metadata?.path)!).description)
+                tempUrlVariable = (self.storageRef!.child((metadata?.path)!).description)
+                
             }
            
         }
