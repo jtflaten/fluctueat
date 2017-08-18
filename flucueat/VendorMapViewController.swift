@@ -30,9 +30,10 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         super.viewDidLoad()
          self.signedInStatus(isSignedIn: true)
         configureDatePicker(datePicker: openUntil)
-        getLocation()
+  //      getLocation()
         addLocationToVendor()
         configureMapView()
+        FirebaseClient.sharedInstance().configureAuth(vc: self)
         FirebaseClient.sharedInstance().configureDatabase()
     }
 
@@ -71,16 +72,6 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         return openTimeString
     }
     
-//    func sendVendorDataForDataBase() {
-//        var data = [String:String]()
-//        data[dbConstants.name] = userVendor.name
-//        data[dbConstants.description] = userVendor.description
-//        data[dbConstants.lat] = "\(userVendor.lat)"
-//        data[dbConstants.long] = "\(userVendor.long)"
-//        data[dbConstants.closingTime] = getCloseTime()
-//        data[dbConstants.totalTimeOpen] = totalOpenTime()
-//        ref.childByAutoId().setValue(data)
-//    }
 
     func getLocation() {
         self.locationManager.requestWhenInUseAuthorization()

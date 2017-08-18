@@ -17,4 +17,11 @@ extension UIViewController {
         alert.addAction(quickDismiss)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func alertView(title: String, message: String, dismissAction: String) {
+        let dismiss = UIAlertAction(title: dismissAction, style: UIAlertActionStyle.default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(dismiss)
+        self.present(alert, animated: true, completion: nil)
+    }
 }

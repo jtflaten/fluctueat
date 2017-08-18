@@ -109,6 +109,8 @@ class FirebaseClient : NSObject {
         ref.child(dbConstants.vendorUpdate).childByAutoId().setValue(data)
     }
     
+    
+    
     class func sharedInstance() -> FirebaseClient {
         struct Singleton {
             static var sharedInstance = FirebaseClient()
