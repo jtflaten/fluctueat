@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuthUI
 
 class FirebaseClient : NSObject {
+    static let sharedInstance = FirebaseClient()
     var ref: DatabaseReference!
     var storageRef: StorageReference!
     var _refHandle: DatabaseHandle!
@@ -111,12 +112,12 @@ class FirebaseClient : NSObject {
     
     
     
-    class func sharedInstance() -> FirebaseClient {
-        struct Singleton {
-            static var sharedInstance = FirebaseClient()
-        }
-        return Singleton.sharedInstance
-    }
+//    class func sharedInstance() -> FirebaseClient {
+//        struct Singleton {
+//            static var sharedInstance = FirebaseClient()
+//        }
+//        return Singleton.sharedInstance
+//    }
     
   
    

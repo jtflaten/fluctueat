@@ -40,7 +40,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
        // configureStorage()
-        FirebaseClient.sharedInstance().configureStorage()
+        FirebaseClient.sharedInstance.configureStorage()
         fetchTruckInfo()
         fetchTruckPhoto()
         fetchMenuPhotos()
@@ -161,11 +161,11 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
                 foodTruckImage.image = editedImage
                // sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(editedImage, 0.8)!)
-                FirebaseClient.sharedInstance().sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(editedImage, 0.8)!)
+                FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(editedImage, 0.8)!)
             } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 foodTruckImage.image = originalImage
                // sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!)
-                FirebaseClient.sharedInstance().sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!)
+                FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!)
             } else {
                 print("spmething's gone wrong")
             }
@@ -179,7 +179,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                     userVendor.pictures.insert(originalImage, at: self.indexOfSelectedItem!)
                     userVendor.pictures.remove(at: self.indexOfSelectedItem! + 1)
                     dispatchGroup.enter()
-                    FirebaseClient.sharedInstance().sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, indexPath: self.indexOfSelectedItem!)
+                    FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, indexPath: self.indexOfSelectedItem!)
                     dispatchGroup.wait()
                     self.deleteSinglePhotoAlt(index: self.indexOfSelectedItem!)
                     self.createFoodImageCD(image: originalImage, url: tempUrlVariable!, vendorCD: self.foodTruck!)
