@@ -77,10 +77,10 @@ let emptyTruckImage: UIImage = #imageLiteral(resourceName: "empty")
 let defaultName = "What's the name of your food truck?"
 let defaultDesc = "What type of food do you serve?"
 let defaultKey = "empty"
+let vacantImageUrl = "gs://fluctueat-ccc9d.appspot.com/vacant/empty.png"
 
 
-
-var userVendor = Vendor(uniqueKey: defaultKey, truckImage: emptyTruckImage, name: defaultName, description: defaultDesc, pictures: emptyDict, open: false,  closingTime: nil, timeUntilCloseFromOpen: 6000 , truckPhotoUrl: defaultKey, foodPhotoUrls: [defaultKey])
+var userVendor = Vendor(uniqueKey: defaultKey, truckImage: emptyTruckImage, name: defaultName, description: defaultDesc, pictures: emptyDict, open: false,  closingTime: nil, timeUntilCloseFromOpen: 6000 , truckPhotoUrl: defaultKey, foodPhotoUrls: [])
 
 struct VendorTime {
     var open: Bool

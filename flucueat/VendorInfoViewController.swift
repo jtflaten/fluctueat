@@ -24,7 +24,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
     
-    var ref: DatabaseReference!
+  //  var ref: DatabaseReference!
     var storageRef: StorageReference!
     var foodTruck: VendorCD?
     var foodTruckFetchedImage: TruckPhoto?
@@ -46,6 +46,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         fetchMenuPhotos()
         setuptextFields()
         setupTruckImage()
+        fillOutImageUrlArray(array: userVendor.foodPhotoUrls)
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
 
@@ -265,15 +266,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
-    
-//    func sendVendorDataForDataBase() {
-//        var data = [String:String]()
-//        data[dbConstants.name] = truckName.text
-//        data[dbConstants.description] = truckDescription.text
-//        data[dbConstants.lat] = "\(userVendor.lat)"
-//        data[dbConstants.long] = "\(userVendor.long)"
-//        ref.childByAutoId().setValue(data)
-//    }
+
     
     func deleteAllCoreData(entity: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -389,6 +382,16 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         if (truckName.text?.isEmpty)! || (truckDescription.text?.isEmpty)! {
             showEmptyTextAlert()
         }
+    }
+    
+    func fillOutImageUrlArray(array: [String]) {
+        let emptyImageUrl = FirebaseClient.sharedInstance.getVacantImageUrl()
+        var newArray = array
+        while newArray.count < 6 {
+            newArray.append(emptyImageUrl)
+        }
+        
+        userVendor.foodPhotoUrls = newArray
     }
     
 //    func sendTruckPhotoToFirebase(photoData: Data) {

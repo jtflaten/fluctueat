@@ -21,9 +21,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
 
 
     @IBOutlet weak var vendorMapView: MKMapView!
-   
     @IBOutlet weak var openUntil: UIDatePicker!
- 
     @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {

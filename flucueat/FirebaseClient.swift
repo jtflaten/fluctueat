@@ -11,6 +11,8 @@ import Firebase
 import FirebaseAuthUI
 
 class FirebaseClient : NSObject {
+    
+ //   static var user = User()
     static let sharedInstance = FirebaseClient()
     var ref: DatabaseReference!
     var storageRef: StorageReference!
@@ -80,11 +82,12 @@ class FirebaseClient : NSObject {
                 print(" error uploading: \(error)")
                 return
             }
-            if !userVendor.foodPhotoUrls.contains(self.storageRef!.child((metadata?.path)!).description){
-                 userVendor.foodPhotoUrls.append( self.storageRef!.child((metadata?.path)!).description)
+//            if !userVendor.foodPhotoUrls.contains(self.storageRef!.child((metadata?.path)!).description){
+//                 userVendor.foodPhotoUrls.append( self.storageRef!.child((metadata?.path)!).description)
+            userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
+            userVendor.foodPhotoUrls.remove(at: indexPath + 1)
                 tempUrlVariable = (self.storageRef!.child((metadata?.path)!).description)
-                
-            }
+                //}
            
         }
     }
@@ -101,16 +104,21 @@ class FirebaseClient : NSObject {
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
         data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[1]
-         data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[2]
-         data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[3]
-         data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[4]
-         data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[5]
-         data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[6]
+        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[2]
+        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[3]
+        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[4]
+        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[5]
+        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[6]
         
         ref.child(dbConstants.vendorUpdate).childByAutoId().setValue(data)
     }
     
-    
+    func getVacantImageUrl() -> String {
+        let imagePath = "vacant/empty.png"
+        let imageUrl = storageRef!.child(imagePath).description
+        
+        return imageUrl
+    }
     
 //    class func sharedInstance() -> FirebaseClient {
 //        struct Singleton {

@@ -18,13 +18,16 @@ import MapKit
         
         
     }
-
+//USER LOCATION
 struct userPlace {
     var latitude: Double
     var longitude: Double
     
 }
+// this variable is going to hold the user's location as soon as the CoreLocation is entered. if there is problem getting the location, it's set to the center of Houston.
+var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
 
+//FIREBASE
 struct dbConstants {
     static let uid = "uid"
     static let truckImage = "truckImage"
@@ -62,5 +65,5 @@ let foodPhotoString = "FoodPhoto"
 
 var tempUrlVariable: String?
 
-var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
+
 
