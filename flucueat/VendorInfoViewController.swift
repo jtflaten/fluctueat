@@ -8,13 +8,10 @@
 
 import UIKit
 import CoreData
-import Firebase
 import FirebaseAuthUI
 
 
 class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-   // let testVendor = testVendor
     
     
     @IBOutlet weak var foodTruckImage: UIImageView!
@@ -24,14 +21,14 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
     
-  //  var ref: DatabaseReference!
-    var storageRef: StorageReference!
-    var foodTruck: VendorCD?
+ 
+   
+    var foodTruck = VendorCD()
     var foodTruckFetchedImage: TruckPhoto?
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
   
-   // var imageArray = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "blackened_ranch"),#imageLiteral(resourceName: "cookies"),#imageLiteral(resourceName: "corn_bowl"),#imageLiteral(resourceName: "empty") ]
+
     
 
     let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -49,20 +46,17 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         fillOutImageUrlArray(array: userVendor.foodPhotoUrls)
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
-
         layoutCells()
 
-        
     }
     
     
   
     
     func setupTruckImage() {
-      //  foodTruckImage.image = #imageLiteral(resourceName: "jakes_truck")
+      
         foodTruckImage.image = userVendor.truckImage!
-        foodTruckImage.backgroundColor = .gray
-
+        foodTruckImage.backgroundColor = .clear
      
     }
     
@@ -159,14 +153,10 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if  picker == pickerController {
-            if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-                foodTruckImage.image = editedImage
-               // sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(editedImage, 0.8)!)
-                FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(editedImage, 0.8)!)
-            } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 foodTruckImage.image = originalImage
-               // sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!)
-                FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!)
+               
+                FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, vc: self)
             } else {
                 print("spmething's gone wrong")
             }
@@ -175,86 +165,73 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         } else if picker == pickerControllerMenu {
          
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let dispatchGroup = DispatchGroup()
+
                     userVendor.pictures.insert(originalImage, at: self.indexOfSelectedItem!)
                     userVendor.pictures.remove(at: self.indexOfSelectedItem! + 1)
-                    dispatchGroup.enter()
-                    FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, indexPath: self.indexOfSelectedItem!)
-                    dispatchGroup.wait()
-                    self.deleteSinglePhotoAlt(index: self.indexOfSelectedItem!)
-                    self.createFoodImageCD(image: originalImage, url: tempUrlVariable!, vendorCD: self.foodTruck!)
-            
-                }
+
+                    FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, indexPath: self.indexOfSelectedItem!, vc: self)
+                
             }
+            
             foodImageCollection.reloadData()
             dismiss(animated: true, completion: nil)
-        } else {
             
+        } else {
             dismiss(animated: true, completion: nil)
         }
     }
     
-    func createVendorCDandImages(name: String, foodDesc: String, truckImage: UIImage, foodImages: [UIImage]){
+    //CORE DATA
+    func createVendorCD(name: String, foodDesc: String){
        //make the vendor for Core Data
         
         deleteAllCoreData(entity: vendorCoreData)
-        deleteAllCoreData(entity: foodPhotoString)
-        deleteAllCoreData(entity: truckPhotoString)
+    
 
         let entity = NSEntityDescription.entity(forEntityName: "VendorCD", in: managedContext)!
         let vendorCD = VendorCD(entity: entity, insertInto: managedContext)
         vendorCD.setValue(name, forKeyPath: "name")
         vendorCD.setValue(foodDesc, forKeyPath: "foodDesc")
         print(vendorCD.foodDesc ?? "didn't save right")
+        saveInfo()
         
-        
-        // make the Truck Image for core data
-        let truckImagePhotoData = UIImageJPEGRepresentation(truckImage, 1)
-        let truckPhotoEntity = NSEntityDescription.entity(forEntityName: "TruckPhoto", in: managedContext)!
-        let truckPhoto = TruckPhoto(entity: truckPhotoEntity, insertInto: managedContext)
-        truckPhoto.setValue(truckImagePhotoData!, forKeyPath: "image")
-        truckPhoto.setValue(vendorCD, forKeyPath: "vendor")
-        truckPhoto.setValue(userVendor.truckPhotoUrl, forKey: "imageURL")
-        
-        //make the food photos for core data
-//        for eachImage in foodImages {
-//            let foodImagePhotoData = UIImageJPEGRepresentation(eachImage, 1)
-//            let foodPhotoEntity = NSEntityDescription.entity(forEntityName: "FoodPhoto", in: managedContext)!
-//            let foodPhoto = FoodPhoto(entity: foodPhotoEntity, insertInto: managedContext)
-//            foodPhoto.setValue(foodImagePhotoData!, forKeyPath: "image")
-//            foodPhoto.setValue(vendorCD, forKeyPath: "vendor")
-//           
-//        }
+
      print("we out here")
    
     }
     
-    func createTruckImageCD() {
-        
+    func createTruckImageCD(truckImage: UIImage, url: String) {
+        let truckImagePhotoData = UIImageJPEGRepresentation(truckImage, 1)
+        let truckPhotoEntity = NSEntityDescription.entity(forEntityName: "TruckPhoto", in: managedContext)!
+        let truckPhoto = TruckPhoto(entity: truckPhotoEntity, insertInto: managedContext)
+        truckPhoto.setValue(truckImagePhotoData!, forKeyPath: "image")
+        truckPhoto.setValue(self.foodTruck, forKeyPath: "vendor")
+        truckPhoto.setValue(url, forKey: "imageUrl")
     }
     
-    func createFoodImageCD(image: UIImage, url: String, vendorCD: VendorCD) {
+    func createFoodImageCD(image: UIImage, url: String) {
         let foodImagePhotoData = UIImageJPEGRepresentation(image, 1)
         let foodPhotoEntity = NSEntityDescription.entity(forEntityName: "FoodPhoto", in: managedContext)!
         let foodPhoto = FoodPhoto(entity: foodPhotoEntity, insertInto: managedContext)
         foodPhoto.setValue(foodImagePhotoData!, forKeyPath: "image")
-        foodPhoto.setValue(vendorCD, forKeyPath: "vendor")
+        foodPhoto.setValue(self.foodTruck, forKeyPath: "vendor")
         foodPhoto.setValue(url, forKey: "imageUrl")
+        saveInfo()
     }
     
     @IBAction func saveButtonPushed(_ sender: Any) {
         checkTextFields()
         updateUserVendor()
-        createVendorCDandImages(name: truckName.text!, foodDesc: truckDescription.text!, truckImage: foodTruckImage.image!, foodImages: userVendor.pictures)
+        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
         saveInfo()
-     //   sendVendorDataForDataBase()
+    
     }
     
     func updateUserVendor() {
         userVendor.name = truckName.text
         userVendor.description = truckDescription.text
     }
+    
     func saveInfo() {
         do {
             try managedContext.save()
@@ -264,9 +241,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
       
     }
-    
-    
-
     
     func deleteAllCoreData(entity: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -322,9 +296,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                     userVendor.name = fetchedArray[0].name
                     userVendor.description = fetchedArray[0].foodDesc
                     
-//                } else {
-//                    createVendorCDandImages(name: userVendor.name!, foodDesc: userVendor.description!, truckImage: userVendor.truckImage!, foodImages: userVendor.pictures)
-            }
+               } else {
+                    createVendorCD(name: userVendor.name!, foodDesc: userVendor.description!)            }
                
             } catch let error as NSError {
                 print("could not fetch. \(error), \(error.userInfo)")
@@ -357,24 +330,28 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             let fetchedMenu = try managedContext.fetch(menuImageFetchRequest)
                 if fetchedMenu != [] {
                     savedImageArray = fetchedMenu
+                  
                     var imageArray = [UIImage]()
+                    var urlArray = [String]()
                     for foodPhoto in fetchedMenu {
                         if let image = UIImage(data: foodPhoto.image! as Data) {
                             imageArray.append(image)
+                            urlArray.append(foodPhoto.imageUrl!)
                         }
                     }
+                 
                    
                     userVendor.pictures = imageArray
+                    userVendor.foodPhotoUrls = urlArray
+                    while userVendor.foodPhotoUrls.count < 6 {
+                        self.fillIncompleteMenuFetch()
+                    }
                 }
             
         } catch let error as NSError {
                 print("could not fetch truck image. \(error), \(error.userInfo)")
         }
         
-    }
-    
-    func configureStorage(){
-        storageRef = Storage.storage().reference()
     }
     
     
@@ -394,14 +371,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         userVendor.foodPhotoUrls = newArray
     }
     
-//    func sendTruckPhotoToFirebase(photoData: Data) {
-//        let imagePath = "truck_photos/"+userVendor.name!
-//        let metadata = StorageMetadata()
-//        metadata.contentType = "image/jpeg"
-//        storageRef!.child(imagePath).putData(photoData, metadata: metadata)// { (metadata, error) in
-          //  if let
- //   }
-    
+    func fillIncompleteMenuFetch() {
+        createFoodImageCD(image: #imageLiteral(resourceName: "empty"), url: FirebaseClient.sharedInstance.getVacantImageUrl())
+        userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
+        userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
+    }
+
     
     
 }

@@ -60,7 +60,7 @@ class FirebaseClient : NSObject {
         presentingVC.present(authViewController, animated: true, completion: nil)
     }
     
-    func sendTruckPhotoToFirebase(photoData: Data) {
+    func sendTruckPhotoToFirebase(photoData: Data, vc: VendorInfoViewController) {
         let imagePath = "\(userVendor.uniqueKey!)/truck_photos"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -70,10 +70,11 @@ class FirebaseClient : NSObject {
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
+            vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
         }
     }
     
-    func sendFoodPhotoToFireBase(photoData: Data, indexPath: Int) {
+    func sendFoodPhotoToFireBase(photoData: Data, indexPath: Int, vc: VendorInfoViewController) {
         let imagePath = "\(userVendor.uniqueKey!)/food_photos/\(indexPath)"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -82,12 +83,13 @@ class FirebaseClient : NSObject {
                 print(" error uploading: \(error)")
                 return
             }
-//            if !userVendor.foodPhotoUrls.contains(self.storageRef!.child((metadata?.path)!).description){
-//                 userVendor.foodPhotoUrls.append( self.storageRef!.child((metadata?.path)!).description)
             userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
             userVendor.foodPhotoUrls.remove(at: indexPath + 1)
-                tempUrlVariable = (self.storageRef!.child((metadata?.path)!).description)
-                //}
+            print(12)
+            vc.deleteSinglePhotoAlt(index: indexPath)
+            print(34)
+            vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
+
            
         }
     }
