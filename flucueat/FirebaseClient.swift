@@ -22,21 +22,49 @@ class FirebaseClient : NSObject {
     var urlSring: String?
     
     
+    
  
-    func configureAuth(vc: UIViewController) {
+    func configureAuth(vc: VendorInfoViewController) {
         _authHandle = Auth.auth().addStateDidChangeListener { ( auth: Auth?, user: User?) in
             if let activeUser = user {
                 if self.vendorUser != activeUser {
                     self.vendorUser = activeUser
-                    self.signedInStatus(isSignedIn: true)
+                    vc.signedInStatus(isSignedIn: true)
                 } else {
-                    self.signedInStatus(isSignedIn: false)
+                    vc.signedInStatus(isSignedIn: false)
                     self.loginSession(presentingVC: vc)
                 }
             }
         }
     }
     
+    func anonSignIn() {
+        Auth.auth().signInAnonymously() { (user, error) in
+         //   let isAnonymous = user!.isAnonymous
+            self.vendorUser = user!
+            }
+        
+    }
+    
+    func checkIfVendor(vc: UIViewController) {
+        let dbPath = "authorized_vendors"
+        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                let authorizedVendors = Array(value.allValues) as! [String]
+                for theValue in authorizedVendors {
+                    if theValue == self.vendorUser?.uid {
+                        userVendor.isAuthorizedVendor = true
+                        print("authorizedAtFirst")
+                        return
+                    }
+                print("checkedAuth")
+                    
+                }
+                print("notAUTHOrized")
+                    self.loginSession(presentingVC: vc)
+            }
+        })
+    }
     
     func configureDatabase() {
         ref = Database.database().reference()
@@ -46,14 +74,7 @@ class FirebaseClient : NSObject {
         storageRef = Storage.storage().reference()
     }
     
-    func signedInStatus(isSignedIn: Bool){
-        //TODO addstuff for if the user is signed in here
-        
-        if (isSignedIn) {
-            configureDatabase()
-            userVendor.uniqueKey = self.vendorUser?.uid
-        }
-    }
+   
     
     func loginSession(presentingVC: UIViewController) {
         let authViewController = FUIAuth.defaultAuthUI()!.authViewController()

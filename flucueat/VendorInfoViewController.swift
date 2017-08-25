@@ -20,6 +20,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollection: UICollectionView!
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
     
  
    
@@ -27,6 +28,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     var foodTruckFetchedImage: TruckPhoto?
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
+    var keyboardOnScreen = false
   
 
     
@@ -48,6 +50,15 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.delegate = self
         layoutCells()
 
+    }
+    
+    func signedInStatus(isSignedIn: Bool){
+        //TODO addstuff for if the user is signed in here
+        
+        if (isSignedIn) {
+//            configureDatabase()
+//            userVendor.uniqueKey = self.vendorUser?.uid
+        }
     }
     
     
@@ -181,6 +192,9 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    @IBAction func tappedView(_ sender: Any) {
+        resignTextfield()
+    }
     //CORE DATA
     func createVendorCD(name: String, foodDesc: String){
        //make the vendor for Core Data
@@ -378,8 +392,68 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     
+    // MARK: Show/Hide Keyboard
     
+    func keyboardWillShow(_ notification: Notification) {
+        if !keyboardOnScreen {
+            self.view.frame.origin.y -= self.keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        if keyboardOnScreen {
+            self.view.frame.origin.y += self.keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardDidShow(_ notification: Notification) {
+        keyboardOnScreen = true
+        dismissKeyboardRecognizer.isEnabled = true
+        
+    }
+    
+    func keyboardDidHide(_ notification: Notification) {
+        dismissKeyboardRecognizer.isEnabled = false
+        keyboardOnScreen = false
+    }
+    
+    func keyboardHeight(_ notification: Notification) -> CGFloat {
+        return ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.height
+    }
+    
+    func resignTextfield() {
+        if truckName.isFirstResponder {
+            truckName.resignFirstResponder()
+        }
+        if truckDescription.isFirstResponder {
+            truckDescription.resignFirstResponder()
+        }
+    }
 }
+
+// MARK: - FCViewController (Notifications)
+
+extension VendorInfoViewController {
+    
+    func subscribeToKeyboardNotifications() {
+        subscribeToNotification(.UIKeyboardWillShow, selector: #selector(keyboardWillShow))
+        subscribeToNotification(.UIKeyboardWillHide, selector: #selector(keyboardWillHide))
+        subscribeToNotification(.UIKeyboardDidShow, selector: #selector(keyboardDidShow))
+        subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
+    }
+    
+    func subscribeToNotification(_ name: NSNotification.Name, selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
+    }
+    
+    func unsubscribeFromAllNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+
+
+
 
 
 

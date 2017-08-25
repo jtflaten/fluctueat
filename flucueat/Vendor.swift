@@ -11,6 +11,7 @@ import UIKit
 
 struct Vendor {
     var  uniqueKey: String?
+    var isAuthorizedVendor = false
     var truckImage: UIImage?
     var name: String?
     var description: String?

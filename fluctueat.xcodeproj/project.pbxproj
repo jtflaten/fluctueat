@@ -13,7 +13,6 @@
 		583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC7D1F0EDEA900E024C2 /* Main.storyboard */; };
 		583DDC811F0EDEA900E024C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC801F0EDEA900E024C2 /* Assets.xcassets */; };
 		583DDC841F0EDEA900E024C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC821F0EDEA900E024C2 /* LaunchScreen.storyboard */; };
-		583DDC8F1F0EDEA900E024C2 /* flucueatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC8E1F0EDEA900E024C2 /* flucueatTests.swift */; };
 		583DDC9A1F0EDEA900E024C2 /* flucueatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC991F0EDEA900E024C2 /* flucueatUITests.swift */; };
 		585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */; };
 		585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611951F20115900C6D2ED /* VendorMapViewController.swift */; };
@@ -58,7 +57,6 @@
 		583DDC831F0EDEA900E024C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		583DDC851F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		583DDC8A1F0EDEA900E024C2 /* fluctueatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fluctueatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		583DDC8E1F0EDEA900E024C2 /* flucueatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flucueatTests.swift; sourceTree = "<group>"; };
 		583DDC901F0EDEA900E024C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		583DDC951F0EDEA900E024C2 /* fluctueatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fluctueatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC991F0EDEA900E024C2 /* flucueatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flucueatUITests.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 		583DDC8D1F0EDEA900E024C2 /* flucueatTests */ = {
 			isa = PBXGroup;
 			children = (
-				583DDC8E1F0EDEA900E024C2 /* flucueatTests.swift */,
 				583DDC901F0EDEA900E024C2 /* Info.plist */,
 			);
 			path = flucueatTests;
@@ -440,7 +437,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				583DDC8F1F0EDEA900E024C2 /* flucueatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 
 class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let vendor = testVendor
+    let vendor = userVendor
   
     
     @IBOutlet weak var truckImage: UIImageView!

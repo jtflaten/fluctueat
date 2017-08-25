@@ -31,7 +31,9 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
-        FirebaseClient.sharedInstance.configureAuth(vc: self)
+        FirebaseClient.sharedInstance.anonSignIn()
+        FirebaseClient.sharedInstance.configureDatabase()
+  //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
         
 

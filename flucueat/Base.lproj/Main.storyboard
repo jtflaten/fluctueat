@@ -330,6 +330,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="sv0-QJ-gdm"/>
                     <connections>
+                        <outlet property="dismissKeyboardRecognizer" destination="197-zQ-z3n" id="KHS-28-Ks7"/>
                         <outlet property="foodImageCollection" destination="KUw-mp-ckv" id="ASq-yI-FGr"/>
                         <outlet property="foodImageCollectionFlowLayout" destination="qBj-ac-jPb" id="nDG-So-FUb"/>
                         <outlet property="foodTruckImage" destination="ILM-F9-zSF" id="lA3-0K-OZR"/>
@@ -339,6 +340,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1I-Jb-Odm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="197-zQ-z3n">
+                    <connections>
+                        <action selector="tappedView:" destination="27p-XB-cL5" id="0Gl-Xs-dmq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1901.5999999999999" y="550.97451274362822"/>
         </scene>
