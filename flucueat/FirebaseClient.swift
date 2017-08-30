@@ -17,9 +17,11 @@ class FirebaseClient : NSObject {
     var ref: DatabaseReference!
     var storageRef: StorageReference!
     var _refHandle: DatabaseHandle!
+    let authUI = FUIAuth.defaultAuthUI()
     var _authHandle: AuthStateDidChangeListenerHandle!
     var vendorUser: User?
     var urlSring: String?
+    
     
     
     
@@ -77,8 +79,21 @@ class FirebaseClient : NSObject {
    
     
     func loginSession(presentingVC: UIViewController) {
-        let authViewController = FUIAuth.defaultAuthUI()!.authViewController()
-        presentingVC.present(authViewController, animated: true, completion: nil)
+        
+        let authViewController = authUI?.authViewController()
+       
+        presentingVC.present(authViewController!, animated: true, completion: nil)
+        
+    
+    }
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        guard (error == nil) else {
+            print(error.debugDescription)
+            return
+        }
+        vendorUser = user
+        self.loginSession(presentingVC: authUI.authViewController())
     }
     
     func sendTruckPhotoToFirebase(photoData: Data, vc: VendorInfoViewController) {
@@ -114,6 +129,7 @@ class FirebaseClient : NSObject {
            
         }
     }
+    
     
     func sendVendorDataForDataBase(closingTime: String , totalTimeOpen: String ) {
         var data = [String:String]()

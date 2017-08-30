@@ -89,6 +89,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         print("the Region has changed!")
     }
     
+    
+    
     func swipeToAuthPage(gestureRecognizer: UISwipeGestureRecognizer){
         let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
         print("swiped2")
