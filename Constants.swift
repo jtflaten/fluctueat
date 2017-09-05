@@ -56,6 +56,8 @@ struct alertStrings {
     static let badUidAlert = "Uh-oh"
     static let badUidMessage = "Looks like you're not an authorized Vendor. please contact us at customer support to get that fixed up."
     static let ok = "OK"
+    
+    
 }
 
 let maxNumberOfFoodImages = 6

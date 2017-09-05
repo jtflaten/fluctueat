@@ -52,15 +52,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
     
-    func signedInStatus(isSignedIn: Bool){
-        //TODO addstuff for if the user is signed in here
-        
-        if (isSignedIn) {
-//            configureDatabase()
-//            userVendor.uniqueKey = self.vendorUser?.uid
-        }
-    }
-    
+     
     
   
     

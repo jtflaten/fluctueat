@@ -101,14 +101,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         vendorMapView.region = mapRegion
     }
     
-    func signedInStatus(isSignedIn: Bool){
-        //TODO addstuff for if the user is signed in here
-        
-        if (isSignedIn) {
-            configureDatabase()
-        }
-    }
-    
+
     func configureDatabase() {
         ref = Database.database().reference()
     }

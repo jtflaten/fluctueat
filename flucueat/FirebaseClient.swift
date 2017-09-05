@@ -26,11 +26,12 @@ class FirebaseClient : NSObject {
     
     
  
-    func configureAuth(vc: VendorInfoViewController) {
+    func configureAuth(vc: UIViewController) {
         _authHandle = Auth.auth().addStateDidChangeListener { ( auth: Auth?, user: User?) in
             if let activeUser = user {
                 if self.vendorUser != activeUser {
                     self.vendorUser = activeUser
+                    self.checkIfVendor(vc: vc)
                     vc.signedInStatus(isSignedIn: true)
                 } else {
                     vc.signedInStatus(isSignedIn: false)
@@ -43,7 +44,7 @@ class FirebaseClient : NSObject {
     func anonSignIn() {
         Auth.auth().signInAnonymously() { (user, error) in
          //   let isAnonymous = user!.isAnonymous
-            self.vendorUser = user!
+           self.vendorUser = user!
             }
         
     }
@@ -63,7 +64,10 @@ class FirebaseClient : NSObject {
                     
                 }
                 print("notAUTHOrized")
-                    self.loginSession(presentingVC: vc)
+               
+                vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
+                //vc.navigationController?.popToRootViewController(animated: true)
+                
             }
         })
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58106D051F1019830043F791 /* GoogleService-Info.plist */; };
 		58106D081F101B180043F791 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106D071F101B180043F791 /* Vendor.swift */; };
+		583126981F58F2F30013AC42 /* UIviewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583126971F58F2F30013AC42 /* UIviewControllerExt.swift */; };
 		583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC791F0EDEA900E024C2 /* AppDelegate.swift */; };
 		583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC7D1F0EDEA900E024C2 /* Main.storyboard */; };
 		583DDC811F0EDEA900E024C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC801F0EDEA900E024C2 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		58106D051F1019830043F791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58106D071F101B180043F791 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		583126971F58F2F30013AC42 /* UIviewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIviewControllerExt.swift; sourceTree = "<group>"; };
 		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC791F0EDEA900E024C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		583DDC7E1F0EDEA900E024C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				585611991F20123800C6D2ED /* VendorTabController.swift */,
 				585611951F20115900C6D2ED /* VendorMapViewController.swift */,
 				585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */,
+				583126971F58F2F30013AC42 /* UIviewControllerExt.swift */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			files = (
 				5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */,
 				58106D081F101B180043F791 /* Vendor.swift in Sources */,
+				583126981F58F2F30013AC42 /* UIviewControllerExt.swift in Sources */,
 				5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */,
 				585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */,
 				589B07D01F4D3CF200096544 /* CoreData.swift in Sources */,
