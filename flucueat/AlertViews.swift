@@ -26,11 +26,15 @@ extension UIViewController {
     }
     
     func alertViewWithPopToRoot(title: String, message: String, dismissAction: String) {
-        let dismiss = UIAlertAction(title: dismissAction, style: UIAlertActionStyle.default, handler: nil)
+        let dismiss = UIAlertAction(title: dismissAction, style: UIAlertActionStyle.default) { (alertAction) in
+            self.navigationController?.popToRootViewController(animated: true)
+           return
+        }
+     
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(dismiss)
-        self.present(alert, animated: true) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
+            
+
+        self.present(alert, animated: true, completion:  nil)
     }
 }

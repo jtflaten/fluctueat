@@ -19,7 +19,6 @@
 		585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611951F20115900C6D2ED /* VendorMapViewController.swift */; };
 		5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611991F20123800C6D2ED /* VendorTabController.swift */; };
 		585611A51F2259C400C6D2ED /* FoodTruckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */; };
-		5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BA9F1F193EEB00366391 /* AuthViewController.swift */; };
 		5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA11F1942E000366391 /* HomeMapViewController.swift */; };
 		5872BAA61F1946EB00366391 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA51F1946EB00366391 /* Constants.swift */; };
 		589710381F33BB5700A4E330 /* fluctueat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */; };
@@ -67,7 +66,6 @@
 		585611951F20115900C6D2ED /* VendorMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorMapViewController.swift; sourceTree = "<group>"; };
 		585611991F20123800C6D2ED /* VendorTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorTabController.swift; sourceTree = "<group>"; };
 		585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckInfoViewController.swift; sourceTree = "<group>"; };
-		5872BA9F1F193EEB00366391 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5872BAA11F1942E000366391 /* HomeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
 		5872BAA51F1946EB00366391 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		589B07881F38332E00096544 /* AlertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		5856119F1F20131700C6D2ED /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				5872BA9F1F193EEB00366391 /* AuthViewController.swift */,
 				585611991F20123800C6D2ED /* VendorTabController.swift */,
 				585611951F20115900C6D2ED /* VendorMapViewController.swift */,
 				585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */,
@@ -418,7 +415,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5872BAA01F193EEB00366391 /* AuthViewController.swift in Sources */,
 				58106D081F101B180043F791 /* Vendor.swift in Sources */,
 				583126981F58F2F30013AC42 /* UIviewControllerExt.swift in Sources */,
 				5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */,

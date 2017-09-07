@@ -151,7 +151,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     @IBAction func changeImage(_ sender: Any) {
-        pickImageFoodTruck()
+        alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
+        //pickImageFoodTruck()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
