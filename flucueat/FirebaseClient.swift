@@ -21,6 +21,8 @@ class FirebaseClient : NSObject {
     var _authHandle: AuthStateDidChangeListenerHandle!
     var vendorUser: User?
     var urlSring: String?
+    var openVendors = [Vendor]()
+    var vendorsSnapshot = [DataSnapshot]()
     
     
     
@@ -75,6 +77,14 @@ class FirebaseClient : NSObject {
 
     func configureDatabase() {
         ref = Database.database().reference()
+        _refHandle = ref.child(dbConstants.openVendors).observe(.value, with: { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                self.openVendors = self.parseVendorSnapshot(snapshot: value)
+            }
+           
+            print(snapshot)
+        })
+        print(vendorsSnapshot)
     }
     
     func configureStorage(){
@@ -92,30 +102,28 @@ class FirebaseClient : NSObject {
     
     }
     
-    func getOpenVendors() -> [Vendor] {
-        let vendorList = [Vendor]()
-            _ = ref.child(dbConstants.openVendors).observe(.value, with: { (snapshot) in
-                let openVendorSnapshot = snapshot.value as! DataSnapshot
-                for vendor in openVendorSnapshot.children {
-                    let vendorSnap = vendor as! DataSnapshot
-                    let vendorDict = vendorSnap.value as! NSDictionary
-                    let uid = vendorDict[dbConstants.uid]
-                    let name = vendorDict[dbConstants.name]
-                    let desc = vendorDict[dbConstants.description]
-                    let lat = vendorDict[dbConstants.lat]
-                    let long = vendorDict[dbConstants.long]
-                    let truckPhotoURL = vendorDict[dbConstants.truckImageUrl]
-                    let foodPhototsURL = [vendorDict[dbConstants.foodPhotoOne],vendorDict[dbConstants.foodPhotoTwo], vendorDict[dbConstants.foodPhotoThree], vendorDict[dbConstants.foodPhotoFour], vendorDict[dbConstants.foodPhotoFive], vendorDict[dbConstants.foodPhotoZero]]
-                    let 
-                    
+    func parseVendorSnapshot(snapshot: NSDictionary) -> [Vendor] {
+       var vendorList = [Vendor]()
+        
+                for (vendor, dict) in snapshot {
+                    let vendorDict = dict as! NSDictionary
+    
+                    let uid = vendorDict[dbConstants.uid] as! String
+                    let name = vendorDict[dbConstants.name] as! String
+                    let desc = vendorDict[dbConstants.description] as! String
+                    let lat = Double(vendorDict[dbConstants.lat] as! String)
+                    let long = Double(vendorDict[dbConstants.long] as! String)
+                    let truckPhotoURL = vendorDict[dbConstants.truckImageUrl] as! String
+                    let foodPhototsURL = [vendorDict[dbConstants.foodPhotoOne],vendorDict[dbConstants.foodPhotoTwo], vendorDict[dbConstants.foodPhotoThree], vendorDict[dbConstants.foodPhotoFour], vendorDict[dbConstants.foodPhotoFive], vendorDict[dbConstants.foodPhotoZero]] as! [String]
+                    let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: [], open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
+                    vendorList.append(newVendor)
                     
                 }
-                //print(vendorDict)
-            
-            })
+                print(vendorList)
         
-        return vendorList
-    }
+            return vendorList
+        
+           }
     
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         guard (error == nil) else {

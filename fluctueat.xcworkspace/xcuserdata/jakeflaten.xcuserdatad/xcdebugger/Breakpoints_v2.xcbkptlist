@@ -10,23 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542291.917571"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542291.917571"
+            timestampString = "526545847.620869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -42,11 +26,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542291.917571"
+            timestampString = "526545847.620869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "526545847.620869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "HomeMapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542291.917571"
+            timestampString = "526545847.620869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "HomeMapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525299868.581848"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "FirebaseClient"
             landmarkType = "3">
          </BreakpointContent>
@@ -270,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525299868.581848"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "configureAuth(vc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,11 +286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525299868.581848"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "configureAuth(vc:)"
             landmarkType = "7">
             <Locations>
@@ -302,11 +302,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.234162"
+                  timestampString = "526589008.719203"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "27">
                </Location>
                <Location
@@ -317,11 +317,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.237982"
+                  timestampString = "526589008.72187"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "75">
                </Location>
             </Locations>
@@ -334,7 +334,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "configureAuth(vc:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -350,27 +366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923537.274292"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "configureAuth(vc:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525299868.581848"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
             landmarkName = "configureAuth(vc:)"
             landmarkType = "7">
             <Locations>
@@ -382,11 +382,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.297058"
+                  timestampString = "526589008.734027"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
                   offsetFromSymbolStart = "19">
                </Location>
                <Location
@@ -397,11 +397,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.299245"
+                  timestampString = "526589008.73614"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>
@@ -414,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526502760.399227"
+            timestampString = "526581800.176381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "loginSession(presentingVC:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526502760.399227"
+            timestampString = "526581800.176381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "loginSession(presentingVC:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -446,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526502760.399227"
+            timestampString = "526581800.176381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "loginSession(presentingVC:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -462,27 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526542291.917571"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "getOpenVendors()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "configureAuth(vc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -494,11 +478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "configureAuth(vc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -605,11 +589,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "sendVendorDataForDataBase(closingTime:totalTimeOpen:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -621,11 +605,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "sendVendorDataForDataBase(closingTime:totalTimeOpen:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -685,11 +669,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "sendTruckPhotoToFirebase(photoData:vc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -701,11 +685,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "sendTruckPhotoToFirebase(photoData:vc:)"
             landmarkType = "7">
             <Locations>
@@ -749,11 +733,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542291.917571"
+            timestampString = "526545847.620869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -765,11 +749,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "anonSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -781,11 +765,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "anonSignIn()"
             landmarkType = "7">
             <Locations>
@@ -797,11 +781,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.531931"
+                  timestampString = "526589008.78581"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
                   offsetFromSymbolStart = "15">
                </Location>
                <Location
@@ -812,11 +796,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.534983"
+                  timestampString = "526589008.788074"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
@@ -845,11 +829,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "checkIfVendor(vc:)"
             landmarkType = "7">
             <Locations>
@@ -861,11 +845,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.546597"
+                  timestampString = "526589008.792907"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
                   offsetFromSymbolStart = "78">
                </Location>
                <Location
@@ -876,11 +860,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.548595"
+                  timestampString = "526589008.795019"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
                   offsetFromSymbolStart = "23">
                </Location>
             </Locations>
@@ -893,11 +877,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "checkIfVendor(vc:)"
             landmarkType = "7">
             <Locations>
@@ -909,11 +893,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.571292"
+                  timestampString = "526589008.802069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
                   offsetFromSymbolStart = "23">
                </Location>
                <Location
@@ -924,11 +908,11 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.573183"
+                  timestampString = "526589008.804007"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
                   offsetFromSymbolStart = "513">
                </Location>
             </Locations>
@@ -941,135 +925,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "checkIfVendor(vc:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "getOpenVendors()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;"
-                  moduleName = "fluctueat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.580942"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "366">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.(getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;).(closure #1)"
-                  moduleName = "fluctueat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.582912"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "5299">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526544702.110751"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "getOpenVendors()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;"
-                  moduleName = "fluctueat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.587379"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "366">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.(getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;).(closure #1)"
-                  moduleName = "fluctueat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.589417"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "5299">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "checkIfVendor(vc:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -1085,11 +941,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "525923264.13556"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "parseVendorSnapshot(snapshot:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526588813.468066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "parseVendorSnapshot(snapshot:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526579698.571619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "checkIfVendor(vc:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526579698.571619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "checkIfVendor(vc:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526579698.571619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "anonSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1101,11 +1021,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526502760.399227"
+            timestampString = "526579698.571619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "checkIfVendor(vc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1117,7 +1037,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "526542338.704697"
+            timestampString = "526545847.620869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -1133,43 +1053,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526542347.052946"
+            timestampString = "526588813.468066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getOpenVendors()"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "parseVendorSnapshot(snapshot:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526581800.176381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "configureDatabase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/FirebaseClient.swift"
+            timestampString = "526586633.439301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "configureDatabase()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;"
+                  symbolName = "fluctueat.FirebaseClient.(configureDatabase () -&gt; ()).(closure #1)"
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.610896"
+                  timestampString = "526589008.840653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "41">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "19">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "fluctueat.FirebaseClient.(getOpenVendors () -&gt; Swift.Array&lt;fluctueat.Vendor&gt;).(closure #1)"
+                  symbolName = "fluctueat.FirebaseClient.(configureDatabase () -&gt; ()).(closure #1)"
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
-                  timestampString = "526544704.612709"
+                  timestampString = "526589008.842813"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "15">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "490">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1181,13 +1133,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526542348.985852"
+            timestampString = "526586638.017487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "getOpenVendors()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "configureDatabase()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fluctueat.FirebaseClient.configureDatabase () -&gt; ()"
+                  moduleName = "fluctueat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
+                  timestampString = "526589008.847785"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "150">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "fluctueat.FirebaseClient.(configureDatabase () -&gt; ()).(closure #1)"
+                  moduleName = "fluctueat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/FirebaseClient.swift"
+                  timestampString = "526589008.849808"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1197,12 +1181,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FirebaseClient.swift"
-            timestampString = "526542351.010868"
+            timestampString = "526588805.196505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "getOpenVendors()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "configureDatabase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

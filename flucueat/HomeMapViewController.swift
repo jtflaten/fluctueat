@@ -15,7 +15,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     // create the total map area for the mapView
     //TODO: make sure to abstract the hard coded numbers to constants
     let locationManager = CLLocationManager()
-    let vendors = [Vendor]()
+    var vendors = [Vendor]()
     
     
     //let userLocation = CLLocation().coordinate
@@ -33,7 +33,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
         FirebaseClient.sharedInstance.configureDatabase()
-        FirebaseClient.sharedInstance.getOpenVendors()
+       
+        print(vendors)
   //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
         
