@@ -32,7 +32,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         addLocationToVendor()
         configureMapView()
    //     FirebaseClient.sharedInstance.configureAuth(vc: self)
-        FirebaseClient.sharedInstance.configureDatabase()
+    //    FirebaseClient.sharedInstance.configureDatabase()
     }
 
     @IBAction func saveTapped(_ sender: Any) {

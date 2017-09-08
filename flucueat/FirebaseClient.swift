@@ -75,11 +75,12 @@ class FirebaseClient : NSObject {
         })
     }
 
-    func configureDatabase() {
+    func configureDatabase(vc: HomeMapViewController) {
         ref = Database.database().reference()
         _refHandle = ref.child(dbConstants.openVendors).observe(.value, with: { (snapshot) in
             if let value = snapshot.value as? NSDictionary {
                 self.openVendors = self.parseVendorSnapshot(snapshot: value)
+                vc.makeVendorAnnotations()
             }
            
             print(snapshot)

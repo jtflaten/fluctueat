@@ -15,7 +15,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     // create the total map area for the mapView
     //TODO: make sure to abstract the hard coded numbers to constants
     let locationManager = CLLocationManager()
-    var vendors = [Vendor]()
+    var vendorsAnnotations = [Vendor]()
     
     
     //let userLocation = CLLocation().coordinate
@@ -32,9 +32,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewDidLoad()
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
-        FirebaseClient.sharedInstance.configureDatabase()
-       
-        print(vendors)
+        FirebaseClient.sharedInstance.configureDatabase(vc: self)
+     //   makeVendorAnnotations()
+
+        
   //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
         
@@ -74,6 +75,25 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
+    func populateMap() {
+        
+    }
+    
+    func makeVendorAnnotations(){
+        var vendorAnnotation = [MKPointAnnotation]()
+        for vendor in FirebaseClient.sharedInstance.openVendors {
+            let annotation = MKPointAnnotation()
+            let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(vendor.lat), longitude: CLLocationDegrees(vendor.long))
+            annotation.title = vendor.name!
+            annotation.subtitle = vendor.description!
+            annotation.coordinate = coordinate
+            vendorAnnotation.append(annotation)
+        }
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(vendorAnnotation)
+        }
+        
+    }
     func configureMapView() {
         mapView.isScrollEnabled = false
         mapView.isZoomEnabled = true
