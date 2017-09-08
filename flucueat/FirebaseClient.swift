@@ -57,6 +57,7 @@ class FirebaseClient : NSObject {
                 for theValue in authorizedVendors {
                     if theValue == self.vendorUser?.uid {
                         userVendor.isAuthorizedVendor = true
+                        userVendor.uniqueKey = self.vendorUser?.uid
                         print("authorizedAtFirst")
                         return
                     }
@@ -146,15 +147,19 @@ class FirebaseClient : NSObject {
         data[dbConstants.totalTimeOpen] = totalTimeOpen
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
-        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[1]
-        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[2]
-        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[3]
-        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[4]
-        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[5]
-        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[6]
+        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[0]
+        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[1]
+        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[2]
+        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[3]
+        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[4]
+        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[5]
         
         ref.child(dbConstants.vendorUpdate).childByAutoId().setValue(data)
+        ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
+       
     }
+    
+    
     
     func getVacantImageUrl() -> String {
         let imagePath = "vacant/empty.png"

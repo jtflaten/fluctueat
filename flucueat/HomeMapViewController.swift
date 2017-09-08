@@ -38,7 +38,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
 
         
-        let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToAuthPage))
+        let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
         twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
         twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
         
@@ -91,8 +91,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     
     
-    func swipeToAuthPage(gestureRecognizer: UISwipeGestureRecognizer){
-        let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+    func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
+        let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthTabController") as! VendorTabController
         print("swiped2")
         self.present(authController, animated: true)
     }

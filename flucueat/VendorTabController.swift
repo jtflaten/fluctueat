@@ -24,4 +24,9 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     
   
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        FirebaseClient.sharedInstance.checkIfVendor(vc: self)
+    }
 }

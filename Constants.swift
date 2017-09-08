@@ -50,6 +50,8 @@ struct dbConstants {
     
     static let vendorUpdate = "vendor_update"
     static let authorizedIDs = "authorized_vendors"
+    static let vendorArchive = "vendor_archive"
+    static let openVendors = "open_vendors"
 }
 
 struct alertStrings {
