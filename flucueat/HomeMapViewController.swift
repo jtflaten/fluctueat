@@ -33,6 +33,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
         FirebaseClient.sharedInstance.configureDatabase()
+        FirebaseClient.sharedInstance.getOpenVendors()
   //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
         

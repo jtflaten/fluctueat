@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="18" y="30"/>
         </scene>
-        <!--Item 2-->
+        <!--Today's Info-->
         <scene sceneID="hwH-eP-Lhh">
             <objects>
-                <viewController storyboardIdentifier="VendorMapViewController" id="Abo-US-fGv" customClass="VendorMapViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VendorMapViewController" title="Today's Info" id="Abo-US-fGv" customClass="VendorMapViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rix-uB-2eN"/>
                         <viewControllerLayoutGuide type="bottom" id="qcJ-MF-DX5"/>
@@ -98,14 +98,30 @@
                                             <!--2017-08-07 06:17:00 +0000-->
                                         </date>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-0j-C9n">
-                                        <rect key="frame" x="127" y="135.5" width="109" height="67.5"/>
-                                        <state key="normal" title="get on the map!"/>
-                                        <connections>
-                                            <action selector="saveTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="Vhm-Q7-FWN"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="HO7-qK-XGk">
+                                        <rect key="frame" x="13" y="135.5" width="337" height="67.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-0j-C9n">
+                                                <rect key="frame" x="0.0" y="18.5" width="162" height="30"/>
+                                                <state key="normal" title="get on the map!"/>
+                                                <connections>
+                                                    <action selector="saveTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="Vhm-Q7-FWN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yS-ob-X8d">
+                                                <rect key="frame" x="175" y="18.5" width="162" height="30"/>
+                                                <state key="normal" title="Close"/>
+                                                <connections>
+                                                    <action selector="closeTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="ZQa-XB-ylH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="HO7-qK-XGk" firstAttribute="leading" secondItem="gKu-7O-ywg" secondAttribute="leading" constant="13" id="6Jw-da-HfQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="HO7-qK-XGk" secondAttribute="trailing" constant="13" id="tXD-GH-RN4"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="1880.8" y="1376.7616191904049"/>
         </scene>
-        <!--Item 1-->
+        <!--Your Food Truck-->
         <scene sceneID="0t4-4m-gdU">
             <objects>
-                <viewController storyboardIdentifier="VendorInfoViewController" id="27p-XB-cL5" customClass="VendorInfoViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VendorInfoViewController" title="Your Food Truck" id="27p-XB-cL5" customClass="VendorInfoViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ri-Mk-BWk"/>
                         <viewControllerLayoutGuide type="bottom" id="ht8-3v-Gsn"/>

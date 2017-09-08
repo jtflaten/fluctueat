@@ -72,7 +72,7 @@ class FirebaseClient : NSObject {
             }
         })
     }
-    
+
     func configureDatabase() {
         ref = Database.database().reference()
     }
@@ -90,6 +90,31 @@ class FirebaseClient : NSObject {
         presentingVC.present(authViewController!, animated: true, completion: nil)
         
     
+    }
+    
+    func getOpenVendors() -> [Vendor] {
+        let vendorList = [Vendor]()
+            _ = ref.child(dbConstants.openVendors).observe(.value, with: { (snapshot) in
+                let openVendorSnapshot = snapshot.value as! DataSnapshot
+                for vendor in openVendorSnapshot.children {
+                    let vendorSnap = vendor as! DataSnapshot
+                    let vendorDict = vendorSnap.value as! NSDictionary
+                    let uid = vendorDict[dbConstants.uid]
+                    let name = vendorDict[dbConstants.name]
+                    let desc = vendorDict[dbConstants.description]
+                    let lat = vendorDict[dbConstants.lat]
+                    let long = vendorDict[dbConstants.long]
+                    let truckPhotoURL = vendorDict[dbConstants.truckImageUrl]
+                    let foodPhototsURL = [vendorDict[dbConstants.foodPhotoOne],vendorDict[dbConstants.foodPhotoTwo], vendorDict[dbConstants.foodPhotoThree], vendorDict[dbConstants.foodPhotoFour], vendorDict[dbConstants.foodPhotoFive], vendorDict[dbConstants.foodPhotoZero]]
+                    let 
+                    
+                    
+                }
+                //print(vendorDict)
+            
+            })
+        
+        return vendorList
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
@@ -154,9 +179,13 @@ class FirebaseClient : NSObject {
         data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[4]
         data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[5]
         
-        ref.child(dbConstants.vendorUpdate).childByAutoId().setValue(data)
+      
         ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
-       
+        ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).setValue(data)
+    }
+    
+    func removeFromOpenVendorDB() {
+        ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).removeValue()
     }
     
     

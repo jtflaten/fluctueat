@@ -40,6 +40,9 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         //sendVendorDataForDataBase()
     }
     
+    @IBAction func closeTapped(_ sender: Any) {
+        FirebaseClient.sharedInstance.removeFromOpenVendorDB()
+    }
     func addLocationToVendor() {
         userVendor.lat = globalUserPlace.latitude
         userVendor.long = globalUserPlace.longitude
