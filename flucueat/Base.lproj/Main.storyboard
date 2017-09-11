@@ -86,8 +86,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-7O-ywg">
                                 <rect key="frame" x="6" y="428" width="363" height="203"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How late are you open?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-Xz-NDI">
-                                        <rect key="frame" x="92.5" y="0.0" width="178.5" height="67.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is your location on the map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-Xz-NDI">
+                                        <rect key="frame" x="60" y="0.0" width="243" height="67.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -371,14 +371,20 @@
                                                         <constraint firstAttribute="width" constant="240" id="I9y-Bz-YFc"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TFF-wv-65z">
+                                                    <rect key="frame" x="15" y="14.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="TFF-wv-65z" firstAttribute="centerX" secondItem="ED0-Xe-xmh" secondAttribute="centerX" id="Cna-3Y-Sc7"/>
+                                            <constraint firstItem="TFF-wv-65z" firstAttribute="centerY" secondItem="ED0-Xe-xmh" secondAttribute="centerY" id="Fze-SK-7L4"/>
                                             <constraint firstItem="wlF-Ua-Ya7" firstAttribute="centerY" secondItem="ED0-Xe-xmh" secondAttribute="centerY" id="hlr-jW-69g"/>
                                             <constraint firstItem="wlF-Ua-Ya7" firstAttribute="centerX" secondItem="ED0-Xe-xmh" secondAttribute="centerX" id="nN5-eh-hkp"/>
                                             <constraint firstItem="wlF-Ua-Ya7" firstAttribute="top" secondItem="ED0-Xe-xmh" secondAttribute="topMargin" constant="-47" id="nNl-lQ-mDW"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="foodCellAcitvityIndicator" destination="TFF-wv-65z" id="2mD-B2-FLJ"/>
                                             <outlet property="foodImage" destination="wlF-Ua-Ya7" id="aMy-W9-2Zd"/>
                                         </connections>
                                     </collectionViewCell>
@@ -393,6 +399,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="F4l-nH-dkj">
+                                <rect key="frame" x="177" y="111" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -405,17 +414,20 @@
                             <constraint firstItem="DfY-5Y-nyQ" firstAttribute="top" secondItem="KJd-FA-mv8" secondAttribute="bottom" constant="8" id="UjM-SP-dlN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GMC-qa-C7t" secondAttribute="trailing" id="dgg-eo-2L1"/>
                             <constraint firstItem="PRu-8F-LnI" firstAttribute="centerX" secondItem="fKH-Mp-RZB" secondAttribute="centerX" id="gw9-nm-ufd"/>
+                            <constraint firstItem="F4l-nH-dkj" firstAttribute="centerX" secondItem="DfY-5Y-nyQ" secondAttribute="centerX" id="hif-nS-AV9"/>
                             <constraint firstItem="Mzd-ou-RRn" firstAttribute="top" secondItem="v6x-BV-gQL" secondAttribute="bottom" constant="8" id="jYh-Vk-cv1"/>
                             <constraint firstItem="DfY-5Y-nyQ" firstAttribute="trailing" secondItem="fKH-Mp-RZB" secondAttribute="trailingMargin" id="oW0-QG-dDW"/>
                             <constraint firstItem="v6x-BV-gQL" firstAttribute="leading" secondItem="fKH-Mp-RZB" secondAttribute="leadingMargin" id="qtz-nW-rdC"/>
                             <constraint firstItem="DfY-5Y-nyQ" firstAttribute="leading" secondItem="fKH-Mp-RZB" secondAttribute="leadingMargin" id="uVf-Hy-Lg0"/>
                             <constraint firstItem="v6x-BV-gQL" firstAttribute="top" secondItem="GMC-qa-C7t" secondAttribute="bottom" constant="76" id="v53-IT-w1x"/>
                             <constraint firstItem="GMC-qa-C7t" firstAttribute="centerY" secondItem="fKH-Mp-RZB" secondAttribute="centerY" id="vEo-HH-p7C"/>
+                            <constraint firstItem="F4l-nH-dkj" firstAttribute="centerY" secondItem="DfY-5Y-nyQ" secondAttribute="centerY" id="yLf-uT-Nll"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="foodImageCollection" destination="v6x-BV-gQL" id="gru-TL-tTR"/>
                         <outlet property="foodImageCollectionFlowLayout" destination="w9I-lY-iS5" id="iIt-fU-wQ4"/>
+                        <outlet property="truckActivityIndicator" destination="F4l-nH-dkj" id="q9e-iv-j6S"/>
                         <outlet property="truckDescription" destination="GMC-qa-C7t" id="3JC-qK-QfC"/>
                         <outlet property="truckImage" destination="DfY-5Y-nyQ" id="AIg-OX-aGH"/>
                         <outlet property="truckName" destination="PRu-8F-LnI" id="Bdg-9n-1Kl"/>

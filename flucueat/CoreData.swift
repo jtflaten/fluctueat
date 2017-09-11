@@ -85,6 +85,10 @@ extension VendorInfoViewController {
         }
     }
     
+    func deleteOldTruckImage() {
+        deleteAllCoreData(entity: "TruckPhoto")
+    }
+    
     func deleteSinglePhotoAlt(index: Int) {
         if savedImageArray.indices.contains(index) {
             managedContext.delete(savedImageArray[index])

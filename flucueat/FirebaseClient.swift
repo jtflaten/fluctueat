@@ -92,6 +92,9 @@ class FirebaseClient : NSObject {
         storageRef = Storage.storage().reference()
     }
     
+    func imageStorageUrl(url: String) -> StorageReference {
+        return Storage.storage().reference(forURL:url)
+    }
    
     
     func loginSession(presentingVC: UIViewController) {
@@ -145,8 +148,25 @@ class FirebaseClient : NSObject {
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
+            vc.deleteOldTruckImage()
             vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
         }
+        
+    }
+    
+    func downloadPhotos(vendor: Vendor) -> UIImage {
+        var truckImage: UIImage = #imageLiteral(resourceName: "empty")
+        let imageUrl = vendor.truckPhotoUrl
+        Storage.storage().reference(forURL: imageUrl).getData(maxSize: INT64_MAX) { (data, error) in
+            guard (error == nil) else {
+                print(error.debugDescription)
+                return
+            }
+            if  let downloadedImage = UIImage.init(data: data!, scale: 100) {
+            truckImage = downloadedImage
+            }
+        }
+               return truckImage
     }
     
     func sendFoodPhotoToFireBase(photoData: Data, indexPath: Int, vc: VendorInfoViewController) {
@@ -197,7 +217,7 @@ class FirebaseClient : NSObject {
         ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).removeValue()
     }
     
-    
+
     
     func getVacantImageUrl() -> String {
         let imagePath = "vacant/empty.png"

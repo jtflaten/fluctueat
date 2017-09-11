@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -20,6 +21,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var truckDescription: UILabel!
     @IBOutlet weak var foodImageCollection: UICollectionView!
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var truckActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +39,37 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
     
     func setupTruckImage() {
-        truckImage.image = self.vendor.truckImage ?? #imageLiteral(resourceName: "empty")
+        truckActivityIndicator.hidesWhenStopped = true
+        truckActivityIndicator.startAnimating()
+        FirebaseClient.sharedInstance.imageStorageUrl(url: vendor.truckPhotoUrl).getData(maxSize: INT64_MAX) { (data , error)  in
+            guard error == nil else {
+                print("error downloading: \(String(describing: error))")
+                return
+            }
+           let downloadedTruck = UIImage.init(data: data!)
+            DispatchQueue.main.async {
+                self.truckImage.image = downloadedTruck
+                self.truckActivityIndicator.stopAnimating()
+            }
+        }
+        
     }
     
     func setupFoodImage() {
-        foodImages = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "nugget")]
+        for url in vendor.foodPhotoUrls {
+            FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
+                guard error == nil else {
+                    print("error downloading: \(String(describing: error))")
+                    return
+                }
+                let foodImage = UIImage.init(data: data!)
+                DispatchQueue.main.async {
+                    self.vendor.pictures.append(foodImage)
+                    self.foodImageCollection.reloadData()
+                }
+            }
+            
+        }
     }
     
     func setupLabels() {
@@ -50,16 +78,24 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+        
         return (self.vendor.pictures.count) // maxNumberOfFoodImages
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        let image = self.vendor.pictures[(indexPath as NSIndexPath).row] ?? foodImages[(indexPath as NSIndexPath).row]
-        cell.foodImage.image = image
+        
+        cell.foodCellAcitvityIndicator.startAnimating()
+        cell.foodImage.image = nil
+       
+            
+        if let image = self.vendor.pictures[(indexPath as NSIndexPath).row] {
+            cell.showImage(image: image)
+        }
+
         return cell
+        
     }
 
     func layoutCells() {

@@ -114,12 +114,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let truckInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "FoodTruckInfoViewController") as! FoodTruckInfoViewController
         
         let annotationName = view.annotation?.title
-        print(annotationName)
         let annotationDesc = view.annotation?.subtitle
-        print(annotationDesc)
         let selectedVendor = findRightVendor(name: annotationName!!, desc: annotationDesc!!)
         truckInfoViewController.vendor = selectedVendor
-        self.present(truckInfoViewController, animated: true, completion: nil)
+        self.navigationController!.pushViewController(truckInfoViewController, animated: true)
     }
     
     

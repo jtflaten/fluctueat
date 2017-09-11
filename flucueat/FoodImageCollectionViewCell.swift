@@ -11,5 +11,16 @@ import UIKit
 class FoodImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var foodImage: UIImageView!
+    @IBOutlet weak var foodCellAcitvityIndicator: UIActivityIndicatorView!
+    
+    func showImage(image : UIImage ) {
+        self.foodCellAcitvityIndicator.hidesWhenStopped = true
+        if image != nil {
+            DispatchQueue.main.async {
 
+                self.foodImage.image = image
+                self.foodCellAcitvityIndicator.stopAnimating()
+            }
+        }
+    }
 }

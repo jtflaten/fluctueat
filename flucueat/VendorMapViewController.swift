@@ -28,7 +28,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         super.viewDidLoad()
          self.signedInStatus(isSignedIn: true)
         configureDatePicker(datePicker: openUntil)
-  //      getLocation()
+        getLocation()
         addLocationToVendor()
         configureMapView()
    //     FirebaseClient.sharedInstance.configureAuth(vc: self)
@@ -49,10 +49,12 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         
     }
     func configureDatePicker(datePicker: UIDatePicker) {
-        let maxTime = timeThisVCOpened.addingTimeInterval(12 * 60 * 60)
-        
-        datePicker.minimumDate = timeThisVCOpened
-        datePicker.maximumDate = maxTime
+        datePicker.isHidden = true
+        //DATE picker for setting a closing time. to be added
+//        let maxTime = timeThisVCOpened.addingTimeInterval(12 * 60 * 60)
+//        
+//        datePicker.minimumDate = timeThisVCOpened
+//        datePicker.maximumDate = maxTime
         
     }
     
