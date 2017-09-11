@@ -324,7 +324,7 @@
         <!--Food Truck Info View Controller-->
         <scene sceneID="WMC-kH-NlG">
             <objects>
-                <viewController id="eDD-8E-Xfs" customClass="FoodTruckInfoViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FoodTruckInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eDD-8E-Xfs" customClass="FoodTruckInfoViewController" customModule="fluctueat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KJd-FA-mv8"/>
                         <viewControllerLayoutGuide type="bottom" id="Mzd-ou-RRn"/>
@@ -418,7 +418,7 @@
                         <outlet property="foodImageCollectionFlowLayout" destination="w9I-lY-iS5" id="iIt-fU-wQ4"/>
                         <outlet property="truckDescription" destination="GMC-qa-C7t" id="3JC-qK-QfC"/>
                         <outlet property="truckImage" destination="DfY-5Y-nyQ" id="AIg-OX-aGH"/>
-                        <outlet property="truckName" destination="PRu-8F-LnI" id="gJa-yD-GxL"/>
+                        <outlet property="truckName" destination="PRu-8F-LnI" id="Bdg-9n-1Kl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CxG-a5-quT" userLabel="First Responder" sceneMemberID="firstResponder"/>

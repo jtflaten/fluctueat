@@ -10,10 +10,12 @@ import UIKit
 
 class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let vendor = userVendor
-  
+    var vendor: Vendor!
+    var foodImages = [UIImage?]()
+    
     
     @IBOutlet weak var truckImage: UIImageView!
+    
     @IBOutlet weak var truckName: UILabel!
     @IBOutlet weak var truckDescription: UILabel!
     @IBOutlet weak var foodImageCollection: UICollectionView!
@@ -22,19 +24,29 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         foodImageCollection.delegate = self
-       foodImageCollection.dataSource = self
+        foodImageCollection.dataSource = self
         setupLabels()
         setupTruckImage()
+        setupFoodImage()
         layoutCells()
     }
     
+
+   
+    
+    
+    
     func setupTruckImage() {
-        truckImage.image = self.vendor.truckImage
+        truckImage.image = self.vendor.truckImage ?? #imageLiteral(resourceName: "empty")
+    }
+    
+    func setupFoodImage() {
+        foodImages = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "nugget")]
     }
     
     func setupLabels() {
-        truckName.text = vendor.name
-        truckDescription.text = vendor.description
+        truckName.text = self.vendor.name ?? "party time"
+        truckDescription.text = self.vendor.description ?? "this is a truck"
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,7 +57,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        let image = self.vendor.pictures[(indexPath as NSIndexPath).row]
+        let image = self.vendor.pictures[(indexPath as NSIndexPath).row] ?? foodImages[(indexPath as NSIndexPath).row]
         cell.foodImage.image = image
         return cell
     }

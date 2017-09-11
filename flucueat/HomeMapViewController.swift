@@ -30,6 +30,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
         FirebaseClient.sharedInstance.configureDatabase(vc: self)
@@ -75,9 +76,52 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
-    func populateMap() {
+  
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            pinView!.annotation = annotation
+        }
+        else {
+            pinView!.annotation = annotation
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+            
+        return pinView
+        
+    
     }
+    
+    func findRightVendor(name: String, desc: String) -> Vendor? {
+
+        for openVendor in FirebaseClient.sharedInstance.openVendors {
+           
+            if name == openVendor.name! && desc == openVendor.description! {
+                return openVendor
+            }
+        }
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let truckInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "FoodTruckInfoViewController") as! FoodTruckInfoViewController
+        
+        let annotationName = view.annotation?.title
+        print(annotationName)
+        let annotationDesc = view.annotation?.subtitle
+        print(annotationDesc)
+        let selectedVendor = findRightVendor(name: annotationName!!, desc: annotationDesc!!)
+        truckInfoViewController.vendor = selectedVendor
+        self.present(truckInfoViewController, animated: true, completion: nil)
+    }
+    
     
     func makeVendorAnnotations(){
         var vendorAnnotation = [MKPointAnnotation]()
@@ -87,6 +131,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             annotation.title = vendor.name!
             annotation.subtitle = vendor.description!
             annotation.coordinate = coordinate
+           
+            
             vendorAnnotation.append(annotation)
         }
         DispatchQueue.main.async {
@@ -95,7 +141,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     func configureMapView() {
-        mapView.isScrollEnabled = false
+        mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = false
         mapView.region = mapRegion
@@ -116,6 +162,9 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
         let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthTabController") as! VendorTabController
         print("swiped2")
-        self.present(authController, animated: true)
+        
+        self.navigationController!.present(authController, animated: true)
     }
 }
+
+
