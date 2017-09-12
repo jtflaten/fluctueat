@@ -65,8 +65,6 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
                 }
                 let foodImage = UIImage.init(data: data!)
                 DispatchQueue.main.async {
-//                    self.vendor.pictures.insert(foodImage, at: index)
-//                    self.vendor.pictures.remove(at: index + 1)
                     self.vendor.pictures[index] = foodImage
                     self.foodImageCollection.reloadData()
                 }
@@ -91,16 +89,13 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         
         cell.foodCellAcitvityIndicator.startAnimating()
        cell.foodImage.image = #imageLiteral(resourceName: "empty")
-//        while cell.foodImage.image == #imageLiteral(resourceName: "empty") {
-//            cell.foodCellAcitvityIndicator.startAnimating()
-//        }
+
             
         if let image = self.vendor.pictures[indexPath.row] {
             
             cell.showImage(image: image)
         } else {
-//            cell.foodCellAcitvityIndicator.startAnimating()
-//            cell.foodImage.image = foodImages[(indexPath as NSIndexPath).row]
+
        }
 
         return cell

@@ -34,9 +34,9 @@ class FirebaseClient : NSObject {
                 if self.vendorUser != activeUser {
                     self.vendorUser = activeUser
                     self.checkIfVendor(vc: vc)
-                    vc.signedInStatus(isSignedIn: true)
+                  
                 } else {
-                    vc.signedInStatus(isSignedIn: false)
+                    
                     self.loginSession(presentingVC: vc)
                 }
             }
@@ -69,7 +69,7 @@ class FirebaseClient : NSObject {
                 print("notAUTHOrized")
                
                 vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
-                //vc.navigationController?.popToRootViewController(animated: true)
+                
                 
             }
         })
@@ -180,9 +180,9 @@ class FirebaseClient : NSObject {
             }
             userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
             userVendor.foodPhotoUrls.remove(at: indexPath + 1)
-            print(12)
+         
             vc.deleteSinglePhotoAlt(index: indexPath)
-            print(34)
+           
             vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
 
            
@@ -226,13 +226,7 @@ class FirebaseClient : NSObject {
         return imageUrl
     }
     
-//    class func sharedInstance() -> FirebaseClient {
-//        struct Singleton {
-//            static var sharedInstance = FirebaseClient()
-//        }
-//        return Singleton.sharedInstance
-//    }
-    
+
   
    
     

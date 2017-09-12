@@ -14,7 +14,7 @@ import MapKit
         let houstonCenterLat: CLLocationDegrees = 29.7604
         let houstonCenterLong: CLLocationDegrees = -95.3698
         static let houstonCenter = CLLocationCoordinate2D(latitude: 29.7604, longitude: -95.3698)
-        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8)
         
         
     }

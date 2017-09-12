@@ -38,7 +38,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // configureStorage()
+       
         
         FirebaseClient.sharedInstance.configureStorage()
         fetchTruckInfo()
@@ -50,7 +50,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
         layoutCells()
-       // subscribeToKeyboardNotifications()
+       
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +69,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func setuptextFields(){
-        self.truckName.delegate = self //as? UITextFieldDelegate
-        self.truckDescription.delegate = self //as? UITextFieldDelegate
+        self.truckName.delegate = self
+        self.truckDescription.delegate = self
         truckName.text = userVendor.name
         truckDescription.text = userVendor.description
 
@@ -84,7 +84,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (userVendor.pictures.count)// maxNumberOfFoodImages
+        return (userVendor.pictures.count)
     }
     
     

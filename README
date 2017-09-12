@@ -6,7 +6,7 @@ user flows.
 
 user type definitions:
 
-vendor is used to refer to a Food Truck operator, who will have signed up to use this app to put out up-to-date
+“vendor” is used to refer to a Food Truck operator, who will have signed up to use this app to put out up-to-date
 location information and operation hours. vendors will have access to many more viewControllers and capabilities than
 the regular user type. they will have to log in to the app to be able to get to the vendor tabController flow
 
@@ -30,7 +30,7 @@ and give the user directions to the food Truck.
 VENDOR UX
 
 ACCESSING VENDOR MODE
-On the HomeMapVC, a user can swipe UP with two(2) fingers and access the login page for Vendor Mode
+On the HomeMapVC, a user can access the login page for Vendor Mode by pressing “vendor”
 
 VendorInfoVC
 the first vc the vendor will have access to will allow them to upload images and update the information about
@@ -46,6 +46,8 @@ the VendorMapVC will have an "Open" and a "Close" button. the Open button will p
 publicly available part of the database, which is what the "user" ViewControllers use to get to populate their respective
 objects (map and table).
 
+***A VENDOR has to SAVE on the VendorInfoVC and then press OPEN on the VendorMapVC***
+
 TESTER/REVIEWER UX (this is you, specifically)
 I've set up a Vendor account for you to write to the the database. it has all the permissions that a vendor would have, so
 you can set up your own food truck and put it on the map. please take the app for a spin.
@@ -59,6 +61,6 @@ email: spacefood@breaklist.com
 pass: spacefood
 
 
-NETWORKING/ UNDER THE HOOD
-
-images are stored
+29.785026, -95.388079
+30.223964, -95.552074
+30.162034, -95.466646

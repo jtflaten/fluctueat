@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58106D051F1019830043F791 /* GoogleService-Info.plist */; };
 		58106D081F101B180043F791 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106D071F101B180043F791 /* Vendor.swift */; };
-		583126981F58F2F30013AC42 /* UIviewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583126971F58F2F30013AC42 /* UIviewControllerExt.swift */; };
 		583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC791F0EDEA900E024C2 /* AppDelegate.swift */; };
 		583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC7D1F0EDEA900E024C2 /* Main.storyboard */; };
 		583DDC811F0EDEA900E024C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC801F0EDEA900E024C2 /* Assets.xcassets */; };
@@ -24,7 +23,6 @@
 		589710381F33BB5700A4E330 /* fluctueat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58C347871F32DB2400710A1A /* fluctueat.xcdatamodeld */; };
 		589B07891F38332E00096544 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B07881F38332E00096544 /* AlertViews.swift */; };
 		589B078D1F39230200096544 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B078C1F39230200096544 /* FirebaseClient.swift */; };
-		589B07CE1F4749AA00096544 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B07CD1F4749AA00096544 /* UserLocation.swift */; };
 		589B07D01F4D3CF200096544 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B07CF1F4D3CF200096544 /* CoreData.swift */; };
 		58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */; };
 		B77B6C930F9170C768196093 /* Pods_fluctueat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FA0FC1A2B928B735FBD2DB /* Pods_fluctueat.framework */; };
@@ -50,7 +48,6 @@
 /* Begin PBXFileReference section */
 		58106D051F1019830043F791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58106D071F101B180043F791 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
-		583126971F58F2F30013AC42 /* UIviewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIviewControllerExt.swift; sourceTree = "<group>"; };
 		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC791F0EDEA900E024C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		583DDC7E1F0EDEA900E024C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,7 +67,6 @@
 		5872BAA51F1946EB00366391 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		589B07881F38332E00096544 /* AlertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
 		589B078C1F39230200096544 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
-		589B07CD1F4749AA00096544 /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		589B07CF1F4D3CF200096544 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		58C347881F32DB2400710A1A /* fluctueat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fluctueat.xcdatamodel; sourceTree = "<group>"; };
@@ -183,7 +179,6 @@
 				58106D071F101B180043F791 /* Vendor.swift */,
 				5872BAA51F1946EB00366391 /* Constants.swift */,
 				589B078C1F39230200096544 /* FirebaseClient.swift */,
-				589B07CD1F4749AA00096544 /* UserLocation.swift */,
 				589B07CF1F4D3CF200096544 /* CoreData.swift */,
 			);
 			name = Model;
@@ -214,7 +209,6 @@
 				585611991F20123800C6D2ED /* VendorTabController.swift */,
 				585611951F20115900C6D2ED /* VendorMapViewController.swift */,
 				585611931F1EBB8D00C6D2ED /* VendorInfoViewController.swift */,
-				583126971F58F2F30013AC42 /* UIviewControllerExt.swift */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -416,12 +410,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				58106D081F101B180043F791 /* Vendor.swift in Sources */,
-				583126981F58F2F30013AC42 /* UIviewControllerExt.swift in Sources */,
 				5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */,
 				585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */,
 				589B07D01F4D3CF200096544 /* CoreData.swift in Sources */,
 				5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */,
-				589B07CE1F4749AA00096544 /* UserLocation.swift in Sources */,
 				589B07891F38332E00096544 /* AlertViews.swift in Sources */,
 				583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */,
 				585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */,

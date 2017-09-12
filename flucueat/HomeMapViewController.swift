@@ -20,7 +20,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     //let userLocation = CLLocation().coordinate
     var mapRegion = MKCoordinateRegion()
-    let mapSize = MKMapSize(width: 1.2, height: 1.2)
+    let mapSize = MKMapSize(width: 10, height: 10)
     
     
     
@@ -33,23 +33,18 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.delegate = self
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
-      //  FirebaseClient.sharedInstance.configureDatabase(vc: self)
-     //   makeVendorAnnotations()
-
-        
-  //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
         
         
 
+//        
+//        let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
+//        twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
+//        twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
+//        
+//        self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
         
-        let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-        twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
-        twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
-        
-        self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
-        
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,25 +149,16 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.isPitchEnabled = false
         mapView.region = mapRegion
     }
+
     
-   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        if /* !manuallyChangingMap && */ ((mapView.region.span.latitudeDelta > mapRegion.span.latitudeDelta * 4) ||
-//            (mapView.region.span.longitudeDelta > mapRegion.span.longitudeDelta * 4) ||
-//            fabs(mapView.region.center.latitude - mapRegion.center.latitude) > mapRegion.span.latitudeDelta ||
-//            fabs(mapView.region.center.longitude - mapRegion.center.longitude) > mapRegion.span.longitudeDelta) {
-//         mapView.setRegion(mapRegion, animated: true)
-//        }
-        print("the Region has changed!")
-    }
+//    This gesture will eventually be used to replace the "vendor" button on the mapVC
     
-    
-    
-    func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
-        let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthTabController") as! VendorTabController
-        print("swiped2")
-        
-        self.navigationController!.present(authController, animated: true)
-    }
+//    func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
+//        let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthTabController") as! VendorTabController
+//        print("swiped2")
+//        
+//        self.navigationController!.present(authController, animated: true)
+//    }
 }
 
 
