@@ -85,6 +85,7 @@ let testVendor: Vendor = {
     return testOne
 }()
 
+let emptyFoodImages = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),]
 let emptyDict = [#imageLiteral(resourceName: "empty"),  #imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "empty"), #imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty")]
 let emptyTruckImage: UIImage = #imageLiteral(resourceName: "empty")
 let defaultName = "What's the name of your food truck?"

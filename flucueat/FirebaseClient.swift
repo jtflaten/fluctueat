@@ -119,7 +119,7 @@ class FirebaseClient : NSObject {
                     let long = Double(vendorDict[dbConstants.long] as! String)
                     let truckPhotoURL = vendorDict[dbConstants.truckImageUrl] as! String
                     let foodPhototsURL = [vendorDict[dbConstants.foodPhotoOne],vendorDict[dbConstants.foodPhotoTwo], vendorDict[dbConstants.foodPhotoThree], vendorDict[dbConstants.foodPhotoFour], vendorDict[dbConstants.foodPhotoFive], vendorDict[dbConstants.foodPhotoZero]] as! [String]
-                    let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: [], open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
+                    let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: emptyFoodImages, open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
                     vendorList.append(newVendor)
                     
                 }

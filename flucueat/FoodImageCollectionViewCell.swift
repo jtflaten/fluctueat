@@ -15,7 +15,7 @@ class FoodImageCollectionViewCell: UICollectionViewCell {
     
     func showImage(image : UIImage ) {
         self.foodCellAcitvityIndicator.hidesWhenStopped = true
-        if image != nil {
+        if image != #imageLiteral(resourceName: "empty") {
             DispatchQueue.main.async {
 
                 self.foodImage.image = image

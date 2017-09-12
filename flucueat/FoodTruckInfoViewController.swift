@@ -12,7 +12,7 @@ import Firebase
 class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var vendor: Vendor!
-    var foodImages = [UIImage?]()
+    var foodImages = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),]
     
     
     @IBOutlet weak var truckImage: UIImageView!
@@ -39,6 +39,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
     
     func setupTruckImage() {
+        truckImage.image = #imageLiteral(resourceName: "empty")
         truckActivityIndicator.hidesWhenStopped = true
         truckActivityIndicator.startAnimating()
         FirebaseClient.sharedInstance.imageStorageUrl(url: vendor.truckPhotoUrl).getData(maxSize: INT64_MAX) { (data , error)  in
@@ -56,7 +57,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func setupFoodImage() {
-        for url in vendor.foodPhotoUrls {
+        for (index, url) in vendor.foodPhotoUrls.enumerated() {
             FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
                 guard error == nil else {
                     print("error downloading: \(String(describing: error))")
@@ -64,7 +65,9 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
                 }
                 let foodImage = UIImage.init(data: data!)
                 DispatchQueue.main.async {
-                    self.vendor.pictures.append(foodImage)
+//                    self.vendor.pictures.insert(foodImage, at: index)
+//                    self.vendor.pictures.remove(at: index + 1)
+                    self.vendor.pictures[index] = foodImage
                     self.foodImageCollection.reloadData()
                 }
             }
@@ -79,7 +82,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (self.vendor.pictures.count) // maxNumberOfFoodImages
+        return 6//(self.vendor.pictures.count)
     }
     
     
@@ -87,12 +90,16 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
         
         cell.foodCellAcitvityIndicator.startAnimating()
-        cell.foodImage.image = nil
+       cell.foodImage.image = #imageLiteral(resourceName: "empty")
        
             
-        if let image = self.vendor.pictures[(indexPath as NSIndexPath).row] {
+        if let image = self.vendor.pictures[indexPath.row] {
+            
             cell.showImage(image: image)
-        }
+        } else {
+//            cell.foodCellAcitvityIndicator.startAnimating()
+//            cell.foodImage.image = foodImages[(indexPath as NSIndexPath).row]
+       }
 
         return cell
         
