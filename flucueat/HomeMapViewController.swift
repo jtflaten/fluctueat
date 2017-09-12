@@ -33,12 +33,13 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.delegate = self
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn()
-        FirebaseClient.sharedInstance.configureDatabase(vc: self)
+      //  FirebaseClient.sharedInstance.configureDatabase(vc: self)
      //   makeVendorAnnotations()
 
         
   //      FirebaseClient.sharedInstance.configureAuth(vc: self)
         configureMapView()
+        
         
 
         
@@ -49,6 +50,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FirebaseClient.sharedInstance.configureDatabase(vc: self)
     }
 
     func getLocation() {
@@ -69,7 +74,9 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             
             let userAnnotation = MKPointAnnotation()
             userAnnotation.coordinate = userLocation
+            userAnnotation.title = "This is You"
             self.mapView.addAnnotation(userAnnotation)
+            
             
            globalUserPlace = userPlace(latitude: userLocation.latitude, longitude: userLocation.longitude)
             
@@ -87,9 +94,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            if pinView!.annotation?.title! == "This is You" {
+                pinView?.pinTintColor = .blue
+                pinView?.rightCalloutAccessoryView = nil
+            }
             pinView!.annotation = annotation
-        }
-        else {
+        } else {
             pinView!.annotation = annotation
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
