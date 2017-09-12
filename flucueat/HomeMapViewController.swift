@@ -57,7 +57,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-        }
+        } 
         
         if let userLocation = locationManager.location?.coordinate {
             mapView.setCenter(userLocation, animated: true)

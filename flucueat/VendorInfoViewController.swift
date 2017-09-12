@@ -39,6 +39,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
        // configureStorage()
+        
         FirebaseClient.sharedInstance.configureStorage()
         fetchTruckInfo()
         fetchTruckPhoto()
@@ -49,13 +50,14 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
         layoutCells()
+       // subscribeToKeyboardNotifications()
 
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+    override func viewWillAppear(_ animated: Bool) {
+        subscribeToKeyboardNotifications()
     }
+    
+
     
   
     
@@ -67,8 +69,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func setuptextFields(){
-        self.truckName.delegate = self as? UITextFieldDelegate
-        self.truckDescription.delegate = self as? UITextFieldDelegate
+        self.truckName.delegate = self //as? UITextFieldDelegate
+        self.truckDescription.delegate = self //as? UITextFieldDelegate
         truckName.text = userVendor.name
         truckDescription.text = userVendor.description
 
@@ -234,13 +236,14 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
-            self.view.frame.origin.y -= self.keyboardHeight(notification)
+            self.view.frame.origin.y = self.keyboardHeight(notification) * -1
         }
     }
     
     func keyboardWillHide(_ notification: Notification) {
         if keyboardOnScreen {
-            self.view.frame.origin.y += self.keyboardHeight(notification)
+            self.view.frame.origin.y = 0
+            
         }
     }
     
@@ -251,8 +254,9 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func keyboardDidHide(_ notification: Notification) {
-        dismissKeyboardRecognizer.isEnabled = false
         keyboardOnScreen = false
+        dismissKeyboardRecognizer.isEnabled = false
+        
     }
     
     func keyboardHeight(_ notification: Notification) -> CGFloat {
@@ -268,6 +272,18 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
 }
+extension VendorInfoViewController: UITextFieldDelegate {
+   
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+            textField.resignFirstResponder()
+        
+        return true
+    }
+}
+
+
 
 // MARK: - FCViewController (Notifications)
 

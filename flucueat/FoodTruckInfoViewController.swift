@@ -91,7 +91,9 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         
         cell.foodCellAcitvityIndicator.startAnimating()
        cell.foodImage.image = #imageLiteral(resourceName: "empty")
-       
+//        while cell.foodImage.image == #imageLiteral(resourceName: "empty") {
+//            cell.foodCellAcitvityIndicator.startAnimating()
+//        }
             
         if let image = self.vendor.pictures[indexPath.row] {
             

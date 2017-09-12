@@ -14,7 +14,7 @@
         <scene sceneID="lv8-y5-eJr">
             <objects>
                 <navigationController id="jSW-gr-240" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gSf-57-fE5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gSf-57-fE5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -277,6 +277,9 @@
                             <constraint firstItem="ILM-F9-zSF" firstAttribute="top" secondItem="2ri-Mk-BWk" secondAttribute="bottom" id="s3W-xj-VAm"/>
                             <constraint firstItem="bD0-g5-a8N" firstAttribute="top" secondItem="Sbb-HG-Gn1" secondAttribute="bottom" constant="31" id="v91-jL-vOw"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="197-zQ-z3n" appends="YES" id="MEl-7c-rMb"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="sv0-QJ-gdm"/>
                     <connections>
