@@ -13,8 +13,16 @@ import Firebase
 
 class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        FirebaseClient.sharedInstance.configureAuth(vc: self)
+         FirebaseClient.sharedInstance.loginSession(presentingVC: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
         FirebaseClient.sharedInstance.checkIfVendor(vc: self)
     }
+    
 }

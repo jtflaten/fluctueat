@@ -36,7 +36,7 @@ class FirebaseClient : NSObject {
                     self.checkIfVendor(vc: vc)
                   
                 } else {
-                    
+                
                     self.loginSession(presentingVC: vc)
                 }
             }
@@ -60,13 +60,13 @@ class FirebaseClient : NSObject {
                     if theValue == self.vendorUser?.uid {
                         userVendor.isAuthorizedVendor = true
                         userVendor.uniqueKey = self.vendorUser?.uid
-                        print("authorizedAtFirst")
+                        
                         return
                     }
-                print("checkedAuth")
+               
                     
                 }
-                print("notAUTHOrized")
+               
                
                 vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
                 

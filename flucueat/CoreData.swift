@@ -145,6 +145,7 @@ extension VendorInfoViewController {
             if fetchedImage != []{
                 foodTruckFetchedImage = fetchedImage[0]
                 userVendor.truckImage = UIImage(data: (foodTruckFetchedImage!.image! as Data))
+                userVendor.truckPhotoUrl = foodTruckFetchedImage!.imageUrl!
                 
             }
         } catch let error as NSError {

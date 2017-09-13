@@ -29,6 +29,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
     var keyboardOnScreen = false
+   
   
 
     
@@ -41,6 +42,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
        
         
         FirebaseClient.sharedInstance.configureStorage()
+        
         fetchTruckInfo()
         fetchTruckPhoto()
         fetchMenuPhotos()
@@ -58,7 +60,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
 
-    
   
     
     func setupTruckImage() {

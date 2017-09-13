@@ -26,7 +26,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.signedInStatus(isSignedIn: true)
+  
         configureDatePicker(datePicker: openUntil)
         getLocation()
         addLocationToVendor()
@@ -74,7 +74,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         return openTimeString
     }
     
-
+ 
     func getLocation() {
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
