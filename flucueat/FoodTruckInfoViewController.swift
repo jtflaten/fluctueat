@@ -42,9 +42,19 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         truckImage.image = #imageLiteral(resourceName: "empty")
         truckActivityIndicator.hidesWhenStopped = true
         truckActivityIndicator.startAnimating()
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                self.truckActivityIndicator.stopAnimating()
+                return
+            }
+        }
+
         FirebaseClient.sharedInstance.imageStorageUrl(url: vendor.truckPhotoUrl).getData(maxSize: INT64_MAX) { (data , error)  in
             guard error == nil else {
                 print("error downloading: \(String(describing: error))")
+                self.alertViewWithPopToRoot(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                self.truckActivityIndicator.stopAnimating()
                 return
             }
            let downloadedTruck = UIImage.init(data: data!)
@@ -61,6 +71,8 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
             FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
                 guard error == nil else {
                     print("error downloading: \(String(describing: error))")
+                    self.alertViewWithPopToRoot(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                    
                     return
                 }
                 let foodImage = UIImage.init(data: data!)
@@ -89,8 +101,14 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         
         cell.foodCellAcitvityIndicator.startAnimating()
        cell.foodImage.image = #imageLiteral(resourceName: "empty")
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                cell.foodCellAcitvityIndicator.stopAnimating()
+                return
+            }
+        }
 
-            
+     
         if let image = self.vendor.pictures[indexPath.row] {
             
             cell.showImage(image: image)

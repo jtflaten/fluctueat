@@ -59,6 +59,8 @@ struct alertStrings {
     static let badUidMessage = "Looks like you're not an authorized Vendor. please contact us at customer support to get that fixed up."
     static let ok = "OK"
     
+    static let badNetwork = "Network Problem"
+    static let notConnected = "There was a problem connecting to the internet"
     
 }
 

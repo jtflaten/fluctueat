@@ -21,6 +21,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     //let userLocation = CLLocation().coordinate
     var mapRegion = MKCoordinateRegion()
     let mapSize = MKMapSize(width: 10, height: 10)
+    var isConnected = true
     
     
     
@@ -32,8 +33,14 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewDidLoad()
         mapView.delegate = self
         getLocation()
-        FirebaseClient.sharedInstance.anonSignIn()
+        FirebaseClient.sharedInstance.anonSignIn(vc: self)
         configureMapView()
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                return
+            }
+        }
         
         
 
@@ -49,6 +56,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     override func viewWillAppear(_ animated: Bool) {
         FirebaseClient.sharedInstance.configureDatabase(vc: self)
+        
     }
 
     func getLocation() {
@@ -125,6 +133,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.navigationController!.pushViewController(truckInfoViewController, animated: true)
     }
     
+    func updateLocation() {
+        
+        
+    }
     
     func makeVendorAnnotations(){
         var vendorAnnotation = [MKPointAnnotation]()

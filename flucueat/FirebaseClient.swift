@@ -15,6 +15,7 @@ class FirebaseClient : NSObject {
  //   static var user = User()
     static let sharedInstance = FirebaseClient()
     var ref: DatabaseReference!
+
     var storageRef: StorageReference!
     var _refHandle: DatabaseHandle!
     let authUI = FUIAuth.defaultAuthUI()
@@ -40,11 +41,19 @@ class FirebaseClient : NSObject {
                     self.loginSession(presentingVC: vc)
                 }
             }
+            
+            
         }
     }
     
-    func anonSignIn() {
+
+    
+    func anonSignIn(vc: UIViewController) {
         Auth.auth().signInAnonymously() { (user, error) in
+            guard (error == nil) else {
+            vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                return
+            }
          //   let isAnonymous = user!.isAnonymous
            self.vendorUser = user!
             }
@@ -63,32 +72,31 @@ class FirebaseClient : NSObject {
                         
                         return
                     }
-               
-                    
                 }
-               
-               
                 vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
-                
-                
             }
         })
     }
 
     func configureDatabase(vc: HomeMapViewController) {
+    
         ref = Database.database().reference()
         _refHandle = ref.child(dbConstants.openVendors).observe(.value, with: { (snapshot) in
+           
             if let value = snapshot.value as? NSDictionary {
                 self.openVendors = self.parseVendorSnapshot(snapshot: value)
                 vc.makeVendorAnnotations()
+            } else {
+               
             }
            
-            print(snapshot)
+           
         })
-        print(vendorsSnapshot)
+      
     }
     
     func configureStorage(){
+       
         storageRef = Storage.storage().reference()
     }
     
@@ -145,11 +153,14 @@ class FirebaseClient : NSObject {
         storageRef!.child(imagePath).putData(photoData, metadata: metadata){ (metadata, error) in
             if let error = error {
                 print(" error uploading: \(error)")
+                vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
             vc.deleteOldTruckImage()
             vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
+            
+            
         }
         
     }
@@ -160,6 +171,7 @@ class FirebaseClient : NSObject {
         Storage.storage().reference(forURL: imageUrl).getData(maxSize: INT64_MAX) { (data, error) in
             guard (error == nil) else {
                 print(error.debugDescription)
+                
                 return
             }
             if  let downloadedImage = UIImage.init(data: data!, scale: 100) {
@@ -176,6 +188,7 @@ class FirebaseClient : NSObject {
         storageRef!.child(imagePath).putData(photoData, metadata: metadata) { (metadata, error) in
             if let error = error {
                 print(" error uploading: \(error)")
+                vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
                 return
             }
             userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)

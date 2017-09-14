@@ -35,6 +35,13 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
     }
 
     @IBAction func saveTapped(_ sender: Any) {
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                return
+            }
+        }
+
         FirebaseClient.sharedInstance.sendVendorDataForDataBase(closingTime: getCloseTime(), totalTimeOpen: totalOpenTime())
         //sendVendorDataForDataBase()
     }
