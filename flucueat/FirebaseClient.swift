@@ -37,8 +37,9 @@ class FirebaseClient : NSObject {
                     self.checkIfVendor(vc: vc)
                   
                 } else {
-                
-                    self.loginSession(presentingVC: vc)
+                    if !userVendor.isAuthorizedVendor {
+                        self.loginSession(presentingVC: vc)
+                    }
                 }
             }
             
@@ -147,6 +148,8 @@ class FirebaseClient : NSObject {
     }
     
     func sendTruckPhotoToFirebase(photoData: Data, vc: VendorInfoViewController) {
+        _ = UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         let imagePath = "\(userVendor.uniqueKey!)/truck_photos"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -154,12 +157,13 @@ class FirebaseClient : NSObject {
             if let error = error {
                 print(" error uploading: \(error)")
                 vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                _ = UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
             vc.deleteOldTruckImage()
             vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
-            
+            _ = UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
         }
         
@@ -182,6 +186,7 @@ class FirebaseClient : NSObject {
     }
     
     func sendFoodPhotoToFireBase(photoData: Data, indexPath: Int, vc: VendorInfoViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let imagePath = "\(userVendor.uniqueKey!)/food_photos/\(indexPath)"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -189,7 +194,9 @@ class FirebaseClient : NSObject {
             if let error = error {
                 print(" error uploading: \(error)")
                 vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 return
+                
             }
             userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
             userVendor.foodPhotoUrls.remove(at: indexPath + 1)
@@ -197,6 +204,7 @@ class FirebaseClient : NSObject {
             vc.deleteSinglePhotoAlt(index: indexPath)
            
             vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
            
         }

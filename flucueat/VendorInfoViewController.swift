@@ -91,9 +91,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VendorFoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-       
         cell.foodImage.image = userVendor.pictures[indexPath.row] //imageArray[indexPath.row]
-     
         return cell
     }
     
@@ -101,12 +99,10 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         indexOfSelectedItem = indexPath.row
         pickImageMenu()
-        
-        
-        
-       
-
- 
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
     }
     
     func layoutCells() {
@@ -204,6 +200,14 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             
         } else {
             dismiss(animated: true, completion: nil)
+        }
+        
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                return
+            }
         }
     }
     
