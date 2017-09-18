@@ -7,7 +7,7 @@ user flows.
 user type definitions:
 
 “vendor” is used to refer to a Food Truck operator, who will have signed up to use this app to put out up-to-date
-location information and operation hours. vendors will have access to many more viewControllers and capabilities than
+location information. vendors will have access to many more viewControllers and capabilities than
 the regular user type. they will have to log in to the app to be able to get to the vendor tabController flow
 
 user is the term from here out for any person accessing the app that is not a Vendor. The user's UX will be very simple
@@ -20,8 +20,8 @@ When a user opens the app, there will be a viewController available to them with
 is and have annotations for each food truck near them. tapping the annotation will show the user the truckInfo VC.
 
 FoodTruckInfoVC
-When a FoodTruckVC is opened, the app will show the user a picture of the Food Truck, it's name, a short description,
-the closing time of the food truck, and up to six images of the food offered by the food truck.
+When a FoodTruckVC is opened, the app will show the user a picture of the Food Truck, 
+it's name, a short description, and up to six images of the food offered by the food truck.
 There will be a "Let's Get Some" button that will open up either googleMaps if available or Apple Maps if not
 and give the user directions to the food Truck.
 
@@ -39,8 +39,8 @@ update those text fields and save before continuing. (this should only need to h
 to save an empty string for either name or description
 
 VendorMapVC
-The map will show the vendor's location and a special datePicker will allow the vendor to choose a closing time.
-the VendorMapVC will have an "Open" and a "Close" button. the Open button will publish the relevant information to the
+The map will show the vendor's location and the VendorMapVC will have an "Open" and a "Close" button. 
+the Open button will publish the relevant information to the
 publicly available part of the database, which is what the "user" ViewControllers use to get to populate their respective
 objects (map and table).
 

@@ -19,13 +19,32 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
         if !userVendor.isAuthorizedVendor {
          FirebaseClient.sharedInstance.loginSession(presentingVC: self)
         }
+        configureSignOut()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        userVendor.hasAttemptedLogin = false
         if !userVendor.isAuthorizedVendor {
             FirebaseClient.sharedInstance.checkIfVendor(vc: self)
         }
+    }
+    
+    func configureSignOut(){
+        let rightBarButton = UIBarButtonItem.init(
+            title: "Sign Out",
+            style: .done,
+            target: self,
+            action: #selector(signOutAction(sender:))
+        )
+        self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    func signOutAction(sender: UIBarButtonItem) {
+        print("sign out pressed")
+        FirebaseClient.sharedInstance.signOut()
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

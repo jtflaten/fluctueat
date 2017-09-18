@@ -13,15 +13,16 @@ import CoreLocation
 class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // create the total map area for the mapView
-    //TODO: make sure to abstract the hard coded numbers to constants
+    
     let locationManager = CLLocationManager()
     var vendorsAnnotations = [Vendor]()
+    var mapAnnotations = [MKAnnotation]()
     
     
-    //let userLocation = CLLocation().coordinate
     var mapRegion = MKCoordinateRegion()
     let mapSize = MKMapSize(width: 10, height: 10)
     var isConnected = true
+    
     
     
     
@@ -41,21 +42,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 return
             }
         }
-        
-        
-
-//        
-//        let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-//        twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
-//        twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
-//        
-//        self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         FirebaseClient.sharedInstance.configureDatabase(vc: self)
+        configureMapView()
         
     }
 
@@ -150,11 +142,16 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             
             vendorAnnotation.append(annotation)
         }
+        
+        
         DispatchQueue.main.async {
+            self.mapView.removeAnnotations(self.mapAnnotations)
             self.mapView.addAnnotations(vendorAnnotation)
+            self.mapAnnotations = vendorAnnotation
         }
         
     }
+    
     func configureMapView() {
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true

@@ -21,28 +21,18 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var foodImageCollectionFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
-    
- 
    
     var foodTruck = VendorCD()
     var foodTruckFetchedImage: TruckPhoto?
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
     var keyboardOnScreen = false
-   
-  
-
-    
-
-   let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        
         FirebaseClient.sharedInstance.configureStorage()
-        
         fetchTruckInfo()
         fetchTruckPhoto()
         fetchMenuPhotos()
@@ -52,16 +42,13 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
         layoutCells()
-       
 
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         subscribeToKeyboardNotifications()
     }
-    
 
-  
-    
     func setupTruckImage() {
       
         foodTruckImage.image = userVendor.truckImage!
@@ -70,13 +57,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func setuptextFields(){
-        self.truckName.delegate = self
-        self.truckDescription.delegate = self
+        truckName.delegate = self
+        truckDescription.delegate = self
         truckName.text = userVendor.name
         truckDescription.text = userVendor.description
 
     }
-    
     
     func updateUserVendor() {
         userVendor.name = truckName.text
@@ -106,7 +92,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func layoutCells() {
-        
         
         let cellVerticalSpaicng: CGFloat = 2
         var cellWidth: CGFloat
@@ -154,8 +139,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         present(pickerControllerMenu, animated: true, completion: nil)
         
     }
-    
-    
     
     @IBAction func changeImage(_ sender: Any) {
         pickImageFoodTruck()
@@ -210,9 +193,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
-    
- 
-    
     
     func checkTextFields () {
         if (truckName.text?.isEmpty)! || (truckDescription.text?.isEmpty)! {

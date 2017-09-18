@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseAuthUI
 
+
 class FirebaseClient : NSObject {
     
  //   static var user = User()
@@ -24,6 +25,7 @@ class FirebaseClient : NSObject {
     var urlSring: String?
     var openVendors = [Vendor]()
     var vendorsSnapshot = [DataSnapshot]()
+    var anonUser: User?
     
     
     
@@ -55,8 +57,10 @@ class FirebaseClient : NSObject {
             vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
                 return
             }
-         //   let isAnonymous = user!.isAnonymous
-           self.vendorUser = user!
+            
+            self.anonUser = user!
+            self.vendorUser = user!
+            
             }
         
     }
@@ -74,10 +78,36 @@ class FirebaseClient : NSObject {
                         return
                     }
                 }
-                vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
+                if userVendor.hasAttemptedLogin {
+                    vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
+                } else {
+                    self.loginSession(presentingVC: vc)
+                }
+                
             }
         })
     }
+    
+    func checkIfVendorAndPop(vc: UIViewController) {
+        let dbPath = "authorized_vendors"
+        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                let authorizedVendors = Array(value.allValues) as! [String]
+                for theValue in authorizedVendors {
+                    if theValue == self.vendorUser?.uid {
+                        userVendor.isAuthorizedVendor = true
+                        userVendor.uniqueKey = self.vendorUser?.uid
+                        
+                        return
+                    }
+                }
+                vc.alertViewWithPopToRoot(title: alertStrings.badUidAlert, message: alertStrings.badUidMessage, dismissAction: alertStrings.ok)
+                
+            }
+        })
+    }
+
+    
 
     func configureDatabase(vc: HomeMapViewController) {
     
@@ -111,7 +141,7 @@ class FirebaseClient : NSObject {
         let authViewController = authUI?.authViewController()
        
         presentingVC.present(authViewController!, animated: true, completion: nil)
-        
+        userVendor.hasAttemptedLogin = true
     
     }
     
@@ -238,7 +268,16 @@ class FirebaseClient : NSObject {
         ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).removeValue()
     }
     
-
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out:", signOutError)
+        }
+        self.vendorUser = anonUser
+        userVendor.isAuthorizedVendor = false
+        userVendor.hasAttemptedLogin = false
+    }
     
     func getVacantImageUrl() -> String {
         let imagePath = "vacant/empty.png"

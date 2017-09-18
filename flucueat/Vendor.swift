@@ -12,15 +12,16 @@ import UIKit
 struct Vendor {
     var  uniqueKey: String?
     var isAuthorizedVendor = false
+    var hasAttemptedLogin = false
     var truckImage: UIImage?
     var name: String?
     var description: String?
     var lat: Double
     var long: Double
     var pictures: [UIImage?]
-
     var truckPhotoUrl: String
     var foodPhotoUrls: [String]
+
 
     init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [String]) {
         self.uniqueKey = uniqueKey
