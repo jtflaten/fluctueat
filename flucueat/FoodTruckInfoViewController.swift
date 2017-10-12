@@ -151,7 +151,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     @IBAction func getDirectionsPushed(_ sender: Any) {
-       getDirections(lat: vendor.lat, long: vendor.long)
+       getDirections(lat: vendor.lat, long: vendor.long, vc: self)
     }
     
 }
