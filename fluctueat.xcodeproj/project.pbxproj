@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581034D11F8ECD8A00151ECF /* OpenInMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581034D01F8ECD8A00151ECF /* OpenInMaps.swift */; };
 		58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58106D051F1019830043F791 /* GoogleService-Info.plist */; };
 		58106D081F101B180043F791 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106D071F101B180043F791 /* Vendor.swift */; };
 		583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC791F0EDEA900E024C2 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		581034D01F8ECD8A00151ECF /* OpenInMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInMaps.swift; sourceTree = "<group>"; };
 		58106D051F1019830043F791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58106D071F101B180043F791 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 				589B078C1F39230200096544 /* FirebaseClient.swift */,
 				58FB4BB31F6AFB1D00A0B554 /* checkForConnection.swift */,
 				589B07CF1F4D3CF200096544 /* CoreData.swift */,
+				581034D01F8ECD8A00151ECF /* OpenInMaps.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				58106D081F101B180043F791 /* Vendor.swift in Sources */,
 				5856119A1F20123800C6D2ED /* VendorTabController.swift in Sources */,
 				585611961F20115900C6D2ED /* VendorMapViewController.swift in Sources */,
+				581034D11F8ECD8A00151ECF /* OpenInMaps.swift in Sources */,
 				589B07D01F4D3CF200096544 /* CoreData.swift in Sources */,
 				5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */,
 				589B07891F38332E00096544 /* AlertViews.swift in Sources */,

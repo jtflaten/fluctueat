@@ -149,6 +149,11 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         foodImageCollectionFlowLayout.minimumLineSpacing = actualVerticalSpacing
         
     }
+    
+    @IBAction func getDirectionsPushed(_ sender: Any) {
+       getDirections(lat: vendor.lat, long: vendor.long)
+    }
+    
 }
 
 
