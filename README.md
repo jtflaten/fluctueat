@@ -28,7 +28,7 @@ and give the user directions to the food Truck.
 
 ### VENDOR UX
 
-### ACCESSING VENDOR MODE
+**ACCESSING VENDOR MODE**
 On the HomeMapVC, a user can access the login page for Vendor Mode by pressing “vendor”
 
 ## VendorInfoVC
