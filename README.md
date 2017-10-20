@@ -5,7 +5,36 @@ The **FluctuEat** app is intended to help people find out what Food Trucks are o
 to help food truck Operators get that information out as easily as possible. Because of this, there are two possible
 user flows.
 
-user type definitions:
+## Getting Started
+This app uses Firebase
+You'll have to use cocoa pods to get the project to work
+If you don't have it, you can get cocoapods:
+```
+# Xcode 8 + 9
+$ sudo gem install cocoapods
+```
+this will be the text for your Podfile
+```
+# Fluctueat
+
+use_frameworks!
+platform :ios, '8.0'
+
+pod 'Firebase/Storage'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/RemoteConfig'
+pod 'FirebaseUI'
+
+target 'fluctueat' do
+end
+```
+In the project folder, delete the fluctueat.xcworkspace file, and run `pod install`
+and let cocoapods do it's thing. after that, you should be able to open the workspace.
+
+## Description of User Experiance
+
+**User type definitions**:
 
 “vendor” is used to refer to a Food Truck operator, who will have signed up to use this app to put out up-to-date
 location information. vendors will have access to many more viewControllers and capabilities than
