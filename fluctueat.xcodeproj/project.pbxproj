@@ -180,7 +180,6 @@
 		5856119C1F2012D100C6D2ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				58106D071F101B180043F791 /* Vendor.swift */,
 				5872BAA51F1946EB00366391 /* Constants.swift */,
 				589B078C1F39230200096544 /* FirebaseClient.swift */,
 				58FB4BB31F6AFB1D00A0B554 /* checkForConnection.swift */,
@@ -204,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				5872BAA11F1942E000366391 /* HomeMapViewController.swift */,
+				58106D071F101B180043F791 /* Vendor.swift */,
 				585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */,
 			);
 			name = GeneralUser;
