@@ -63,7 +63,8 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
                 self.truckActivityIndicator.stopAnimating()
             }
         }
-        
+        truckImage.layer.cornerRadius = 3.0
+        truckImage.clipsToBounds = true
     }
     
     func setupFoodImage() {
