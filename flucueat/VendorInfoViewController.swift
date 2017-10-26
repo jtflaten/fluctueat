@@ -47,6 +47,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         subscribeToKeyboardNotifications()
+        FirebaseClient.sharedInstance.checkIfVendorAndPop(vc: self)
     }
 
     func setupTruckImage() {

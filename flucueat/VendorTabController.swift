@@ -16,19 +16,19 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        // FirebaseClient.sharedInstance.configureAuth(vc: self)
-        if !userVendor.isAuthorizedVendor {
+       // if !userVendor.isAuthorizedVendor {
         // FirebaseClient.sharedInstance.loginSession(presentingVC: self)
-        }
+      //  }
         configureSignOut()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        userVendor.hasAttemptedLogin = false
-        if !userVendor.isAuthorizedVendor {
-            FirebaseClient.sharedInstance.checkIfVendor(vc: self)
-        }
+//        userVendor.hasAttemptedLogin = false
+//        if !userVendor.isAuthorizedVendor {
+//            FirebaseClient.sharedInstance.checkIfVendor(vc: self)
+//        }
     }
     
     func configureSignOut(){

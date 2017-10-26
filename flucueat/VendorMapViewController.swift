@@ -33,6 +33,7 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
         configureMapView()
 
     }
+    
 
     @IBAction func saveTapped(_ sender: Any) {
         isInternetAvailable() { answer in
