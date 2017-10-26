@@ -53,6 +53,7 @@
                     <navigationItem key="navigationItem" title="Food For You" id="8Tg-hg-EpD">
                         <barButtonItem key="rightBarButtonItem" title="vendor" id="vNd-Ts-rlo">
                             <connections>
+                                <action selector="vendorButton:" destination="BYZ-38-t0r" id="Xww-Al-hQi"/>
                                 <segue destination="JxL-08-4dY" kind="show" id="QaM-pt-Yrr"/>
                             </connections>
                         </barButtonItem>

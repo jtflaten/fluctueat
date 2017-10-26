@@ -160,6 +160,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     
+    @IBAction func vendorButton(_ sender: Any) {
+        
+    }
+    
 //    This gesture will eventually be used to replace the "vendor" button on the mapVC
     
 //    func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
