@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate {
     
     var vendor: Vendor!
     var foodImages = [#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),#imageLiteral(resourceName: "empty"),]
@@ -32,6 +32,8 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         setupTruckImage()
         setupFoodImage()
         layoutCells()
+     //   navigationController!.delegate = self
+        setupNavBarItems()
     }
     
 
@@ -153,7 +155,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     @IBAction func getDirectionsPushed(_ sender: Any) {
-       getDirections(lat: vendor.lat, long: vendor.long, vc: self)
+       getDirections()
     }
     
     func configureBackground() {
@@ -164,6 +166,34 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         backgroundGradient.locations = [0.0, 1.0]
         backgroundGradient.frame = view.frame
         view.layer.insertSublayer(backgroundGradient, at: 0)
+    }
+    
+    func getDirections() {
+        let coordinates = "\(vendor.lat),\(vendor.long)"
+        let googleUrlScheme = "https://www.google.com/maps/search/?api=1&query=\(coordinates)"
+        let app = UIApplication.shared
+        if let toOpen = URL(string: googleUrlScheme) {
+            guard app.canOpenURL(toOpen) else {
+                self.alertView(title: "Something's gone wrong", message: "We can't open up a Maps App", dismissAction: "Ok")
+                return
+            }
+            app.open(toOpen, options: [:], completionHandler: nil)
+        }
+        print(googleUrlScheme)
+    }
+    
+    func setupNavBarItems() {
+//        let callButton = UIButton(type: .system)
+//        callButton.setImage(#imageLiteral(resourceName: "call").withRenderingMode(.alwaysOriginal), for: .normal)
+//        callButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        let mapButton = UIButton(type: .system)
+        mapButton.setImage(#imageLiteral(resourceName: "map"), for: .normal)
+        mapButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        mapButton.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
+        
+//        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: mapButton)
     }
 }
 

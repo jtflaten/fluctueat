@@ -42,6 +42,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
         layoutCells()
+        
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +121,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         foodImageCollectionFlowLayout.minimumLineSpacing = actualVerticalSpacing
         
     }
+    
+    
     
     
    let pickerController = UIImagePickerController()
@@ -289,6 +292,8 @@ extension VendorInfoViewController {
     func unsubscribeFromAllNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
+    
+
 }
 
 
