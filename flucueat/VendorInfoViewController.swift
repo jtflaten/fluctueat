@@ -156,6 +156,13 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    func saveTapped() {
+        checkTextFields()
+        updateUserVendor()
+        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
+        saveInfo()
+    }
+    
     @IBAction func tappedView(_ sender: Any) {
         resignTextfield()
     }
@@ -219,6 +226,20 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
         userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
     }
+    
+    func setupNavBarItems() {
+        let openButton = UIButton(type: .system)
+        openButton.setImage(#imageLiteral(resourceName: "Open").withRenderingMode(.alwaysOriginal), for: .normal)
+        openButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        let saveButton = UIButton(type: .system)
+        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
+        saveButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
+        
+        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+    }
 
     
     // MARK: Show/Hide Keyboard
@@ -270,6 +291,9 @@ extension VendorInfoViewController: UITextFieldDelegate {
         
         return true
     }
+   
+ 
+    
 }
 
 

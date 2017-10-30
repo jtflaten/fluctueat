@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.002859"
+            timestampString = "531089841.951667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,27 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.00296"
+            timestampString = "531089841.952118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003017"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "VendorInfoViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,13 +74,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.00307"
+            timestampString = "531089841.952425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "checkTextFields()"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "tappedView(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/VendorInfoViewController.swift"
+            timestampString = "531089841.952712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "VendorInfoViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,13 +158,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003129"
+            timestampString = "531089841.952993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "VendorInfoViewController"
-            landmarkType = "3">
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,7 +174,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003181"
+            timestampString = "531089841.953272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -190,11 +190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003234"
+            timestampString = "531089841.95357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -445,11 +445,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003431"
+            timestampString = "531089841.954037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -461,11 +461,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003484"
+            timestampString = "531089841.954317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -509,13 +509,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003566"
+            timestampString = "531089841.954762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "setupTruckImage()"
-            landmarkType = "7">
+            landmarkName = "VendorInfoViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -525,11 +525,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.003618"
+            timestampString = "531089841.955047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "keyboardWillShow(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -541,11 +541,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "530831307.00367"
+            timestampString = "531089841.955326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "keyboardWillShow(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1213,7 +1213,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.00418"
+            timestampString = "531089841.956152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -1229,7 +1229,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004238"
+            timestampString = "531089841.95624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -1245,7 +1245,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004292"
+            timestampString = "531089841.956301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -1261,7 +1261,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004346"
+            timestampString = "531089841.956362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -1277,7 +1277,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.0044"
+            timestampString = "531089841.95642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -1293,7 +1293,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004455"
+            timestampString = "531089841.956481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -1405,7 +1405,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004595"
+            timestampString = "531089841.956638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -1549,7 +1549,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004763"
+            timestampString = "531089841.956825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -1565,7 +1565,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004817"
+            timestampString = "531089841.956884"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -1581,7 +1581,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.00487"
+            timestampString = "531089841.956941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -1597,7 +1597,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004922"
+            timestampString = "531089841.956999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
@@ -1613,7 +1613,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "530831307.004972"
+            timestampString = "531089841.957073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
