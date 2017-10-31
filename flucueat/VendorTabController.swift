@@ -20,6 +20,7 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
         // FirebaseClient.sharedInstance.loginSession(presentingVC: self)
       //  }
         configureSignOut()
+        addFoodTruckInfoVC()
         
     }
     
@@ -38,7 +39,18 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
             target: self,
             action: #selector(signOutAction(sender:))
         )
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let openButton = UIButton(type: .system)
+        openButton.setImage(#imageLiteral(resourceName: "Open").withRenderingMode(.alwaysOriginal), for: .normal)
+        openButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        let saveButton = UIButton(type: .system)
+        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
+        saveButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        saveButton.addTarget(self, action: #selector(VendorInfoViewController.saveTapped), for: .touchUpInside)
+        
+        self.navigationItem.rightBarButtonItems = [rightBarButton, UIBarButtonItem(customView: openButton), UIBarButtonItem(customView: saveButton) ]
+       
     }
     
     func signOutAction(sender: UIBarButtonItem) {
@@ -47,4 +59,19 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
+//    func setupNavBarItems() {
+//
+//
+//        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+//    }
+    
+    func addFoodTruckInfoVC(){
+        let tabBarItem = UITabBarItem.init(title: "Profile", image: nil, selectedImage: nil)
+        let foodTruckVC = FoodTruckInfoViewController()
+        foodTruckVC.vendor = userVendor
+        foodTruckVC.tabBarItem = tabBarItem
+        self.viewControllers?.append(foodTruckVC)
+        
+    }
 }
