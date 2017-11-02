@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jSW-gr-240">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jSW-gr-240">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,41 +93,12 @@
                                 <rect key="frame" x="6" y="384" width="363" height="247"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is your location on the map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-Xz-NDI">
-                                        <rect key="frame" x="60" y="0.0" width="243" height="82.5"/>
+                                        <rect key="frame" x="60" y="0.0" width="243" height="247"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="shR-5q-6RZ">
-                                        <rect key="frame" x="21.5" y="82.5" width="320" height="82"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="523779420.186409">
-                                            <!--2017-08-07 06:17:00 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="HO7-qK-XGk">
-                                        <rect key="frame" x="13" y="164.5" width="337" height="82.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-0j-C9n">
-                                                <rect key="frame" x="0.0" y="26.5" width="162" height="30"/>
-                                                <state key="normal" title="Open for the day!"/>
-                                                <connections>
-                                                    <action selector="saveTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="Vhm-Q7-FWN"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yS-ob-X8d">
-                                                <rect key="frame" x="175" y="26.5" width="162" height="30"/>
-                                                <state key="normal" title="We're Closed!"/>
-                                                <connections>
-                                                    <action selector="closeTapped:" destination="Abo-US-fGv" eventType="touchUpInside" id="ZQa-XB-ylH"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="HO7-qK-XGk" firstAttribute="leading" secondItem="gKu-7O-ywg" secondAttribute="leading" constant="13" id="6Jw-da-HfQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="HO7-qK-XGk" secondAttribute="trailing" constant="13" id="tXD-GH-RN4"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,10 +112,8 @@
                             <constraint firstItem="gKu-7O-ywg" firstAttribute="leading" secondItem="CrH-00-iel" secondAttribute="leading" constant="6" id="uAz-gV-paX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="5vO-ko-hbw"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="5vO-ko-hbw"/>
                     <connections>
-                        <outlet property="openUntil" destination="shR-5q-6RZ" id="NKa-Du-cXN"/>
-                        <outlet property="saveButton" destination="PQD-0j-C9n" id="Rt3-yJ-yzI"/>
                         <outlet property="vendorMapView" destination="GFf-oq-jhn" id="7Cl-EK-GTd"/>
                     </connections>
                 </viewController>
@@ -210,7 +179,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KUw-mp-ckv">
-                                                <rect key="frame" x="0.0" y="60" width="375" height="181"/>
+                                                <rect key="frame" x="0.0" y="60" width="375" height="255"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qBj-ac-jPb">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -243,13 +212,6 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQw-pg-KNm">
-                                                <rect key="frame" x="0.0" y="241" width="375" height="74"/>
-                                                <state key="normal" title="save"/>
-                                                <connections>
-                                                    <action selector="saveButtonPushed:" destination="27p-XB-cL5" eventType="touchUpInside" id="Dp4-7Q-T9f"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -271,7 +233,7 @@
                             <outletCollection property="gestureRecognizers" destination="197-zQ-z3n" appends="YES" id="MEl-7c-rMb"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="General Info" id="sv0-QJ-gdm"/>
+                    <tabBarItem key="tabBarItem" title="General Info" image="info" id="sv0-QJ-gdm"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -279,7 +241,6 @@
                         <outlet property="foodImageCollection" destination="KUw-mp-ckv" id="ASq-yI-FGr"/>
                         <outlet property="foodImageCollectionFlowLayout" destination="qBj-ac-jPb" id="nDG-So-FUb"/>
                         <outlet property="foodTruckImage" destination="ILM-F9-zSF" id="lA3-0K-OZR"/>
-                        <outlet property="saveButton" destination="QQw-pg-KNm" id="ls4-BI-D4A"/>
                         <outlet property="truckDescription" destination="q4m-3n-DmO" id="o41-sp-VM3"/>
                         <outlet property="truckName" destination="rta-ES-Yz9" id="Ew9-wv-5HT"/>
                     </connections>
@@ -432,4 +393,8 @@
             <point key="canvasLocation" x="1089" y="-369"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info" width="50" height="50"/>
+        <image name="map" width="50" height="50"/>
+    </resources>
 </document>

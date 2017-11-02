@@ -21,13 +21,13 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
 
 
     @IBOutlet weak var vendorMapView: MKMapView!
-    @IBOutlet weak var openUntil: UIDatePicker!
-    @IBOutlet weak var saveButton: UIButton!
+ //   @IBOutlet weak var openUntil: UIDatePicker!
+  //  @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
   
-        configureDatePicker(datePicker: openUntil)
+       // configureDatePicker(datePicker: openUntil)
         getLocation()
         addLocationToVendor()
         configureMapView()
@@ -35,52 +35,53 @@ class VendorMapViewController: UIViewController, MKMapViewDelegate,CLLocationMan
     }
     
 
-    @IBAction func saveTapped(_ sender: Any) {
-        isInternetAvailable() { answer in
-            guard answer == true else {
-                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
-                return
-            }
-        }
-
-        FirebaseClient.sharedInstance.sendVendorDataForDataBase(closingTime: getCloseTime(), totalTimeOpen: totalOpenTime())
-        //sendVendorDataForDataBase()
-    }
+//    @IBAction func saveTapped(_ sender: Any) {
+//        isInternetAvailable() { answer in
+//            guard answer == true else {
+//                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+//                return
+//            }
+//        }
+//
+//        FirebaseClient.sharedInstance.sendVendorDataForDataBase()
+//        //sendVendorDataForDataBase()
+//    }
+//    
+//    @IBAction func closeTapped(_ sender: Any) {
+//        FirebaseClient.sharedInstance.removeFromOpenVendorDB()
+//    }
     
-    @IBAction func closeTapped(_ sender: Any) {
-        FirebaseClient.sharedInstance.removeFromOpenVendorDB()
-    }
     func addLocationToVendor() {
         userVendor.lat = globalUserPlace.latitude
         userVendor.long = globalUserPlace.longitude
         
     }
-    func configureDatePicker(datePicker: UIDatePicker) {
-        datePicker.isHidden = true
+//    func configureDatePicker(datePicker: UIDatePicker) {
+//        datePicker.isHidden = true
         //DATE picker for setting a closing time. to be added
 //        let maxTime = timeThisVCOpened.addingTimeInterval(12 * 60 * 60)
 //        
 //        datePicker.minimumDate = timeThisVCOpened
 //        datePicker.maximumDate = maxTime
         
-    }
+//    }
     
-    func getCloseTime() -> String {
-        
-        let closingTime = openUntil.date.description(with: .current)
-        
-       
-
-        return closingTime
-        
-    }
-    
-    func totalOpenTime() -> String {
-        let timeUntilClose: TimeInterval = openUntil.date.timeIntervalSinceNow
-        let openTimeString = timeUntilClose.description
-        
-        return openTimeString
-    }
+//    func getCloseTime() -> String {
+//
+//        let closingTime = openUntil.date.description(with: .current)
+//
+//
+//
+//        return closingTime
+//
+//    }
+//
+//    func totalOpenTime() -> String {
+//        let timeUntilClose: TimeInterval = openUntil.date.timeIntervalSinceNow
+//        let openTimeString = timeUntilClose.description
+//
+//        return openTimeString
+//    }
     
  
     func getLocation() {

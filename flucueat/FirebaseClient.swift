@@ -241,15 +241,15 @@ class FirebaseClient : NSObject {
     }
     
     
-    func sendVendorDataForDataBase(closingTime: String , totalTimeOpen: String ) {
+    func sendVendorDataForDataBase() {
         var data = [String:String]()
         data[dbConstants.uid] = userVendor.uniqueKey
         data[dbConstants.name] = userVendor.name
         data[dbConstants.description] = userVendor.description
         data[dbConstants.lat] = "\(userVendor.lat)"
         data[dbConstants.long] = "\(userVendor.long)"
-        data[dbConstants.closingTime] = closingTime
-        data[dbConstants.totalTimeOpen] = totalTimeOpen
+        // data[dbConstants.closingTime] = closingTime
+        //data[dbConstants.totalTimeOpen] = totalTimeOpen
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
         data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[0]
@@ -266,6 +266,25 @@ class FirebaseClient : NSObject {
     
     func removeFromOpenVendorDB() {
         ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).removeValue()
+    }
+    
+    func saveVendorData () {
+        var data = [String:String]()
+        data[dbConstants.uid] = userVendor.uniqueKey
+        data[dbConstants.name] = userVendor.name
+        data[dbConstants.description] = userVendor.description
+        data[dbConstants.lat] = "\(userVendor.lat)"
+        data[dbConstants.long] = "\(userVendor.long)"
+        data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
+        
+        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[0]
+        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[1]
+        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[2]
+        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[3]
+        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[4]
+        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[5]
+        
+        ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
     }
     
     func signOut() {

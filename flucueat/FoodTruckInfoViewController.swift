@@ -189,7 +189,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         
         let mapButton = UIButton(type: .system)
         mapButton.setImage(#imageLiteral(resourceName: "map"), for: .normal)
-        mapButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        mapButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         mapButton.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
         
 //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
