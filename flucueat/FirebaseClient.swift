@@ -107,6 +107,21 @@ class FirebaseClient : NSObject {
         })
     }
 
+    func getUserVendor() {
+        let dbPath = "vendor_archive/\(userVendor.uniqueKey!)"
+        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                let vendorObjectList = Array(value.allKeys) as! [String]
+                for eachObject in vendorObjectList {
+                    if eachObject == userVendor.uniqueKey {
+                        if let value = snapshot.value as? NSDictionary {
+                            self.parseUserVendor(snapshot: value)
+                        }
+                    }
+                }
+            }
+        })
+    }
     
 
     func configureDatabase(vc: HomeMapViewController) {
@@ -144,6 +159,15 @@ class FirebaseClient : NSObject {
         userVendor.hasAttemptedLogin = true
     
     }
+    
+    func parseUserVendor(snapshot: NSDictionary) {
+       
+        userVendor.name = snapshot[dbConstants.name] as? String
+        userVendor.description = snapshot[dbConstants.description] as? String
+        userVendor.truckPhotoUrl = snapshot[dbConstants.truckImageUrl] as! String
+        userVendor.foodPhotoUrls = [snapshot[dbConstants.foodPhotoOne],snapshot[dbConstants.foodPhotoTwo], snapshot[dbConstants.foodPhotoThree], snapshot[dbConstants.foodPhotoFour], snapshot[dbConstants.foodPhotoFive], snapshot[dbConstants.foodPhotoZero]] as! [String]
+    }
+    
     
     func parseVendorSnapshot(snapshot: NSDictionary) -> [Vendor] {
        var vendorList = [Vendor]()

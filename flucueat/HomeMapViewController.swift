@@ -39,11 +39,11 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         //addVendorSwipeGesture()
         
         
-                let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-                twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
-                twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
-        
-                self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
+//                let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
+//                twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
+//                twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
+//
+//                self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
         
         isInternetAvailable() { answer in
             guard answer == true else {
@@ -60,12 +60,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     
-    func addVendorSwipeGesture(){
-        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-        gesture.direction = .up
-        gesture.numberOfTouchesRequired = 2
-        self.mapView.addGestureRecognizer(gesture)
-    }
+//    func addVendorSwipeGesture(){
+//        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
+//        gesture.direction = .up
+//        gesture.numberOfTouchesRequired = 2
+//        self.mapView.addGestureRecognizer(gesture)
+//    }
 
     func getLocation() {
         self.locationManager.requestWhenInUseAuthorization()
@@ -107,7 +107,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             if pinView!.annotation?.title! == "This is You" {
                 pinView?.pinTintColor = .blue
-                pinView?.rightCalloutAccessoryView = nil
+                //pinView!.rightCalloutAccessoryView = nil
             }
             pinView!.annotation = annotation
         } else {
@@ -138,8 +138,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let annotationDesc = view.annotation?.subtitle
         
         if view.annotation?.title! == "This is You" {
-            let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
-            self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+            pushToVendor()
+            return
         }
         
         let selectedVendor = findRightVendor(name: annotationName!!, desc: annotationDesc!!)
@@ -193,7 +193,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 //    }
     
 //    This gesture will eventually be used to replace the "vendor" button on the mapVC
-    func swipeToVendor(_ gestureRecognizer: UISwipeGestureRecognizer){
+    func pushToVendor() {
+        if !userVendor.isAuthorizedVendor {
+            FirebaseClient.sharedInstance.loginSession(presentingVC: self)
+        }
         let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
         self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
     }
