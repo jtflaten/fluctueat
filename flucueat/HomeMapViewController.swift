@@ -36,6 +36,15 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn(vc: self)
         configureMapView()
+        //addVendorSwipeGesture()
+        
+        
+                let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
+                twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
+                twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
+        
+                self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
+        
         isInternetAvailable() { answer in
             guard answer == true else {
                 self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
@@ -49,6 +58,13 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         FirebaseClient.sharedInstance.configureDatabase(vc: self)
         configureMapView()
         
+    }
+    
+    func addVendorSwipeGesture(){
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
+        gesture.direction = .up
+        gesture.numberOfTouchesRequired = 2
+        self.mapView.addGestureRecognizer(gesture)
     }
 
     func getLocation() {
@@ -120,6 +136,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
         let annotationName = view.annotation?.title
         let annotationDesc = view.annotation?.subtitle
+        
+        if view.annotation?.title! == "This is You" {
+            let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
+            self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+        }
+        
         let selectedVendor = findRightVendor(name: annotationName!!, desc: annotationDesc!!)
         truckInfoViewController.vendor = selectedVendor
         self.navigationController!.pushViewController(truckInfoViewController, animated: true)
@@ -160,24 +182,21 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     
-    @IBAction func vendorButton(_ sender: Any) {
-        FirebaseClient.sharedInstance.configureAuth(vc: self)
-        if !userVendor.isAuthorizedVendor {
-            FirebaseClient.sharedInstance.loginSession(presentingVC: self)
-        }
-        let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
-        self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
-
-    }
+//    @IBAction func vendorButton(_ sender: Any) {
+//        FirebaseClient.sharedInstance.configureAuth(vc: self)
+//        if !userVendor.isAuthorizedVendor {
+//            FirebaseClient.sharedInstance.loginSession(presentingVC: self)
+//        }
+//        let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
+//        self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+//
+//    }
     
 //    This gesture will eventually be used to replace the "vendor" button on the mapVC
-    
-//    func swipeToVendor(gestureRecognizer: UISwipeGestureRecognizer){
-//        let authController = self.storyboard?.instantiateViewController(withIdentifier: "AuthTabController") as! VendorTabController
-//        print("swiped2")
-//        
-//        self.navigationController!.present(authController, animated: true)
-//    }
+    func swipeToVendor(_ gestureRecognizer: UISwipeGestureRecognizer){
+        let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
+        self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+    }
 }
 
 
