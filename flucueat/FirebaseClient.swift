@@ -172,7 +172,7 @@ class FirebaseClient : NSObject {
     func parseVendorSnapshot(snapshot: NSDictionary) -> [Vendor] {
        var vendorList = [Vendor]()
         
-                for (vendor, dict) in snapshot {
+                for (_, dict) in snapshot {
                     let vendorDict = dict as! NSDictionary
     
                     let uid = vendorDict[dbConstants.uid] as! String
