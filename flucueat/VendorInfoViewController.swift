@@ -33,10 +33,10 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
        
         FirebaseClient.sharedInstance.configureStorage()
-       // fetchTruckInfo()
+        //fetchTruckInfo()
         //fetchTruckPhoto()
         //fetchMenuPhotos()
-      //  FirebaseClient.sharedInstance.getUserVendor()
+        FirebaseClient.sharedInstance.getUserVendor()
         setuptextFields()
         setupTruckImage()
         fillOutImageUrlArray(array: userVendor.foodPhotoUrls)

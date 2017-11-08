@@ -116,6 +116,7 @@ class FirebaseClient : NSObject {
                     if eachObject == userVendor.uniqueKey {
                         if let value = snapshot.value as? NSDictionary {
                             self.parseUserVendor(snapshot: value)
+                            print(value)
                         }
                     }
                 }

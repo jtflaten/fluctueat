@@ -182,15 +182,16 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     
-//    @IBAction func vendorButton(_ sender: Any) {
+   @IBAction func vendorButton(_ sender: Any) {
 //        FirebaseClient.sharedInstance.configureAuth(vc: self)
 //        if !userVendor.isAuthorizedVendor {
 //            FirebaseClient.sharedInstance.loginSession(presentingVC: self)
 //        }
 //        let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
 //        self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+    pushToVendor()
 //
-//    }
+   }
     
 //    This gesture will eventually be used to replace the "vendor" button on the mapVC
     func pushToVendor() {
