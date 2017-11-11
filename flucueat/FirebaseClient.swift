@@ -116,7 +116,7 @@ class FirebaseClient : NSObject {
                     if eachObject == userVendor.uniqueKey {
                         if let value = snapshot.value as? NSDictionary {
                             self.parseUserVendor(snapshot: value)
-                            print(value)
+                            print("PRINTING VALUE",value)
                         }
                     }
                 }
@@ -198,8 +198,9 @@ class FirebaseClient : NSObject {
             print(error.debugDescription)
             return
         }
-        vendorUser = user
+        //vendorUser = user
         self.loginSession(presentingVC: authUI.authViewController())
+        //userVendor.uniqueKey = user?.uid
     }
     
     func sendTruckPhotoToFirebase(photoData: Data, vc: VendorInfoViewController) {

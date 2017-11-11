@@ -195,6 +195,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
 //    This gesture will eventually be used to replace the "vendor" button on the mapVC
     func pushToVendor() {
+        FirebaseClient.sharedInstance.configureAuth(vc: self)
         if !userVendor.isAuthorizedVendor {
             FirebaseClient.sharedInstance.loginSession(presentingVC: self)
         }
