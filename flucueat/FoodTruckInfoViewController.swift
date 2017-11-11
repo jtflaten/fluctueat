@@ -159,13 +159,16 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func configureBackground() {
-        let backgroundGradient = CAGradientLayer()
-        let colorTop = UIColor(red:0.90, green:0.76, blue:0.13, alpha:1.0).cgColor
-        let colorBottom = UIColor(red:0.82, green:0.01, blue:0.11, alpha: 1.0).cgColor
-        backgroundGradient.colors = [colorTop, colorBottom]
-        backgroundGradient.locations = [0.0, 1.0]
-        backgroundGradient.frame = view.frame
-        view.layer.insertSublayer(backgroundGradient, at: 0)
+        
+//        let backgroundGradient = CAGradientLayer()
+//        let colorTop = UIColor(red:0.90, green:0.76, blue:0.13, alpha:1.0).cgColor
+      let colorBottom = UIColor(red:0.82, green:0.01, blue:0.11, alpha: 1.0).cgColor
+//
+//        backgroundGradient.colors = [colorTop, colorBottom]
+//        backgroundGradient.locations = [0.0, 1.0]
+//        backgroundGradient.frame = view.frame
+//        view.layer.insertSublayer(backgroundGradient, at: 0)
+        view.layer.backgroundColor = colorBottom
     }
     
     func getDirections() {
