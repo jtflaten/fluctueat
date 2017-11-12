@@ -19,6 +19,7 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
        // if !userVendor.isAuthorizedVendor {
         // FirebaseClient.sharedInstance.loginSession(presentingVC: self)
       //  }
+      
         configureNavBar()
       //  addFoodTruckInfoVC()
         
@@ -92,6 +93,8 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     func saveAction(sender: UIButton) {
         FirebaseClient.sharedInstance.saveVendorData()
     }
+    
+
     
 //    func setupNavBarItems() {
 //
