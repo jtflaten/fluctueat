@@ -24,6 +24,7 @@ class FirebaseClient : NSObject {
     var vendorUser: User?
     var urlSring: String?
     var openVendors = [Vendor]()
+    var vendorArchive = [Vendor]()
     var vendorsSnapshot = [DataSnapshot]()
     var anonUser: User?
     
@@ -37,6 +38,7 @@ class FirebaseClient : NSObject {
                 if self.vendorUser != activeUser {
                     self.vendorUser = activeUser
                     self.checkIfVendor(vc: vc)
+                    userVendor = self.findCorrectVendor(id: self.vendorUser?.uid)!
                   
                 } else {
                     if !userVendor.isAuthorizedVendor {
@@ -63,6 +65,17 @@ class FirebaseClient : NSObject {
             
             }
         
+    }
+    
+    func findCorrectVendor(id: String?) -> Vendor? {
+        
+        for vendor in FirebaseClient.sharedInstance.vendorArchive {
+            
+            if id == vendor.uniqueKey {
+                return vendor
+            }
+        }
+        return nil
     }
     
     func checkIfVendor(vc: UIViewController) {
@@ -107,22 +120,22 @@ class FirebaseClient : NSObject {
         })
     }
 
-    func getUserVendor() {
-        let dbPath = "vendor_archive/\(userVendor.uniqueKey!)"
-        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
-            if let value = snapshot.value as? NSDictionary {
-                let vendorObjectList = Array(value.allKeys) as! [String]
-                for eachObject in vendorObjectList {
-                    if eachObject == userVendor.uniqueKey {
-                        if let value = snapshot.value as? NSDictionary {
-                            self.parseUserVendor(snapshot: value)
-                            print("PRINTING VALUE",value)
-                        }
-                    }
-                }
-            }
-        })
-    }
+//    func getUserVendor() {
+//        let dbPath = "vendor_archive/\(userVendor.uniqueKey!)"
+//        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
+//            if let value = snapshot.value as? NSDictionary {
+//                let vendorObjectList = Array(value.allKeys) as! [String]
+//                for eachObject in vendorObjectList {
+//                    if eachObject == userVendor.uniqueKey {
+//                        if let value = snapshot.value as? NSDictionary {
+//                            self.parseUserVendor(snapshot: value)
+//                            print("PRINTING VALUE",value)
+//                        }
+//                    }
+//                }
+//            }
+//        })
+//    }
     
 
     func configureDatabase(vc: HomeMapViewController) {
@@ -136,11 +149,24 @@ class FirebaseClient : NSObject {
             } else {
                
             }
-           
-           
         })
+            
+      
       
     }
+    
+    func configureVendor() {
+        ref = Database.database().reference()
+        _refHandle = ref.child(dbConstants.vendorArchive).observe(.value, with: { (snapshot) in
+            
+            if let value = snapshot.value as? NSDictionary {
+                self.vendorArchive = self.parseVendorSnapshot(snapshot: value)
+            }
+            
+        })
+    }
+    
+    
     
     func configureStorage(){
        
@@ -161,13 +187,13 @@ class FirebaseClient : NSObject {
     
     }
     
-    func parseUserVendor(snapshot: NSDictionary) {
-       
-        userVendor.name = snapshot[dbConstants.name] as? String
-        userVendor.description = snapshot[dbConstants.description] as? String
-        userVendor.truckPhotoUrl = snapshot[dbConstants.truckImageUrl] as! String
-        userVendor.foodPhotoUrls = [snapshot[dbConstants.foodPhotoOne],snapshot[dbConstants.foodPhotoTwo], snapshot[dbConstants.foodPhotoThree], snapshot[dbConstants.foodPhotoFour], snapshot[dbConstants.foodPhotoFive], snapshot[dbConstants.foodPhotoZero]] as! [String]
-    }
+//    func parseUserVendor(snapshot: NSDictionary) {
+//       
+//        userVendor.name = snapshot[dbConstants.name] as? String
+//        userVendor.description = snapshot[dbConstants.description] as? String
+//        userVendor.truckPhotoUrl = snapshot[dbConstants.truckImageUrl] as! String
+//        userVendor.foodPhotoUrls = [snapshot[dbConstants.foodPhotoOne],snapshot[dbConstants.foodPhotoTwo], snapshot[dbConstants.foodPhotoThree], snapshot[dbConstants.foodPhotoFour], snapshot[dbConstants.foodPhotoFive], snapshot[dbConstants.foodPhotoZero]] as! [String]
+//    }
     
     
     func parseVendorSnapshot(snapshot: NSDictionary) -> [Vendor] {

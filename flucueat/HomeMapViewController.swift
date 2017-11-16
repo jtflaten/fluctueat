@@ -36,6 +36,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         getLocation()
         FirebaseClient.sharedInstance.anonSignIn(vc: self)
         configureMapView()
+        FirebaseClient.sharedInstance.configureVendor()
+       
         //addVendorSwipeGesture()
         
         

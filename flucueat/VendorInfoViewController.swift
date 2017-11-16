@@ -14,7 +14,9 @@ import FirebaseAuthUI
 class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var foodTruckImage: UIImageView!
+    
+    @IBOutlet weak var truckActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var truckImage: UIImageView!
     @IBOutlet weak var truckName: UITextField!
     @IBOutlet weak var truckDescription: UITextField!
     @IBOutlet weak var foodImageCollection: UICollectionView!
@@ -36,7 +38,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         //fetchTruckInfo()
         //fetchTruckPhoto()
         //fetchMenuPhotos()
-        FirebaseClient.sharedInstance.getUserVendor()
+        //FirebaseClient.sharedInstance.getUserVendor()
         setuptextFields()
         setupTruckImage()
         configureBackground()
@@ -68,8 +70,32 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func setupTruckImage() {
       
-        foodTruckImage.image = userVendor.truckImage!
-        foodTruckImage.backgroundColor = .clear
+        truckImage.image = #imageLiteral(resourceName: "empty")
+        truckActivityIndicator.hidesWhenStopped = true
+        truckActivityIndicator.startAnimating()
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                self.truckActivityIndicator.stopAnimating()
+                return
+            }
+        }
+        
+        FirebaseClient.sharedInstance.imageStorageUrl(url: userVendor.truckPhotoUrl).getData(maxSize: INT64_MAX) { (data , error)  in
+            guard error == nil else {
+                print("error downloading: \(String(describing: error))")
+                self.alertViewWithPopToRoot(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                self.truckActivityIndicator.stopAnimating()
+                return
+            }
+            let downloadedTruck = UIImage.init(data: data!)
+            DispatchQueue.main.async {
+                self.truckImage.image = downloadedTruck
+                self.truckActivityIndicator.stopAnimating()
+            }
+        }
+        truckImage.layer.cornerRadius = 3.0
+        truckImage.clipsToBounds = true
      
     }
     
@@ -185,7 +211,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if  picker == pickerController {
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                foodTruckImage.image = originalImage
+                truckImage.image = originalImage
                
                 FirebaseClient.sharedInstance.sendTruckPhotoToFirebase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, vc: self)
             } else {

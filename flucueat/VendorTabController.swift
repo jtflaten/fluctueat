@@ -21,6 +21,10 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
       //  }
       
         configureNavBar()
+
+
+        
+        
       //  addFoodTruckInfoVC()
         
     }
@@ -53,6 +57,8 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: signOutButton), UIBarButtonItem(customView: saveButton), UIBarButtonItem(customView: openButton) ]
        
     }
+    
+ 
     
     func addCloseButton() {
         let closeButton = UIButton(type: .system)
