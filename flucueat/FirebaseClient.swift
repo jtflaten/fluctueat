@@ -243,8 +243,8 @@ class FirebaseClient : NSObject {
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
-            vc.deleteOldTruckImage()
-            vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
+//            vc.deleteOldTruckImage()
+  //          vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
             _ = UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
         }
@@ -283,9 +283,9 @@ class FirebaseClient : NSObject {
             userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
             userVendor.foodPhotoUrls.remove(at: indexPath + 1)
          
-            vc.deleteSinglePhotoAlt(index: indexPath)
+ //           vc.deleteSinglePhotoAlt(index: indexPath)
            
-            vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
+ //           vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
            

@@ -35,18 +35,6 @@ struct Vendor {
         self.foodPhotoUrls = foodPhotoUrls
     }
     
-    init(key: String, CDVendor: VendorCD, truckImage: TruckPhoto, foodPhotos: [FoodPhoto]){
-        self.uniqueKey = key
-        self.truckImage = UIImage(data: truckImage.image! as Data)
-        self.name = CDVendor.name
-        self.description = CDVendor.foodDesc
-        self.pictures = convertFoodPhotos(foodPhotos: foodPhotos)
-        self.lat = globalUserPlace.latitude 
-        self.long = globalUserPlace.longitude
-        self.truckPhotoUrl = truckImage.imageUrl!
-        self.foodPhotoUrls = convertFoodPhotoCDtoURL(foodPhotos: foodPhotos)
-    }
-    
     init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage?], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [String], lat: Double, long: Double) {
         self.uniqueKey = uniqueKey
         self.truckImage = truckImage
@@ -59,11 +47,8 @@ struct Vendor {
         self.foodPhotoUrls = foodPhotoUrls
     }
     
-    
-
-
-    
 }
+
 func convertFoodPhotos(foodPhotos: [FoodPhoto]) -> [UIImage]  {
     var foodImages = [UIImage]()
     for photo in foodPhotos {

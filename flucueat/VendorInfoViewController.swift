@@ -45,6 +45,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         fillOutImageUrlArray(array: userVendor.foodPhotoUrls)
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
+        setupFoodImage()
         layoutCells()
         
 
@@ -97,6 +98,25 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         truckImage.layer.cornerRadius = 3.0
         truckImage.clipsToBounds = true
      
+    }
+    
+    func setupFoodImage() {
+        for (index, url) in userVendor.foodPhotoUrls.enumerated() {
+            FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
+                guard error == nil else {
+                    print("error downloading: \(String(describing: error))")
+                    self.alertViewWithPopToRoot(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                    
+                    return
+                }
+                let foodImage = UIImage.init(data: data!)
+                DispatchQueue.main.async {
+                    userVendor.pictures[index] = foodImage
+                    self.foodImageCollection.reloadData()
+                }
+            }
+            
+        }
     }
     
     func setuptextFields(){
@@ -192,16 +212,16 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBAction func saveButtonPushed(_ sender: Any) {
         checkTextFields()
         updateUserVendor()
-        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
-        saveInfo()
+//        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
+//        saveInfo()
         
     }
     
     func saveTapped() {
         checkTextFields()
         updateUserVendor()
-        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
-        saveInfo()
+ //       createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
+ //       saveInfo()
     }
     
     @IBAction func tappedView(_ sender: Any) {
@@ -263,7 +283,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func fillIncompleteMenuFetch() {
-        createFoodImageCD(image: #imageLiteral(resourceName: "empty"), url: FirebaseClient.sharedInstance.getVacantImageUrl())
+//        createFoodImageCD(image: #imageLiteral(resourceName: "empty"), url: FirebaseClient.sharedInstance.getVacantImageUrl())
         userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
         userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
     }
