@@ -97,6 +97,7 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     }
     
     func saveAction(sender: UIButton) {
+       
         FirebaseClient.sharedInstance.saveVendorData()
     }
     

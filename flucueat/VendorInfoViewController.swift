@@ -42,6 +42,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         setuptextFields()
         setupTruckImage()
         configureBackground()
+        configureSaveButton()
         fillOutImageUrlArray(array: userVendor.foodPhotoUrls)
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
@@ -54,6 +55,16 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewWillAppear(true)
         subscribeToKeyboardNotifications()
         FirebaseClient.sharedInstance.checkIfVendorAndPop(vc: self)
+    }
+    
+    func configureSaveButton() {
+        let saveButton = UIButton(type: .system)
+        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
+        saveButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        saveButton.addTarget(self, action: #selector(saveTapped(sender:)), for: .touchUpInside)
+        
+        self.tabBarController?.navigationItem.rightBarButtonItems?.remove(at: 1)
+        self.tabBarController?.navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(customView: saveButton), at: 1)
     }
     
     func configureBackground() {
@@ -217,9 +228,10 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-    func saveTapped() {
+    func saveTapped(sender: UIButton) {
         checkTextFields()
         updateUserVendor()
+        FirebaseClient.sharedInstance.saveVendorData()
  //       createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
  //       saveInfo()
     }
@@ -288,19 +300,19 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
     }
     
-    func setupNavBarItems() {
-        let openButton = UIButton(type: .system)
-        openButton.setImage(#imageLiteral(resourceName: "Open").withRenderingMode(.alwaysOriginal), for: .normal)
-        openButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        
-        let saveButton = UIButton(type: .system)
-        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
-        saveButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
-        
-        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-    }
+//    func setupNavBarItems() {
+//        let openButton = UIButton(type: .system)
+//        openButton.setImage(#imageLiteral(resourceName: "Open").withRenderingMode(.alwaysOriginal), for: .normal)
+//        openButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+//        
+//        let saveButton = UIButton(type: .system)
+//        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
+//        saveButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+//        saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
+//        
+//        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+//    }
 
     
     // MARK: Show/Hide Keyboard
