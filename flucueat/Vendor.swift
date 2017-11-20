@@ -20,10 +20,10 @@ struct Vendor {
     var long: Double
     var pictures: [UIImage?]
     var truckPhotoUrl: String
-    var foodPhotoUrls: [String]
+    var foodPhotoUrls: [Int:String]
 
 
-    init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [String]) {
+    init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [Int:String]) {
         self.uniqueKey = uniqueKey
         self.truckImage = truckImage
         self.name = name
@@ -35,7 +35,7 @@ struct Vendor {
         self.foodPhotoUrls = foodPhotoUrls
     }
     
-    init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage?], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [String], lat: Double, long: Double) {
+    init (uniqueKey: String?, truckImage: UIImage?, name: String?, description: String?, pictures: [UIImage?], open: Bool, truckPhotoUrl: String, foodPhotoUrls: [Int:String], lat: Double, long: Double) {
         self.uniqueKey = uniqueKey
         self.truckImage = truckImage
         self.name = name
@@ -56,17 +56,17 @@ func convertFoodPhotos(foodPhotos: [FoodPhoto]) -> [UIImage]  {
     }
     return foodImages
 }
-func convertFoodPhotoCDtoURL(foodPhotos: [FoodPhoto]) -> [String]  {
-    var foodImageUrls = [String]()
-    for photo in foodPhotos {
-    foodImageUrls.append(photo.imageUrl!)
-    }
-    return foodImageUrls
-}
+//func convertFoodPhotoCDtoURL(foodPhotos: [FoodPhoto]) -> [String]  {
+//    var foodImageUrls = [String]()
+//    for photo in foodPhotos {
+//    foodImageUrls.append(photo.imageUrl!)
+//    }
+//    return foodImageUrls
+//}
 
 
 let testVendor: Vendor = {
-    let testOne = Vendor(uniqueKey: defaultKey, truckImage: #imageLiteral(resourceName: "jakes_truck"), name: "Gorumet Sorbet", description: "Out of Sorbet, try some other stuff!", pictures: [#imageLiteral(resourceName: "blackened_ranch"),  #imageLiteral(resourceName: "cookies"),  #imageLiteral(resourceName: "corn_bowl"),  #imageLiteral(resourceName: "nugget"),  #imageLiteral(resourceName: "pepper"),  #imageLiteral(resourceName: "sammich")], open: true, truckPhotoUrl: defaultKey, foodPhotoUrls: [defaultKey])
+    let testOne = Vendor(uniqueKey: defaultKey, truckImage: #imageLiteral(resourceName: "jakes_truck"), name: "Gorumet Sorbet", description: "Out of Sorbet, try some other stuff!", pictures: [#imageLiteral(resourceName: "blackened_ranch"),  #imageLiteral(resourceName: "cookies"),  #imageLiteral(resourceName: "corn_bowl"),  #imageLiteral(resourceName: "nugget"),  #imageLiteral(resourceName: "pepper"),  #imageLiteral(resourceName: "sammich")], open: true, truckPhotoUrl: defaultKey, foodPhotoUrls: [1:defaultKey])
     
     return testOne
 }()
@@ -80,7 +80,7 @@ let defaultKey = "empty"
 let vacantImageUrl = "gs://fluctueat-ccc9d.appspot.com/vacant/empty.png"
 
 
-var userVendor = Vendor(uniqueKey: defaultKey, truckImage: emptyTruckImage, name: defaultName, description: defaultDesc, pictures: emptyDict, open: false, truckPhotoUrl: defaultKey, foodPhotoUrls: [])
+var userVendor = Vendor(uniqueKey: defaultKey, truckImage: emptyTruckImage, name: defaultName, description: defaultDesc, pictures: emptyDict, open: false, truckPhotoUrl: defaultKey, foodPhotoUrls: [1:defaultKey])
 
 struct VendorTime {
     var open: Bool

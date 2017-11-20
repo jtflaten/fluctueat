@@ -208,7 +208,7 @@ class FirebaseClient : NSObject {
                     let lat = Double(vendorDict[dbConstants.lat] as! String)
                     let long = Double(vendorDict[dbConstants.long] as! String)
                     let truckPhotoURL = vendorDict[dbConstants.truckImageUrl] as! String
-                    let foodPhototsURL = [vendorDict[dbConstants.foodPhotoOne],vendorDict[dbConstants.foodPhotoTwo], vendorDict[dbConstants.foodPhotoThree], vendorDict[dbConstants.foodPhotoFour], vendorDict[dbConstants.foodPhotoFive], vendorDict[dbConstants.foodPhotoZero]] as! [String]
+                    let foodPhototsURL = [1:vendorDict[dbConstants.foodPhotoOne],2:vendorDict[dbConstants.foodPhotoTwo], 3:vendorDict[dbConstants.foodPhotoThree], 4:vendorDict[dbConstants.foodPhotoFour], 5:vendorDict[dbConstants.foodPhotoFive], 6:vendorDict[dbConstants.foodPhotoZero]] as! [Int: String]
                     let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: emptyFoodImages, open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
                     vendorList.append(newVendor)
                     
@@ -267,9 +267,9 @@ class FirebaseClient : NSObject {
                return truckImage
     }
     
-    func sendFoodPhotoToFireBase(photoData: Data, indexPath: Int, vc: VendorInfoViewController) {
+    func sendFoodPhotoToFireBase(photoData: Data, key: Int, vc: VendorInfoViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let imagePath = "\(userVendor.uniqueKey!)/food_photos/\(indexPath)"
+        let imagePath = "\(userVendor.uniqueKey!)/food_photos/\(key)"
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         storageRef!.child(imagePath).putData(photoData, metadata: metadata) { (metadata, error) in
@@ -280,8 +280,9 @@ class FirebaseClient : NSObject {
                 return
                 
             }
-            userVendor.foodPhotoUrls.insert(self.storageRef!.child((metadata?.path)!).description, at: indexPath)
-            userVendor.foodPhotoUrls.remove(at: indexPath + 1)
+            userVendor.foodPhotoUrls.removeValue(forKey: key)
+            userVendor.foodPhotoUrls[key] = imagePath
+            
          
  //           vc.deleteSinglePhotoAlt(index: indexPath)
            
