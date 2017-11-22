@@ -49,13 +49,13 @@ struct Vendor {
     
 }
 
-func convertFoodPhotos(foodPhotos: [FoodPhoto]) -> [UIImage]  {
-    var foodImages = [UIImage]()
-    for photo in foodPhotos {
-        foodImages.append(UIImage(data: photo.image! as Data)!)
-    }
-    return foodImages
-}
+//func convertFoodPhotos(foodPhotos: [FoodPhoto]) -> [UIImage]  {
+//    var foodImages = [UIImage]()
+//    for photo in foodPhotos {
+//        foodImages.append(UIImage(data: photo.image! as Data)!)
+//    }
+//    return foodImages
+//}
 //func convertFoodPhotoCDtoURL(foodPhotos: [FoodPhoto]) -> [String]  {
 //    var foodImageUrls = [String]()
 //    for photo in foodPhotos {

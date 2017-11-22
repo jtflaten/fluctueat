@@ -25,8 +25,8 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
    
   //  var foodTruck = VendorCD()
-    var foodTruckFetchedImage: TruckPhoto?
-    var savedImageArray = [FoodPhoto]()
+//    var foodTruckFetchedImage: TruckPhoto?
+//    var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
     var keyboardOnScreen = false
     let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
