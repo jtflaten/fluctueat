@@ -59,6 +59,11 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     }
     
  
+    func addLocationToVendor() {
+        userVendor.lat = globalUserPlace.latitude
+        userVendor.long = globalUserPlace.longitude
+        
+    }
     
     func addCloseButton() {
         let closeButton = UIButton(type: .system)
@@ -87,6 +92,7 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     }
     
     func openAction(sender: UIButton) {
+        addLocationToVendor()
         FirebaseClient.sharedInstance.sendVendorDataForDataBase()
         addCloseButton()
     }
@@ -97,7 +103,7 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     }
     
     func saveAction(sender: UIButton) {
-       
+       addLocationToVendor()
         FirebaseClient.sharedInstance.saveVendorData()
     }
     

@@ -42,7 +42,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
     
     func setupTruckImage() {
-        truckImage.image = #imageLiteral(resourceName: "empty")
+        truckImage.image = userVendor.truckImage
         truckActivityIndicator.hidesWhenStopped = true
         truckActivityIndicator.startAnimating()
         isInternetAvailable() { answer in
@@ -71,7 +71,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func setupFoodImage() {
-        for (index, url) in vendor.foodPhotoUrls.enumerated() {
+        for (key, url) in vendor.foodPhotoUrls {
             FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
                 guard error == nil else {
                     print("error downloading: \(String(describing: error))")
@@ -80,8 +80,9 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
                     return
                 }
                 let foodImage = UIImage.init(data: data!)
+                let index = hackerDict.someKey(forValue: key)
                 DispatchQueue.main.async {
-                    self.vendor.pictures[index] = foodImage
+                    self.vendor.pictures[index!] = foodImage
                     self.foodImageCollection.reloadData()
                 }
             }
@@ -169,6 +170,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
 //        backgroundGradient.frame = view.frame
 //        view.layer.insertSublayer(backgroundGradient, at: 0)
         view.layer.backgroundColor = colorTop
+        
     }
     
     func getDirections() {

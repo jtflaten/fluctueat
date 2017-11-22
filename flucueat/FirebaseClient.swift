@@ -208,7 +208,7 @@ class FirebaseClient : NSObject {
                     let lat = Double(vendorDict[dbConstants.lat] as! String)
                     let long = Double(vendorDict[dbConstants.long] as! String)
                     let truckPhotoURL = vendorDict[dbConstants.truckImageUrl] as! String
-                    let foodPhototsURL = [1:vendorDict[dbConstants.foodPhotoOne],2:vendorDict[dbConstants.foodPhotoTwo], 3:vendorDict[dbConstants.foodPhotoThree], 4:vendorDict[dbConstants.foodPhotoFour], 5:vendorDict[dbConstants.foodPhotoFive], 6:vendorDict[dbConstants.foodPhotoZero]] as! [Int: String]
+                    let foodPhototsURL = [dbConstants.foodPhotoOne:vendorDict[dbConstants.foodPhotoOne],dbConstants.foodPhotoTwo:vendorDict[dbConstants.foodPhotoTwo], dbConstants.foodPhotoThree:vendorDict[dbConstants.foodPhotoThree], dbConstants.foodPhotoFour:vendorDict[dbConstants.foodPhotoFour], dbConstants.foodPhotoFive:vendorDict[dbConstants.foodPhotoFive], dbConstants.foodPhotoZero:vendorDict[dbConstants.foodPhotoZero]] as! [String: String]
                     let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: emptyFoodImages, open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
                     vendorList.append(newVendor)
                     
@@ -267,7 +267,7 @@ class FirebaseClient : NSObject {
                return truckImage
     }
     
-    func sendFoodPhotoToFireBase(photoData: Data, key: Int, vc: VendorInfoViewController) {
+    func sendFoodPhotoToFireBase(photoData: Data, key: String, vc: VendorInfoViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let imagePath = "\(userVendor.uniqueKey!)/food_photos/\(key)"
         let metadata = StorageMetadata()
@@ -280,8 +280,7 @@ class FirebaseClient : NSObject {
                 return
                 
             }
-            userVendor.foodPhotoUrls.removeValue(forKey: key)
-            userVendor.foodPhotoUrls[key] = imagePath
+            userVendor.foodPhotoUrls[key] = self.storageRef!.child((metadata?.path)!).description
             
          
  //           vc.deleteSinglePhotoAlt(index: indexPath)
@@ -305,12 +304,12 @@ class FirebaseClient : NSObject {
         //data[dbConstants.totalTimeOpen] = totalTimeOpen
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
-        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[0]
-        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[1]
-        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[2]
-        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[3]
-        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[4]
-        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[5]
+        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[dbConstants.foodPhotoZero]
+        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[dbConstants.foodPhotoOne]
+        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[dbConstants.foodPhotoTwo]
+        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[dbConstants.foodPhotoThree]
+        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFour]
+        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFive]
         
       
         ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
@@ -330,12 +329,12 @@ class FirebaseClient : NSObject {
         data[dbConstants.long] = "\(userVendor.long)"
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
-        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[0]
-        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[1]
-        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[2]
-        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[3]
-        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[4]
-        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[5]
+        data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[dbConstants.foodPhotoZero]
+        data[dbConstants.foodPhotoOne] = userVendor.foodPhotoUrls[dbConstants.foodPhotoOne]
+        data[dbConstants.foodPhotoTwo] = userVendor.foodPhotoUrls[dbConstants.foodPhotoTwo]
+        data[dbConstants.foodPhotoThree] = userVendor.foodPhotoUrls[dbConstants.foodPhotoThree]
+        data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFour]
+        data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFive]
         
         ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
     }

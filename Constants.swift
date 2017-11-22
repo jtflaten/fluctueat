@@ -41,6 +41,7 @@ struct dbConstants {
     static let totalTimeOpen = "totalTimeOpen"
     static let truckImageUrl = "truckImageUrl"
     
+    static let foodPhoto = "foodPhoto"
     static let foodPhotoZero = "foodPhotoZero"
     static let foodPhotoOne = "foodPhotoOne"
     static let foodPhotoTwo = "foodPhotoTwo"
@@ -64,8 +65,23 @@ struct alertStrings {
     
 }
 
+let hackerDict: [Int: String] = [
+    0 : dbConstants.foodPhotoZero,
+    1 : dbConstants.foodPhotoOne,
+    2 : dbConstants.foodPhotoTwo,
+    3 : dbConstants.foodPhotoThree,
+    4 : dbConstants.foodPhotoFour,
+    5 : dbConstants.foodPhotoFive
+]
+
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
+}
+
 let maxNumberOfFoodImages = 6
-let vendorCoreData = "VendorCD"
+//let vendorCoreData = "VendorCD"
 let truckPhotoString = "TruckPhoto"
 let foodPhotoString = "FoodPhoto"
 

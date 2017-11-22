@@ -24,7 +24,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
    
-    var foodTruck = VendorCD()
+  //  var foodTruck = VendorCD()
     var foodTruckFetchedImage: TruckPhoto?
     var savedImageArray = [FoodPhoto]()
     var indexOfSelectedItem: Int?
@@ -41,11 +41,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         //FirebaseClient.sharedInstance.getUserVendor()
         setuptextFields()
         setupTruckImage()
-        configureBackground()
-        configureSaveButton()
-        fillOutImageUrlArray(array: userVendor.foodPhotoUrls)
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
+        configureBackground()
+        configureSaveButton()
+        //fillOutImageUrlDict()
+       
         setupFoodImage()
         layoutCells()
         
@@ -54,6 +55,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         subscribeToKeyboardNotifications()
+      
         FirebaseClient.sharedInstance.checkIfVendorAndPop(vc: self)
     }
     
@@ -102,6 +104,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             }
             let downloadedTruck = UIImage.init(data: data!)
             DispatchQueue.main.async {
+                userVendor.truckImage = downloadedTruck
                 self.truckImage.image = downloadedTruck
                 self.truckActivityIndicator.stopAnimating()
             }
@@ -112,7 +115,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func setupFoodImage() {
-        for (index, url) in userVendor.foodPhotoUrls.enumerated() {
+        for (key, url) in userVendor.foodPhotoUrls {
             FirebaseClient.sharedInstance.imageStorageUrl(url: url).getData(maxSize: INT64_MAX) { (data, error) in
                 guard error == nil else {
                     print("error downloading: \(String(describing: error))")
@@ -121,8 +124,9 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                     return
                 }
                 let foodImage = UIImage.init(data: data!)
+                let index = hackerDict.someKey(forValue: key)
                 DispatchQueue.main.async {
-                    userVendor.pictures[index] = foodImage
+                    userVendor.pictures[index!] = foodImage
                     self.foodImageCollection.reloadData()
                 }
             }
@@ -151,7 +155,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VendorFoodImageCollectionViewCell", for: indexPath) as! FoodImageCollectionViewCell
-        cell.foodImage.image = userVendor.pictures[indexPath.row] //imageArray[indexPath.row]
+        cell.foodImage.image = userVendor.pictures[indexPath.row]
         return cell
     }
     
@@ -254,15 +258,17 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         } else if picker == pickerControllerMenu {
          
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                
+                userVendor.pictures[self.indexOfSelectedItem!] = originalImage //.insert(originalImage, at: self.indexOfSelectedItem!)
+                //userVendor.pictures.remove(at: self.indexOfSelectedItem!+1)
+              
 
-                    userVendor.pictures.insert(originalImage, at: self.indexOfSelectedItem!)
-                    userVendor.pictures.remove(at: self.indexOfSelectedItem! + 1)
-
-                    FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, indexPath: self.indexOfSelectedItem!, vc: self)
+                FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, key: hackerDict[self.indexOfSelectedItem!]!, vc: self)
                 
             }
-            
-            foodImageCollection.reloadData()
+            DispatchQueue.main.async {
+                self.foodImageCollection.reloadData()
+            }
             dismiss(animated: true, completion: nil)
             
         } else {
@@ -284,21 +290,23 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    func fillOutImageUrlArray(array: [String]) {
+    func fillOutImageUrlDict() {
         let emptyImageUrl = FirebaseClient.sharedInstance.getVacantImageUrl()
-        var newArray = array
-        while newArray.count < 6 {
-            newArray.append(emptyImageUrl)
-        }
         
-        userVendor.foodPhotoUrls = newArray
+        for object in userVendor.foodPhotoUrls {
+            if object.value == "empty" {
+  //              object.value = emptyImageUrl
+            }
+        }
     }
+        
+
     
-    func fillIncompleteMenuFetch() {
+  //  func fillIncompleteMenuFetch() {
 //        createFoodImageCD(image: #imageLiteral(resourceName: "empty"), url: FirebaseClient.sharedInstance.getVacantImageUrl())
-        userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
-        userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
-    }
+//        userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
+//        userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
+//    }
     
 //    func setupNavBarItems() {
 //        let openButton = UIButton(type: .system)
