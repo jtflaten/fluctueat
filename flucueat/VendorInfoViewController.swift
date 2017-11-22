@@ -24,9 +24,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
    
-  //  var foodTruck = VendorCD()
-//    var foodTruckFetchedImage: TruckPhoto?
-//    var savedImageArray = [FoodPhoto]()
+
     var indexOfSelectedItem: Int?
     var keyboardOnScreen = false
     let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -35,21 +33,15 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
        
         FirebaseClient.sharedInstance.configureStorage()
-        //fetchTruckInfo()
-        //fetchTruckPhoto()
-        //fetchMenuPhotos()
-        //FirebaseClient.sharedInstance.getUserVendor()
         setuptextFields()
         setupTruckImage()
         foodImageCollection.dataSource = self
         foodImageCollection.delegate = self
         configureBackground()
         configureSaveButton()
-        //fillOutImageUrlDict()
-       
         setupFoodImage()
         layoutCells()
-        
+        showNavBar()
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -130,7 +122,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
                     self.foodImageCollection.reloadData()
                 }
             }
-            
         }
     }
     
@@ -139,7 +130,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         truckDescription.delegate = self
         truckName.text = userVendor.name
         truckDescription.text = userVendor.description
-
     }
     
     func updateUserVendor() {
@@ -227,17 +217,12 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBAction func saveButtonPushed(_ sender: Any) {
         checkTextFields()
         updateUserVendor()
-//        createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
-//        saveInfo()
-        
     }
     
     func saveTapped(sender: UIButton) {
         checkTextFields()
         updateUserVendor()
         FirebaseClient.sharedInstance.saveVendorData()
- //       createVendorCD(name: truckName.text!, foodDesc: truckDescription.text!)
- //       saveInfo()
     }
     
     @IBAction func tappedView(_ sender: Any) {
@@ -260,9 +245,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 
                 userVendor.pictures[self.indexOfSelectedItem!] = originalImage //.insert(originalImage, at: self.indexOfSelectedItem!)
-                //userVendor.pictures.remove(at: self.indexOfSelectedItem!+1)
-              
-
                 FirebaseClient.sharedInstance.sendFoodPhotoToFireBase(photoData: UIImageJPEGRepresentation(originalImage, 0.8)!, key: hackerDict[self.indexOfSelectedItem!]!, vc: self)
                 
             }
@@ -295,35 +277,9 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
         for object in userVendor.foodPhotoUrls {
             if object.value == "empty" {
-  //              object.value = emptyImageUrl
             }
         }
     }
-        
-
-    
-  //  func fillIncompleteMenuFetch() {
-//        createFoodImageCD(image: #imageLiteral(resourceName: "empty"), url: FirebaseClient.sharedInstance.getVacantImageUrl())
-//        userVendor.pictures.append(#imageLiteral(resourceName: "empty"))
-//        userVendor.foodPhotoUrls.append(FirebaseClient.sharedInstance.getVacantImageUrl())
-//    }
-    
-//    func setupNavBarItems() {
-//        let openButton = UIButton(type: .system)
-//        openButton.setImage(#imageLiteral(resourceName: "Open").withRenderingMode(.alwaysOriginal), for: .normal)
-//        openButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-//        
-//        let saveButton = UIButton(type: .system)
-//        saveButton.setImage(#imageLiteral(resourceName: "Save") , for: .normal)
-//        saveButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-//        saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
-//        
-//        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-//    }
-
-    
-    // MARK: Show/Hide Keyboard
     
     func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
@@ -363,6 +319,7 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
 }
+
 extension VendorInfoViewController: UITextFieldDelegate {
    
     
@@ -373,11 +330,11 @@ extension VendorInfoViewController: UITextFieldDelegate {
         return true
     }
    
- 
+    func showNavBar() {
+        self.navigationController!.setNavigationBarHidden(false, animated: false)
+    }
     
 }
-
-
 
 // MARK: - FCViewController (Notifications)
 
@@ -397,7 +354,6 @@ extension VendorInfoViewController {
     func unsubscribeFromAllNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
-    
 
 }
 

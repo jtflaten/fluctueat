@@ -15,26 +15,15 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // FirebaseClient.sharedInstance.configureAuth(vc: self)
-       // if !userVendor.isAuthorizedVendor {
-        // FirebaseClient.sharedInstance.loginSession(presentingVC: self)
-      //  }
-      
+    
         configureNavBar()
-
-
         
-        
-      //  addFoodTruckInfoVC()
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        userVendor.hasAttemptedLogin = false
-//        if !userVendor.isAuthorizedVendor {
-//            FirebaseClient.sharedInstance.checkIfVendor(vc: self)
-//        }
+
     }
     
     func configureNavBar(){
@@ -108,20 +97,4 @@ class VendorTabController: UITabBarController, CLLocationManagerDelegate {
     }
     
 
-    
-//    func setupNavBarItems() {
-//
-//
-//        //        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-//    }
-    
-//    func addFoodTruckInfoVC(){
-//        let tabBarItem = UITabBarItem.init(title: "Profile", image: nil, selectedImage: nil)
-//        let foodTruckVC = FoodTruckInfoViewController()
-//        foodTruckVC.vendor = userVendor
-//        foodTruckVC.tabBarItem = tabBarItem
-//        self.viewControllers?.append(foodTruckVC)
-//        
-//    }
 }

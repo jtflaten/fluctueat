@@ -34,19 +34,10 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewDidLoad()
         mapView.delegate = self
         getLocation()
-        FirebaseClient.sharedInstance.anonSignIn(vc: self)
-      //  configureMapView()
+        hideNavBar()
         FirebaseClient.sharedInstance.configureVendor()
        
-        //addVendorSwipeGesture()
-        
-        
-//                let twoFingerSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-//                twoFingerSwipeGestureRecognizer.numberOfTouchesRequired = 2
-//                twoFingerSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.up
-//
-//                self.mapView.addGestureRecognizer(twoFingerSwipeGestureRecognizer)
-        
+   
         isInternetAvailable() { answer in
             guard answer == true else {
                 self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
@@ -62,12 +53,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     
-//    func addVendorSwipeGesture(){
-//        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeMapViewController.swipeToVendor))
-//        gesture.direction = .up
-//        gesture.numberOfTouchesRequired = 2
-//        self.mapView.addGestureRecognizer(gesture)
-//    }
+
 
     func getLocation() {
         self.locationManager.requestWhenInUseAuthorization()
@@ -183,14 +169,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.region = mapRegion
     }
 
+    func hideNavBar() {
+        self.navigationController!.setNavigationBarHidden(true, animated: false)
+    }
     
    @IBAction func vendorButton(_ sender: Any) {
-//        FirebaseClient.sharedInstance.configureAuth(vc: self)
-//        if !userVendor.isAuthorizedVendor {
-//            FirebaseClient.sharedInstance.loginSession(presentingVC: self)
-//        }
-//        let vendorUserTabController = self.storyboard?.instantiateViewController(withIdentifier: "VendorTabController")
-//        self.navigationController!.pushViewController(vendorUserTabController!, animated: true)
+
     pushToVendor()
 //
    }

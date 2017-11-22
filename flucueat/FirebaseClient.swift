@@ -13,7 +13,6 @@ import FirebaseAuthUI
 
 class FirebaseClient : NSObject {
     
- //   static var user = User()
     static let sharedInstance = FirebaseClient()
     var ref: DatabaseReference!
 
@@ -120,24 +119,6 @@ class FirebaseClient : NSObject {
         })
     }
 
-//    func getUserVendor() {
-//        let dbPath = "vendor_archive/\(userVendor.uniqueKey!)"
-//        _ = ref.child(dbPath).observe(.value, with: { (snapshot) in
-//            if let value = snapshot.value as? NSDictionary {
-//                let vendorObjectList = Array(value.allKeys) as! [String]
-//                for eachObject in vendorObjectList {
-//                    if eachObject == userVendor.uniqueKey {
-//                        if let value = snapshot.value as? NSDictionary {
-//                            self.parseUserVendor(snapshot: value)
-//                            print("PRINTING VALUE",value)
-//                        }
-//                    }
-//                }
-//            }
-//        })
-//    }
-    
-
     func configureDatabase(vc: HomeMapViewController) {
     
         ref = Database.database().reference()
@@ -146,27 +127,20 @@ class FirebaseClient : NSObject {
             if let value = snapshot.value as? NSDictionary {
                 self.openVendors = self.parseVendorSnapshot(snapshot: value)
                 vc.makeVendorAnnotations()
-            } else {
-               
             }
         })
-            
-      
-      
     }
     
     func configureVendor() {
+        
         ref = Database.database().reference()
         _refHandle = ref.child(dbConstants.vendorArchive).observe(.value, with: { (snapshot) in
             
             if let value = snapshot.value as? NSDictionary {
                 self.vendorArchive = self.parseVendorSnapshot(snapshot: value)
             }
-            
         })
     }
-    
-    
     
     func configureStorage(){
        
@@ -174,6 +148,7 @@ class FirebaseClient : NSObject {
     }
     
     func imageStorageUrl(url: String) -> StorageReference {
+        
         return Storage.storage().reference(forURL:url)
     }
    
@@ -186,18 +161,10 @@ class FirebaseClient : NSObject {
         userVendor.hasAttemptedLogin = true
     
     }
-    
-//    func parseUserVendor(snapshot: NSDictionary) {
-//       
-//        userVendor.name = snapshot[dbConstants.name] as? String
-//        userVendor.description = snapshot[dbConstants.description] as? String
-//        userVendor.truckPhotoUrl = snapshot[dbConstants.truckImageUrl] as! String
-//        userVendor.foodPhotoUrls = [snapshot[dbConstants.foodPhotoOne],snapshot[dbConstants.foodPhotoTwo], snapshot[dbConstants.foodPhotoThree], snapshot[dbConstants.foodPhotoFour], snapshot[dbConstants.foodPhotoFive], snapshot[dbConstants.foodPhotoZero]] as! [String]
-//    }
-    
-    
+
     func parseVendorSnapshot(snapshot: NSDictionary) -> [Vendor] {
-       var vendorList = [Vendor]()
+      
+        var vendorList = [Vendor]()
         
                 for (_, dict) in snapshot {
                     let vendorDict = dict as! NSDictionary
@@ -211,7 +178,6 @@ class FirebaseClient : NSObject {
                     let foodPhototsURL = [dbConstants.foodPhotoOne:vendorDict[dbConstants.foodPhotoOne],dbConstants.foodPhotoTwo:vendorDict[dbConstants.foodPhotoTwo], dbConstants.foodPhotoThree:vendorDict[dbConstants.foodPhotoThree], dbConstants.foodPhotoFour:vendorDict[dbConstants.foodPhotoFour], dbConstants.foodPhotoFive:vendorDict[dbConstants.foodPhotoFive], dbConstants.foodPhotoZero:vendorDict[dbConstants.foodPhotoZero]] as! [String: String]
                     let newVendor = Vendor(uniqueKey: uid, truckImage: nil, name: name, description: desc, pictures: emptyFoodImages, open: true,  truckPhotoUrl: truckPhotoURL, foodPhotoUrls: foodPhototsURL, lat: lat!, long :long!)
                     vendorList.append(newVendor)
-                    
                 }
                 print(vendorList)
         
@@ -224,9 +190,8 @@ class FirebaseClient : NSObject {
             print(error.debugDescription)
             return
         }
-        //vendorUser = user
+
         self.loginSession(presentingVC: authUI.authViewController())
-        //userVendor.uniqueKey = user?.uid
     }
     
     func sendTruckPhotoToFirebase(photoData: Data, vc: VendorInfoViewController) {
@@ -243,8 +208,6 @@ class FirebaseClient : NSObject {
                 return
             }
             userVendor.truckPhotoUrl = self.storageRef!.child((metadata?.path)!).description
-//            vc.deleteOldTruckImage()
-  //          vc.createTruckImageCD(truckImage: UIImage(data: photoData)!, url: self.storageRef!.child((metadata?.path)!).description )
             _ = UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
         }
@@ -281,11 +244,6 @@ class FirebaseClient : NSObject {
                 
             }
             userVendor.foodPhotoUrls[key] = self.storageRef!.child((metadata?.path)!).description
-            
-         
- //           vc.deleteSinglePhotoAlt(index: indexPath)
-           
- //           vc.createFoodImageCD(image: UIImage(data: photoData)!, url: (self.storageRef!.child((metadata?.path)!).description))
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
            
@@ -300,8 +258,6 @@ class FirebaseClient : NSObject {
         data[dbConstants.description] = userVendor.description
         data[dbConstants.lat] = "\(userVendor.lat)"
         data[dbConstants.long] = "\(userVendor.long)"
-        // data[dbConstants.closingTime] = closingTime
-        //data[dbConstants.totalTimeOpen] = totalTimeOpen
         data[dbConstants.truckImageUrl] = userVendor.truckPhotoUrl
         
         data[dbConstants.foodPhotoZero] = userVendor.foodPhotoUrls[dbConstants.foodPhotoZero]
@@ -311,7 +267,6 @@ class FirebaseClient : NSObject {
         data[dbConstants.foodPhotoFour] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFour]
         data[dbConstants.foodPhotoFive] = userVendor.foodPhotoUrls[dbConstants.foodPhotoFive]
         
-      
         ref.child(dbConstants.vendorArchive).child(userVendor.uniqueKey!).setValue(data)
         ref.child(dbConstants.openVendors).child(userVendor.uniqueKey!).setValue(data)
     }

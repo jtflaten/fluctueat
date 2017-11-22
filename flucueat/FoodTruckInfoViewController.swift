@@ -32,14 +32,9 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         setupTruckImage()
         setupFoodImage()
         layoutCells()
-     //   navigationController!.delegate = self
+        showNavBar()
         setupNavBarItems()
     }
-    
-
-   
-    
-    
     
     func setupTruckImage() {
         truckImage.image = userVendor.truckImage
@@ -97,7 +92,7 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 6//(self.vendor.pictures.count)
+        return 6
     }
     
     
@@ -187,17 +182,16 @@ class FoodTruckInfoViewController: UIViewController, UICollectionViewDelegate, U
         print(googleUrlScheme)
     }
     
+    func showNavBar() {
+            self.navigationController!.setNavigationBarHidden(false, animated: false)
+    }
+    
     func setupNavBarItems() {
-//        let callButton = UIButton(type: .system)
-//        callButton.setImage(#imageLiteral(resourceName: "call").withRenderingMode(.alwaysOriginal), for: .normal)
-//        callButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         
         let mapButton = UIButton(type: .system)
         mapButton.setImage(#imageLiteral(resourceName: "map"), for: .normal)
         mapButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         mapButton.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
-        
-//        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: callButton), UIBarButtonItem(customView: mapButton)]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: mapButton)
     }
 }
