@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580A50E81FCB40D90007C921 /* MarkerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A50E71FCB40D90007C921 /* MarkerViews.swift */; };
 		58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58106D051F1019830043F791 /* GoogleService-Info.plist */; };
 		58106D081F101B180043F791 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106D071F101B180043F791 /* Vendor.swift */; };
 		583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC791F0EDEA900E024C2 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		580A50E71FCB40D90007C921 /* MarkerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerViews.swift; sourceTree = "<group>"; };
 		58106D051F1019830043F791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58106D071F101B180043F791 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,7 @@
 				58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */,
 				583DDC7D1F0EDEA900E024C2 /* Main.storyboard */,
 				589B07881F38332E00096544 /* AlertViews.swift */,
+				580A50E71FCB40D90007C921 /* MarkerViews.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */,
 				585611941F1EBB8D00C6D2ED /* VendorInfoViewController.swift in Sources */,
 				58FB4BB41F6AFB1D00A0B554 /* checkForConnection.swift in Sources */,
+				580A50E81FCB40D90007C921 /* MarkerViews.swift in Sources */,
 				5872BAA61F1946EB00366391 /* Constants.swift in Sources */,
 				58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */,
 				589B078D1F39230200096544 /* FirebaseClient.swift in Sources */,

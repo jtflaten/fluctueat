@@ -34,7 +34,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewDidLoad()
         mapView.delegate = self
         getLocation()
-        hideNavBar()
+        
+        if #available(iOS 11.0, *) {
+            mapView.register(MarkerView.self, forAnnotationViewWithReuseIdentifier: "truckMarker")
+        } else {
+            // Fallback on earlier versions
+        }
         FirebaseClient.sharedInstance.configureVendor()
        
    
@@ -48,6 +53,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        hideNavBar()
         FirebaseClient.sharedInstance.configureDatabase(vc: self)
         configureMapView()
         
@@ -85,16 +91,16 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
   
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        let reuseId = "truckMarker"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MarkerView
         
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MarkerView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = .red
+           // pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             if pinView!.annotation?.title! == "This is You" {
-                pinView?.pinTintColor = .blue
+                pinView!.image = #imageLiteral(resourceName: "mapPerson")
                 //pinView!.rightCalloutAccessoryView = nil
             }
             pinView!.annotation = annotation
@@ -141,14 +147,14 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     func makeVendorAnnotations(){
-        var vendorAnnotation = [MKPointAnnotation]()
+        var vendorAnnotation = [MKAnnotation]()
         for vendor in FirebaseClient.sharedInstance.openVendors {
             let annotation = MKPointAnnotation()
             let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(vendor.lat), longitude: CLLocationDegrees(vendor.long))
             annotation.title = vendor.name!
             annotation.subtitle = vendor.description!
             annotation.coordinate = coordinate
-           
+            
             
             vendorAnnotation.append(annotation)
         }
