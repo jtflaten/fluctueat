@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>proximitEAT</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +25,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We''d like to know where you are so we can tell you what's near you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The app would like to access your photo library so you can add some to your profile</string>
+	<string>The app would like to access your photo library so you can add some photos to your profile</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

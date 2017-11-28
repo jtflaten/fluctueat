@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		580A50E81FCB40D90007C921 /* MarkerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A50E71FCB40D90007C921 /* MarkerViews.swift */; };
-		58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58106D051F1019830043F791 /* GoogleService-Info.plist */; };
 		58106D081F101B180043F791 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106D071F101B180043F791 /* Vendor.swift */; };
 		583DDC7A1F0EDEA900E024C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583DDC791F0EDEA900E024C2 /* AppDelegate.swift */; };
 		583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583DDC7D1F0EDEA900E024C2 /* Main.storyboard */; };
@@ -21,6 +20,7 @@
 		585611A51F2259C400C6D2ED /* FoodTruckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */; };
 		5872BAA21F1942E000366391 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA11F1942E000366391 /* HomeMapViewController.swift */; };
 		5872BAA61F1946EB00366391 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872BAA51F1946EB00366391 /* Constants.swift */; };
+		5886EE231FCD37A7001B379E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5886EE221FCD37A6001B379E /* GoogleService-Info.plist */; };
 		589B07891F38332E00096544 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B07881F38332E00096544 /* AlertViews.swift */; };
 		589B078D1F39230200096544 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B078C1F39230200096544 /* FirebaseClient.swift */; };
 		58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */; };
@@ -47,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		580A50E71FCB40D90007C921 /* MarkerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerViews.swift; sourceTree = "<group>"; };
-		58106D051F1019830043F791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58106D071F101B180043F791 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		583DDC761F0EDEA900E024C2 /* fluctueat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluctueat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DDC791F0EDEA900E024C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckInfoViewController.swift; sourceTree = "<group>"; };
 		5872BAA11F1942E000366391 /* HomeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
 		5872BAA51F1946EB00366391 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
+		5886EE221FCD37A6001B379E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		589B07881F38332E00096544 /* AlertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
 		589B078C1F39230200096544 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 				583DDC801F0EDEA900E024C2 /* Assets.xcassets */,
 				583DDC821F0EDEA900E024C2 /* LaunchScreen.storyboard */,
 				583DDC851F0EDEA900E024C2 /* Info.plist */,
-				58106D051F1019830043F791 /* GoogleService-Info.plist */,
+				5886EE221FCD37A6001B379E /* GoogleService-Info.plist */,
 			);
 			path = flucueat;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				TargetAttributes = {
 					583DDC751F0EDEA900E024C2 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = E94BBYQUZ2;
+						DevelopmentTeam = K32U974K8Q;
 						ProvisioningStyle = Automatic;
 					};
 					583DDC891F0EDEA900E024C2 = {
@@ -336,9 +336,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				583DDC841F0EDEA900E024C2 /* LaunchScreen.storyboard in Resources */,
-				58106D061F1019830043F791 /* GoogleService-Info.plist in Resources */,
 				583DDC811F0EDEA900E024C2 /* Assets.xcassets in Resources */,
 				583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */,
+				5886EE231FCD37A7001B379E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,11 +591,10 @@
 			baseConfigurationReference = 7918DEDDDEDE5124FD310FD4 /* Pods-fluctueat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = E94BBYQUZ2;
+				DEVELOPMENT_TEAM = K32U974K8Q;
 				INFOPLIST_FILE = flucueat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueat;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.breaklist.proximitEAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -606,11 +605,10 @@
 			baseConfigurationReference = 680FE71A711B25AC00F1F720 /* Pods-fluctueat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = E94BBYQUZ2;
+				DEVELOPMENT_TEAM = K32U974K8Q;
 				INFOPLIST_FILE = flucueat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = breaklist.flucueat;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.breaklist.proximitEAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
