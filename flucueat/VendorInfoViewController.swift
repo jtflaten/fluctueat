@@ -259,15 +259,6 @@ class VendorInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    func fillOutImageUrlDict() {
-        let emptyImageUrl = FirebaseClient.sharedInstance.getVacantImageUrl()
-        
-        for object in userVendor.foodPhotoUrls {
-            if object.value == "empty" {
-            }
-        }
-    }
-    
     func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
             self.view.frame.origin.y = self.keyboardHeight(notification) * -1

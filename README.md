@@ -59,7 +59,7 @@ and give the user directions to the food Truck.
 
 **ACCESSING VENDOR MODE**
 
-On the HomeMapVC, a user can access the login page for Vendor Mode by pressing “vendor”
+On the HomeMapVC, a user can access the login page for Vendor Mode by selecting the user's map marker, and tapping the info callout.
 
 ## VendorInfoVC
 the first vc the vendor will have access to will allow them to upload images and update the information about

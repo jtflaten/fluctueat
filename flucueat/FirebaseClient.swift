@@ -52,7 +52,7 @@ class FirebaseClient : NSObject {
     
 
     
-    func anonSignIn(vc: UIViewController) {
+    func anonSignIn(vc: HomeMapViewController) {
         Auth.auth().signInAnonymously() { (user, error) in
             guard (error == nil) else {
             vc.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)

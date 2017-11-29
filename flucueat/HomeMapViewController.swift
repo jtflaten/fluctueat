@@ -32,6 +32,14 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        isInternetAvailable() { answer in
+            guard answer == true else {
+                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
+                return
+            }
+        }
+        FirebaseClient.sharedInstance.anonSignIn(vc: self)
+        FirebaseClient.sharedInstance.configureVendor()
         mapView.delegate = self
         getLocation()
         
@@ -40,15 +48,11 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             // Fallback on earlier versions
         }
-        FirebaseClient.sharedInstance.configureVendor()
+        
        
+
    
-        isInternetAvailable() { answer in
-            guard answer == true else {
-                self.alertView(title: alertStrings.badNetwork, message: alertStrings.notConnected, dismissAction: alertStrings.ok)
-                return
-            }
-        }
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
