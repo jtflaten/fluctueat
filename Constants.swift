@@ -87,5 +87,11 @@ let foodPhotoString = "FoodPhoto"
 
 var tempUrlVariable: String?
 
+struct MapColors {
+    static let bluish = UIColor(red:0.41, green:0.64, blue:0.85, alpha:1.0)
+    static let purpgray = UIColor(red:0.46, green:0.41, blue:0.52, alpha:1.0)
+    static let  maroon = UIColor(red:0.37, green:0.10, blue:0.22, alpha:1.0)
+    static let teal = UIColor(red:0.45, green:0.93, blue:0.86, alpha:1.0)
+}
 
 

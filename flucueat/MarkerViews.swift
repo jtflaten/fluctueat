@@ -15,10 +15,11 @@ class MarkerView: MKAnnotationView {
             canShowCallout = true
             calloutOffset = CGPoint(x: -5, y: 5)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            image = resizeImage(#imageLiteral(resourceName: "mapTruck"))
+            //image = resizeImage(#imageLiteral(resourceName: "mapTruck"))
+            tintColor = MapColors.bluish
             
             if annotation?.title! == "This is You"{
-                image = resizeImage(#imageLiteral(resourceName: "mapPerson"))
+                tintColor = MapColors.maroon
             }
         }
         
