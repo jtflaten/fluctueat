@@ -8,9 +8,9 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+class HomeMapViewController: UIViewController, MKMapViewDelegate  {
     
     // create the total map area for the mapView
     
@@ -19,14 +19,14 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var mapAnnotations = [MKAnnotation]()
     
     
-    var mapRegion = MKCoordinateRegion()
+   // var mapRegion = MKCoordinateRegion()
     let mapSize = MKMapSize(width: 10, height: 10)
     var isConnected = true
     
     
     
-    
-    
+    let regionRadious: CLLocationDistance = 5000
+    let houstonRegion = MKCoordinateRegionMake(MapConstants.houstonCenter, MapConstants.mapRangeSpan)
    
     @IBOutlet weak var mapView: MKMapView!
  
@@ -38,10 +38,13 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 return
             }
         }
+       
+        setupLocationManager()
         FirebaseClient.sharedInstance.anonSignIn(vc: self)
         FirebaseClient.sharedInstance.configureVendor()
         mapView.delegate = self
-        getLocation()
+        mapView.setRegion(houstonRegion, animated: true)
+        //setMap()
         
         if #available(iOS 11.0, *) {
             mapView.register(MarkerView.self, forAnnotationViewWithReuseIdentifier: "truckMarker")
@@ -50,10 +53,11 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         
        
-
-   
+        
+    //    checkForCenter()
       
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -63,22 +67,65 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     
+    func blurOutsideMap() {
+        let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurView = UIVisualEffectView(effect: blur)
+       // blurView.frame != houstonRegion
+    }
+    
+    func checkForCenter() {
+        if !isInRegion(region: houstonRegion, coordinate: mapView.centerCoordinate) {
+            mapView.centerCoordinate = MapConstants.houstonCenter
+            mapView.setRegion(houstonRegion, animated: true)
+        }
+    }
+    
+    func isInRegion (region : MKCoordinateRegion, coordinate : CLLocationCoordinate2D) -> Bool {
+        
+        let center   = region.center;
+        let northWestCorner = CLLocationCoordinate2D(latitude: center.latitude  - (region.span.latitudeDelta  / 2.0), longitude: center.longitude - (region.span.longitudeDelta / 2.0))
+        let southEastCorner = CLLocationCoordinate2D(latitude: center.latitude  + (region.span.latitudeDelta  / 2.0), longitude: center.longitude + (region.span.longitudeDelta / 2.0))
+        
+        return (
+            coordinate.latitude  >= northWestCorner.latitude &&
+                coordinate.latitude  <= southEastCorner.latitude &&
+                
+                coordinate.longitude >= northWestCorner.longitude &&
+                coordinate.longitude <= southEastCorner.longitude
+        )
+    }
 
-
-    func getLocation() {
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        } 
+
+    }
+    func setMap() {
+//        self.locationManager.requestWhenInUseAuthorization()
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.startUpdatingLocation()
+//            locationManager.stopUpdatingLocation()
+//            locationManager.stopMonitoringSignificantLocationChanges()
+//        } else {
+            mapView.setCenter(MapConstants.houstonCenter, animated: true)
+            mapView.setRegion(houstonRegion, animated: true)
+        
         
         if let userLocation = locationManager.location?.coordinate {
-            mapView.setCenter(userLocation, animated: true)
-            userVendor.lat = userLocation.latitude
-            userVendor.long = userLocation.longitude
-            mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
-            mapView.setRegion(mapRegion, animated: true)
+//            mapView.setCenter(userLocation, animated: true)
+//            userVendor.lat = userLocation.latitude
+//            userVendor.long = userLocation.longitude
+//            mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
+//                if isInRegion(region: houstonRegion, coordinate: userLocation){
+//                    mapView.setRegion(mapRegion, animated: true)
+//            } else {
+//                mapView.setCenter(MapConstants.houstonCenter, animated: true)
+//                mapView.setRegion(houstonRegion, animated: true)
+            
+//           }
             
             
             let userAnnotation = MKPointAnnotation()
@@ -90,16 +137,29 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
            globalUserPlace = userPlace(latitude: userLocation.latitude, longitude: userLocation.longitude)
             
         }
+        
+        mapView.setCenter(MapConstants.houstonCenter, animated: true)
+        print(mapView.center)
+        mapView.setRegion(houstonRegion, animated: true)
     }
     
   
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "truckMarker"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MarkerView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if #available(iOS 11.0, *) {
+            pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MarkerView
+        } else {
+            pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? ImageMarkerView
+        }
         
         if pinView == nil {
-            pinView = MarkerView(annotation: annotation, reuseIdentifier: reuseId)
+            if #available(iOS 11.0, *) {
+                pinView = MarkerView(annotation: annotation, reuseIdentifier: reuseId)
+            } else {
+                pinView = ImageMarkerView(annotation: annotation, reuseIdentifier: reuseId)
+            }
             pinView!.canShowCallout = true
            // pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -176,7 +236,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = false
-        mapView.region = mapRegion
+       // mapView.region = mapRegion
     }
 
     func hideNavBar() {
@@ -200,4 +260,6 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 }
 
-
+extension HomeMapViewController: CLLocationManagerDelegate {
+    
+}

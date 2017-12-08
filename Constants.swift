@@ -14,7 +14,7 @@ import MapKit
         let houstonCenterLat: CLLocationDegrees = 29.7604
         let houstonCenterLong: CLLocationDegrees = -95.3698
         static let houstonCenter = CLLocationCoordinate2D(latitude: 29.7604, longitude: -95.3698)
-        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8)
+        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.4)
         
         
     }
@@ -25,7 +25,7 @@ struct userPlace {
     
 }
 // this variable is going to hold the user's location as soon as the CoreLocation is entered. if there is problem getting the location, it's set to the center of Houston.
-var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.longitude, longitude: MapConstants.houstonCenter.longitude)
+var globalUserPlace = userPlace(latitude: MapConstants.houstonCenter.latitude, longitude: MapConstants.houstonCenter.longitude)
 
 //FIREBASE
 struct dbConstants {

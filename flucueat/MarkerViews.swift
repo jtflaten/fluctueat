@@ -9,17 +9,23 @@
 import Foundation
 import MapKit
 
-class MarkerView: MKAnnotationView {
+@available(iOS 11.0, *)
+class MarkerView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
             canShowCallout = true
-            calloutOffset = CGPoint(x: -5, y: 5)
+           // calloutOffset = CGPoint(x: -5, y: 5)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             //image = resizeImage(#imageLiteral(resourceName: "mapTruck"))
-            tintColor = MapColors.bluish
+            glyphImage = #imageLiteral(resourceName: "truckGlyph")
+            glyphTintColor = MapColors.maroon
+            markerTintColor = MapColors.bluish
             
             if annotation?.title! == "This is You"{
-                tintColor = MapColors.maroon
+                markerTintColor = MapColors.maroon
+                glyphImage = #imageLiteral(resourceName: "PersonGlyph")
+                glyphTintColor = MapColors.teal
+                //image = resizeImage(#imageLiteral(resourceName: "mapPerson"))
             }
         }
         
@@ -28,6 +34,25 @@ class MarkerView: MKAnnotationView {
     }
 }
 
+class ImageMarkerView: MKAnnotationView {
+    override var annotation: MKAnnotation? {
+        willSet {
+            canShowCallout = true
+           // calloutOffset = CGPoint(x: -5, y: 5)
+            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+           image = resizeImage(#imageLiteral(resourceName: "mapTruck"))
+            tintColor = MapColors.bluish
+            
+            if annotation?.title! == "This is You"{
+                tintColor = MapColors.maroon
+                image = resizeImage(#imageLiteral(resourceName: "mapPerson"))
+            }
+        }
+        
+        
+        
+    }
+}
 func resizeImage(_ image: UIImage) -> UIImage {
     let size = CGSize(width: 32, height: 44)
     UIGraphicsBeginImageContext(size)
