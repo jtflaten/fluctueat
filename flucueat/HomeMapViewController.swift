@@ -43,8 +43,8 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
         FirebaseClient.sharedInstance.anonSignIn(vc: self)
         FirebaseClient.sharedInstance.configureVendor()
         mapView.delegate = self
-        mapView.setRegion(houstonRegion, animated: true)
-        //setMap()
+       // mapView.setRegion(houstonRegion, animated: true)
+        setMap()
         
         if #available(iOS 11.0, *) {
             mapView.register(MarkerView.self, forAnnotationViewWithReuseIdentifier: "truckMarker")
@@ -70,6 +70,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
     func blurOutsideMap() {
         let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurView = UIVisualEffectView(effect: blur)
+    
        // blurView.frame != houstonRegion
     }
     
@@ -98,34 +99,34 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
+        locationManager.requestWhenInUseAuthorization()
 
     }
+    
     func setMap() {
-//        self.locationManager.requestWhenInUseAuthorization()
-//        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//            locationManager.startUpdatingLocation()
+
+        if CLLocationManager.locationServicesEnabled() {
+
+            locationManager.startUpdatingLocation()
 //            locationManager.stopUpdatingLocation()
 //            locationManager.stopMonitoringSignificantLocationChanges()
-//        } else {
+        } else {
             mapView.setCenter(MapConstants.houstonCenter, animated: true)
             mapView.setRegion(houstonRegion, animated: true)
-        
+        }
         
         if let userLocation = locationManager.location?.coordinate {
-//            mapView.setCenter(userLocation, animated: true)
-//            userVendor.lat = userLocation.latitude
-//            userVendor.long = userLocation.longitude
-//            mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
-//                if isInRegion(region: houstonRegion, coordinate: userLocation){
-//                    mapView.setRegion(mapRegion, animated: true)
-//            } else {
-//                mapView.setCenter(MapConstants.houstonCenter, animated: true)
-//                mapView.setRegion(houstonRegion, animated: true)
+            mapView.setCenter(userLocation, animated: true)
+            userVendor.lat = userLocation.latitude
+            userVendor.long = userLocation.longitude
+            let mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
+                if isInRegion(region: houstonRegion, coordinate: userLocation){
+                    mapView.setRegion(mapRegion, animated: true)
+            } else {
+                mapView.setCenter(MapConstants.houstonCenter, animated: true)
+                mapView.setRegion(houstonRegion, animated: true)
             
-//           }
+          }
             
             
             let userAnnotation = MKPointAnnotation()
@@ -138,12 +139,12 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
             
         }
         
-        mapView.setCenter(MapConstants.houstonCenter, animated: true)
-        print(mapView.center)
-        mapView.setRegion(houstonRegion, animated: true)
+//        mapView.setCenter(MapConstants.houstonCenter, animated: true)
+//        print(mapView.center)
+//        mapView.setRegion(houstonRegion, animated: true)
     }
     
-  
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "truckMarker"

@@ -13,11 +13,14 @@ import MapKit
     struct MapConstants {
         let houstonCenterLat: CLLocationDegrees = 29.7604
         let houstonCenterLong: CLLocationDegrees = -95.3698
+        static let bigRegionLat: CLLocationDistance =  96.31
+        static let bigRegionLong: CLLocationDistance = 52.67
         static let houstonCenter = CLLocationCoordinate2D(latitude: 29.7604, longitude: -95.3698)
-        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.4)
-        
+        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 3, longitudeDelta: 3)
         
     }
+
+let establishedRegion = MKCoordinateRegionMakeWithDistance(MapConstants.houstonCenter, MapConstants.bigRegionLat, MapConstants.bigRegionLong)
 //USER LOCATION
 struct userPlace {
     var latitude: Double
