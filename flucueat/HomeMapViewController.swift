@@ -22,7 +22,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
    // var mapRegion = MKCoordinateRegion()
     let mapSize = MKMapSize(width: 10, height: 10)
     var isConnected = true
-    
+    var isUserInteractionChange = false
     
     
     let regionRadious: CLLocationDistance = 5000
@@ -49,7 +49,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
         if #available(iOS 11.0, *) {
             mapView.register(MarkerView.self, forAnnotationViewWithReuseIdentifier: "truckMarker")
         } else {
-            // Fallback on earlier versions
+        
         }
         
        
@@ -67,11 +67,11 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
         
     }
     
-    func blurOutsideMap() {
+    func blurEstablishedRegion() {
         let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurView = UIVisualEffectView(effect: blur)
     
-       // blurView.frame != houstonRegion
+       //blurView.frame = establishedRegion
     }
     
     func checkForCenter() {
@@ -104,29 +104,27 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
     }
     
     func setMap() {
-
+        configureMapView()
         if CLLocationManager.locationServicesEnabled() {
-
             locationManager.startUpdatingLocation()
-//            locationManager.stopUpdatingLocation()
-//            locationManager.stopMonitoringSignificantLocationChanges()
         } else {
             mapView.setCenter(MapConstants.houstonCenter, animated: true)
             mapView.setRegion(houstonRegion, animated: true)
         }
         
-        if let userLocation = locationManager.location?.coordinate {
+        if let userLocation = locationManager.location?.coordinate  {
             mapView.setCenter(userLocation, animated: true)
             userVendor.lat = userLocation.latitude
             userVendor.long = userLocation.longitude
             let mapRegion = MKCoordinateRegion(center: userLocation, span: MapConstants.mapRangeSpan)
-                if isInRegion(region: houstonRegion, coordinate: userLocation){
+               if isInRegion(region: establishedRegion, coordinate: userLocation){
                     mapView.setRegion(mapRegion, animated: true)
             } else {
+                alertView(title: alertStrings.locationOutsideRegion, message: alertStrings.locationOutsideRegionMessage, dismissAction: alertStrings.showMe)
                 mapView.setCenter(MapConstants.houstonCenter, animated: true)
                 mapView.setRegion(houstonRegion, animated: true)
-            
-          }
+
+            }
             
             
             let userAnnotation = MKPointAnnotation()
@@ -137,11 +135,15 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
             
            globalUserPlace = userPlace(latitude: userLocation.latitude, longitude: userLocation.longitude)
             
-        }
+        } else {
         
-//        mapView.setCenter(MapConstants.houstonCenter, animated: true)
-//        print(mapView.center)
-//        mapView.setRegion(houstonRegion, animated: true)
+            
+        mapView.setCenter(MapConstants.houstonCenter, animated: true)
+        print(mapView.center)
+        mapView.setRegion(establishedRegion, animated: true)
+        alertView(title: alertStrings.noCoreLocation, message: alertStrings.locationOutsideRegionMessage, dismissAction: alertStrings.showMe)
+        
+        }
     }
     
     
@@ -206,6 +208,29 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
         self.navigationController!.pushViewController(truckInfoViewController, animated: true)
     }
     
+    private func userInteractionChange() -> Bool {
+        let view = self.mapView.subviews[0]
+        if let gestureRecognizers = view.gestureRecognizers {
+            for recognizer in gestureRecognizers {
+                if recognizer.state == UIGestureRecognizerState.began || recognizer.state == UIGestureRecognizerState.ended  {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    isUserInteractionChange = userInteractionChange()
+        if isUserInteractionChange{
+                if !isInRegion(region: establishedRegion, coordinate: mapView.region.center) {
+                alertView(title: alertStrings.outsideRegion, message: alertStrings.outsideRegionMessage, dismissAction: alertStrings.ok)
+                mapView.setRegion(houstonRegion, animated: true)
+                }
+            }
+    }
+    
+    
     func updateLocation() {
         
         
@@ -237,7 +262,7 @@ class HomeMapViewController: UIViewController, MKMapViewDelegate  {
         mapView.isScrollEnabled = true
         mapView.isZoomEnabled = true
         mapView.isPitchEnabled = false
-       // mapView.region = mapRegion
+       
     }
 
     func hideNavBar() {

@@ -28,7 +28,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166262"
+            timestampString = "534719351.609162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -44,7 +44,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166323"
+            timestampString = "534719351.609257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -60,12 +60,12 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/VendorInfoViewController.swift"
-                  timestampString = "534488890.596722"
+                  timestampString = "534704595.493789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "592">
+                  offsetFromSymbolStart = "617">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -75,12 +75,12 @@
                   moduleName = "fluctueat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jakeflaten/Documents/xcode-ios/fluctueat/flucueat/VendorInfoViewController.swift"
-                  timestampString = "534488890.599085"
+                  timestampString = "534704595.496683"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
                   endingLineNumber = "70"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "25">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -92,7 +92,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166375"
+            timestampString = "534719351.609341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -108,7 +108,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166425"
+            timestampString = "534719351.609424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -124,7 +124,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166473"
+            timestampString = "534719351.609487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -188,7 +188,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/FoodTruckInfoViewController.swift"
-            timestampString = "534269274.692342"
+            timestampString = "534721362.490065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -204,7 +204,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorInfoViewController.swift"
-            timestampString = "533599059.166562"
+            timestampString = "534719351.609599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -220,7 +220,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.404758"
+            timestampString = "534722555.040258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -236,7 +236,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/VendorMapViewController.swift"
-            timestampString = "534370293.939764"
+            timestampString = "534639047.313229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -252,7 +252,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.404876"
+            timestampString = "534722555.040793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -268,11 +268,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.404967"
+            timestampString = "534722555.041256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "setMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -284,11 +284,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.405054"
+            timestampString = "534722555.041638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "setMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -300,7 +300,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.405125"
+            timestampString = "534722555.042009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
@@ -316,12 +316,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "flucueat/HomeMapViewController.swift"
-            timestampString = "534488890.405196"
+            timestampString = "534722555.042412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.042749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.043107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.043438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.043773"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.044118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.044456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "setMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "flucueat/HomeMapViewController.swift"
+            timestampString = "534722555.044785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "mapView(_:regionDidChangeAnimated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

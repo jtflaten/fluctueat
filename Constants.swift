@@ -13,10 +13,10 @@ import MapKit
     struct MapConstants {
         let houstonCenterLat: CLLocationDegrees = 29.7604
         let houstonCenterLong: CLLocationDegrees = -95.3698
-        static let bigRegionLat: CLLocationDistance =  96.31
-        static let bigRegionLong: CLLocationDistance = 52.67
+        static let bigRegionLat: CLLocationDistance =  105000
+        static let bigRegionLong: CLLocationDistance = 85000
         static let houstonCenter = CLLocationCoordinate2D(latitude: 29.7604, longitude: -95.3698)
-        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 3, longitudeDelta: 3)
+        static let mapRangeSpan = MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07)
         
     }
 
@@ -61,10 +61,21 @@ struct dbConstants {
 struct alertStrings {
     static let badUidAlert = "Uh-oh"
     static let badUidMessage = "Looks like you're not an authorized Vendor. please contact us at customer support to get that fixed up."
+    
     static let ok = "OK"
+    static let showMe = "Show me!"
     
     static let badNetwork = "Network Problem"
     static let notConnected = "There was a problem connecting to the internet"
+    
+    static let outsideRegion = "Out of Bounds!"
+    static let outsideRegionMessage = "ProximitEAT is currently only available in the Houston, TX Metro Area"
+    
+    static let locationOutsideRegion = "We're not Available here, yet"
+    static let locationOutsideRegionMessage = "But you can check out the food trucks currently open in Houston!"
+    
+    static let noCoreLocation = "We're not accessing you location"
+    
     
 }
 

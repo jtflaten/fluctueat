@@ -23,6 +23,7 @@
 		5886EE231FCD37A7001B379E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5886EE221FCD37A6001B379E /* GoogleService-Info.plist */; };
 		589B07891F38332E00096544 /* AlertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B07881F38332E00096544 /* AlertViews.swift */; };
 		589B078D1F39230200096544 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589B078C1F39230200096544 /* FirebaseClient.swift */; };
+		58ACE7B21FDF33D5006466C3 /* Woodland Heights.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 58ACE7B11FDF33D5006466C3 /* Woodland Heights.gpx */; };
 		58C347841F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */; };
 		58FB4BB41F6AFB1D00A0B554 /* checkForConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB4BB31F6AFB1D00A0B554 /* checkForConnection.swift */; };
 		B77B6C930F9170C768196093 /* Pods_fluctueat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FA0FC1A2B928B735FBD2DB /* Pods_fluctueat.framework */; };
@@ -68,6 +69,7 @@
 		5886EE221FCD37A6001B379E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		589B07881F38332E00096544 /* AlertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViews.swift; sourceTree = "<group>"; };
 		589B078C1F39230200096544 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		58ACE7B11FDF33D5006466C3 /* Woodland Heights.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Woodland Heights.gpx"; sourceTree = "<group>"; };
 		58C347831F2FCD2C00710A1A /* FoodImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		58FB4BB31F6AFB1D00A0B554 /* checkForConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkForConnection.swift; sourceTree = "<group>"; };
 		680FE71A711B25AC00F1F720 /* Pods-fluctueat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluctueat.release.xcconfig"; path = "Pods/Target Support Files/Pods-fluctueat/Pods-fluctueat.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				5872BAA11F1942E000366391 /* HomeMapViewController.swift */,
 				58106D071F101B180043F791 /* Vendor.swift */,
 				585611A41F2259C400C6D2ED /* FoodTruckInfoViewController.swift */,
+				58ACE7B11FDF33D5006466C3 /* Woodland Heights.gpx */,
 			);
 			name = GeneralUser;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			files = (
 				583DDC841F0EDEA900E024C2 /* LaunchScreen.storyboard in Resources */,
 				583DDC811F0EDEA900E024C2 /* Assets.xcassets in Resources */,
+				58ACE7B21FDF33D5006466C3 /* Woodland Heights.gpx in Resources */,
 				583DDC7F1F0EDEA900E024C2 /* Main.storyboard in Resources */,
 				5886EE231FCD37A7001B379E /* GoogleService-Info.plist in Resources */,
 			);
